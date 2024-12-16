@@ -14,6 +14,7 @@ import 'package:shafi/features/auth_feature/presentation/login/screens/login_scr
 import 'package:shafi/features/auth_feature/presentation/register/screens/register_screen.dart';
 import 'package:shafi/features/home_feature/presentation/widgets/home_screen.dart';
 import 'package:shafi/features/my_medicens/peresentaion/screens/medical_history_screen.dart';
+import 'package:shafi/features/my_medicens/peresentaion/screens/treatments_plans_screen.dart';
 import 'package:shafi/features/splash_feature/presentation/screens/splash_screen.dart';
 import 'package:shafi/features/vedio_call/video_call_screen.dart';
 
@@ -55,7 +56,6 @@ class RouteGenerator {
     if (settings.name == Routes.home) {
       return platformPageRoute(const HomeScreen());
     }
-
     if (settings.name == Routes.doctorListScreen) {
       return platformPageRoute(const DoctorsListScreen());
     }
@@ -83,9 +83,11 @@ class RouteGenerator {
         apointmentModel: args['apointmentModel'],
       ));
     }
-
     if (settings.name == Routes.medicalHestoryScreen) {
       return platformPageRoute(const MedicalHistoryScreen());
+    }
+    if (settings.name == Routes.treatmentPlansScreen) {
+      return platformPageRoute(const TreatmentsPlansScreen());
     }
     // if (settings.name == Routes.startWorkScreen) {
     //   return platformPageRoute(const StartWorkScreen());
@@ -98,7 +100,6 @@ class RouteGenerator {
     // } else {
     //   return platformPageRoute(UndefinedRouteScreen(settings.name));
     // }
-
     return platformPageRoute(UndefinedRouteScreen(settings.name));
   }
 }

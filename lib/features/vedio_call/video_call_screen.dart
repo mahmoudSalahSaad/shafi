@@ -96,8 +96,6 @@ class _VideoCallScreenState extends ConsumerState<VideoCallScreen> {
               '[onTokenPrivilegeWillExpire] connection: ${connection.toJson()}, token: $token');
         },
         onError: (err, msg) => debugPrint('onError: $err, $msg'),
-        onExtensionError: (provider, extension, error, message) => debugPrint(
-            "[onError] provider: $provider, extension: $extension, error: $error, message: $message"),
         onEncryptionError: (connection, errorType) {
           debugPrint(
               '[onError] connection: ${connection.toJson()}, errorType: $errorType');

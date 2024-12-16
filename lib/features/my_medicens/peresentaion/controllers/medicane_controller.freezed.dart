@@ -98,11 +98,12 @@ class __$$MedicaneStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$MedicaneStateImpl implements _MedicaneState {
-  _$MedicaneStateImpl({final List<MedicaneModel>? medicanes})
+  _$MedicaneStateImpl({final List<MedicaneModel>? medicanes = const []})
       : _medicanes = medicanes;
 
   final List<MedicaneModel>? _medicanes;
   @override
+  @JsonKey()
   List<MedicaneModel>? get medicanes {
     final value = _medicanes;
     if (value == null) return null;

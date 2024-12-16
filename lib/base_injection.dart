@@ -29,6 +29,7 @@ import 'package:shafi/features/my_medicens/data/repository_implemention/reposito
 import 'package:shafi/features/my_medicens/domain/repository/repository.dart';
 import 'package:shafi/features/my_medicens/domain/use_cases/add_medicane_use_case.dart';
 import 'package:shafi/features/my_medicens/domain/use_cases/get_medical_history_use_case.dart';
+import 'package:shafi/features/my_medicens/domain/use_cases/get_treatment_plans_use_case.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 final getIt = GetIt.instance;
@@ -72,6 +73,8 @@ Future<void> init() async {
       () => GetMedicalHistoryUseCase(medicalRepository: getIt()));
   getIt.registerLazySingleton(
       () => AddMedicaneUseCase(medicalRepository: getIt()));
+  getIt.registerLazySingleton(
+      () => GetTreatmentPlansUseCase(medicalRepository: getIt()));
   // getIt.registerLazySingleton(() => ProjectsUseCase(homeRepo: getIt()));
   // getIt.registerLazySingleton(() => ShiftsUseCase(homeRepo: getIt()));
   // getIt.registerLazySingleton(() => CheckInUseCase(homeRepo: getIt()));

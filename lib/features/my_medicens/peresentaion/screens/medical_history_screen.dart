@@ -142,7 +142,7 @@ class MedicalHistoryScreen extends ConsumerWidget {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       appBar: AppBar(
-        title: CustomText("العلاجات السابقه", size: 14.h, bold: true),
+        title: CustomText("ادويتي", size: 14.h, bold: true),
         centerTitle: true,
         leading: InkWell(
           onTap: () {

@@ -1,3 +1,5 @@
+// ignore_for_file: unused_result
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shafi/core/extensions/num_extensions.dart';
@@ -631,7 +633,25 @@ class BuildMenu extends ConsumerWidget {
               leading: const Icon(Icons.medical_information,
                   size: 20.0, color: Colors.white),
               title: CustomText(
-                "العلاجات السابقه",
+                "ادويتي",
+                size: 14.h,
+                align: TextAlign.start,
+                bold: true,
+                white: true,
+              ),
+              textColor: Colors.white,
+              dense: true,
+
+              // padding: EdgeInsets.zero,
+            ),
+            ListTile(
+              onTap: () {
+                NavigationService.push(Routes.treatmentPlansScreen);
+              },
+              leading: const Icon(Icons.medical_information,
+                  size: 20.0, color: Colors.white),
+              title: CustomText(
+                "البرنامج العلاجي",
                 size: 14.h,
                 align: TextAlign.start,
                 bold: true,

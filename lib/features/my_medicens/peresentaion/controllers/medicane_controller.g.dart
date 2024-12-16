@@ -7,7 +7,7 @@ part of 'medicane_controller.dart';
 // **************************************************************************
 
 String _$medicaneControllerHash() =>
-    r'1ee707606eede75c9f0cabd1c14c3a4eb6402fa2';
+    r'20fe2e2037fb2b6e375d02973465d14681c765bf';
 
 /// See also [MedicaneController].
 @ProviderFor(MedicaneController)
@@ -24,4 +24,4 @@ final medicaneControllerProvider = AutoDisposeAsyncNotifierProvider<
 
 typedef _$MedicaneController = AutoDisposeAsyncNotifier<MedicaneState>;
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
