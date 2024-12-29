@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
 import 'package:shafi/core/extensions/num_extensions.dart';
-import 'package:shafi/core/extensions/widget_extensions.dart';
 import 'package:shafi/core/routing/navigation_services.dart';
 import 'package:shafi/features/apointment_feature/data/models/category_model.dart';
 import 'package:shafi/features/apointment_feature/data/models/doctor_model.dart';
@@ -94,6 +93,6 @@ class _MyApointmentScreenState extends ConsumerState<MyApointmentScreen> {
               },
             ),
       ),
-    ).rtl();
+    );
   }
 }

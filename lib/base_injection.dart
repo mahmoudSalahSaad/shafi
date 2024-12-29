@@ -30,6 +30,9 @@ import 'package:shafi/features/my_medicens/domain/repository/repository.dart';
 import 'package:shafi/features/my_medicens/domain/use_cases/add_medicane_use_case.dart';
 import 'package:shafi/features/my_medicens/domain/use_cases/get_medical_history_use_case.dart';
 import 'package:shafi/features/my_medicens/domain/use_cases/get_treatment_plans_use_case.dart';
+import 'package:shafi/features/privacy/data/repo_impl/privacy_repository_implementatlion.dart';
+import 'package:shafi/features/privacy/domain/repo/privacy_repository.dart';
+import 'package:shafi/features/privacy/domain/usecases/get_privacy_use_casae.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 final getIt = GetIt.instance;
@@ -75,6 +78,8 @@ Future<void> init() async {
       () => AddMedicaneUseCase(medicalRepository: getIt()));
   getIt.registerLazySingleton(
       () => GetTreatmentPlansUseCase(medicalRepository: getIt()));
+  getIt.registerLazySingleton(
+      () => GetPrivacyUseCasae(privacyRepository: getIt()));
   // getIt.registerLazySingleton(() => ProjectsUseCase(homeRepo: getIt()));
   // getIt.registerLazySingleton(() => ShiftsUseCase(homeRepo: getIt()));
   // getIt.registerLazySingleton(() => CheckInUseCase(homeRepo: getIt()));
@@ -118,6 +123,8 @@ Future<void> init() async {
       () => ApointmentsRepositoryImplemention(networkClient: getIt()));
   getIt.registerLazySingleton<MedicalRepository>(
       () => MedicaneRepositoryImplemention(networkClient: getIt()));
+  getIt.registerLazySingleton<PrivacyRepository>(
+      () => PrivacyRepositoryImplementatlion(getIt()));
   // getIt.registerLazySingleton<HomeRepository>(
   //     () => HomeRepositoryImplmentaion(networkClient: getIt()));
   // getIt.registerLazySingleton<AuthRefreshRepository>(

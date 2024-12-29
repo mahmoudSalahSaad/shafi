@@ -14,37 +14,34 @@ class DoctorsListScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return Directionality(
-      textDirection: TextDirection.rtl,
-      child: Scaffold(
-        backgroundColor: Colors.transparent,
-        body: ref.watch(doctorsControllerProvider).when(
-            data: (data) {
-              return ListView.builder(
-                shrinkWrap: true,
-                padding: EdgeInsets.symmetric(vertical: 16.h),
-                itemCount: data.doctors.length,
-                itemBuilder: (_, index) {
-                  return DoctorCardWidget(
-                    doctorModel: data.doctors[index],
-                  );
-                },
-              );
-            },
-            error: (e, strrError) => Text("$e"),
-            loading: () => Shimmer.fromColors(
-                baseColor: Colors.grey.shade200,
-                highlightColor: Colors.grey.shade300,
-                child: Padding(
-                  padding: EdgeInsets.all(16.0.h),
-                  child: Column(
-                    children: List.generate(10, (index) {
-                      return DoctorCardWidget(
-                          doctorModel: DoctorModel(name: "Loading.........."));
-                    }),
-                  ),
-                ))),
-      ),
+    return Scaffold(
+      backgroundColor: Colors.transparent,
+      body: ref.watch(doctorsControllerProvider).when(
+          data: (data) {
+            return ListView.builder(
+              shrinkWrap: true,
+              padding: EdgeInsets.symmetric(vertical: 16.h),
+              itemCount: data.doctors.length,
+              itemBuilder: (_, index) {
+                return DoctorCardWidget(
+                  doctorModel: data.doctors[index],
+                );
+              },
+            );
+          },
+          error: (e, strrError) => Text("$e"),
+          loading: () => Shimmer.fromColors(
+              baseColor: Colors.grey.shade200,
+              highlightColor: Colors.grey.shade300,
+              child: Padding(
+                padding: EdgeInsets.all(16.0.h),
+                child: Column(
+                  children: List.generate(10, (index) {
+                    return DoctorCardWidget(
+                        doctorModel: DoctorModel(name: "Loading.........."));
+                  }),
+                ),
+              ))),
     );
   }
 }
@@ -91,7 +88,7 @@ class DoctorCardWidget extends ConsumerWidget {
                   width: 40.h,
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    border: Border.all(color: primaryColor),
+                    border: Border.all(color: primaryColorDark),
                   ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -99,7 +96,7 @@ class DoctorCardWidget extends ConsumerWidget {
                     children: [
                       SvgPicture.asset(
                         Assets.doctorSvg,
-                        color: primaryColor,
+                        color: primaryColorDark,
                       ),
                     ],
                   ),
@@ -113,12 +110,12 @@ class DoctorCardWidget extends ConsumerWidget {
                     CustomText(
                       "${doctorModel.name}",
                       size: 14.h,
-                      color: primaryColorDark,
+                      color: Colors.black,
                     ),
                     CustomText(
                       "عام",
                       size: 14.h,
-                      color: primaryColorDark,
+                      color: Colors.black,
                     )
                   ],
                 )
@@ -126,7 +123,7 @@ class DoctorCardWidget extends ConsumerWidget {
             ),
             Icon(
               Icons.arrow_forward_ios,
-              color: primaryColorDark,
+              color: Colors.black,
             )
           ],
         ),

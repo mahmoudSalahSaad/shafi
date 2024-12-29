@@ -6,6 +6,7 @@ import 'package:shafi/core/routing/navigation_services.dart';
 import 'package:shafi/core/routing/routes.dart';
 import 'package:shafi/features/auth_feature/presentation/login/widgets/auth_base_layout_widget.dart';
 import 'package:shafi/features/auth_feature/presentation/login/widgets/login_layout_widget.dart';
+import 'package:shafi/generated/l10n.dart';
 import 'package:shafi/widgets/custom_button.dart';
 
 class LoginScreen extends ConsumerStatefulWidget {
@@ -27,7 +28,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
               padding: EdgeInsets.symmetric(horizontal: 16.w),
               child: CustomButton(
                 height: 44.h,
-                buttonText: "تسجيل حساب جديد",
+                buttonText: S.of(context).register,
                 textColor: kAppBarColor,
                 backgroundColor: backgroundColor,
                 radius: 10.r,

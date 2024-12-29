@@ -7,6 +7,7 @@ import 'package:shafi/core/extensions/num_extensions.dart';
 import 'package:shafi/core/resources/color.dart';
 import 'package:shafi/core/resources/values_manager.dart';
 import 'package:shafi/features/auth_feature/presentation/forget_password/controllers/otp_controller.dart';
+import 'package:shafi/generated/l10n.dart';
 import 'package:shafi/widgets/custom_text.dart';
 
 class OtpLayoutWidget extends ConsumerStatefulWidget {
@@ -62,75 +63,72 @@ class _OtpLayoutWidgetState extends ConsumerState<OtpLayoutWidget> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  CustomText("برجاء ادخال الرقم المرسل اليك"),
+                  CustomText(S.of(context).otp_message),
                   SizedBox(
                     height: 16.h,
                   ),
-                  Directionality(
-                    textDirection: TextDirection.ltr,
-                    child: PinCodeTextField(
-                      controller: widget.textEditingController,
-                      appContext: context,
-                      pastedTextStyle: TextStyle(
-                        color: Colors.green.shade600,
-                        fontWeight: FontWeight.bold,
-                      ),
-                      length: 6,
-                      obscureText: true,
-                      obscuringCharacter: '•',
-                      blinkWhenObscuring: true,
-                      animationType: AnimationType.fade,
-                      validator: (v) {
-                        debugPrint(
-                            "validator: ${widget.textEditingController.text}");
-                        if (v != null || v!.length == 6) {
-                          return null;
-                        } else {
-                          debugPrint("validator: $v");
-                          return "مطلوب";
-                        }
-                      },
-                      pinTheme: PinTheme(
-                        shape: PinCodeFieldShape.box,
-                        borderRadius: BorderRadius.circular(16.r),
-                        fieldHeight: 50.h,
-                        fieldWidth: 50.h,
-                        activeColor: primaryColorDark,
-                        selectedColor: primaryColor,
-                        selectedFillColor: primaryColor.withOpacity(0.30),
-                        inactiveFillColor: kAppBarColor,
-                        inactiveColor: primaryOrangeColor,
-                        activeFillColor: Colors.white,
-                      ),
-                      cursorColor: Colors.black,
-                      animationDuration: const Duration(milliseconds: 300),
-                      enableActiveFill: true,
-                      enablePinAutofill: true,
-
-                      keyboardType: TextInputType.number,
-                      boxShadows: const [
-                        BoxShadow(
-                          offset: Offset(0, 0),
-                          color: Colors.black12,
-                          blurRadius: 10,
-                        )
-                      ],
-                      onCompleted: (v) {
-                        debugPrint("Completed");
-                      },
-                      // onTap: () {
-                      //   print("Pressed");
-                      // },
-                      onChanged: (value) {
-                        debugPrint("onChanged: $value");
-                      },
-                      beforeTextPaste: (text) {
-                        debugPrint("beforeTextPaste: $text");
-                        //if you return true then it will show the paste confirmation dialog. Otherwise if false, then nothing will happen.
-                        //but you can show anything you want here, like your pop up saying wrong paste format or etc
-                        return true;
-                      },
+                  PinCodeTextField(
+                    controller: widget.textEditingController,
+                    appContext: context,
+                    pastedTextStyle: TextStyle(
+                      color: Colors.green.shade600,
+                      fontWeight: FontWeight.bold,
                     ),
+                    length: 6,
+                    obscureText: true,
+                    obscuringCharacter: '•',
+                    blinkWhenObscuring: true,
+                    animationType: AnimationType.fade,
+                    validator: (v) {
+                      debugPrint(
+                          "validator: ${widget.textEditingController.text}");
+                      if (v != null || v!.length == 6) {
+                        return null;
+                      } else {
+                        debugPrint("validator: $v");
+                        return S.of(context).field_required;
+                      }
+                    },
+                    pinTheme: PinTheme(
+                      shape: PinCodeFieldShape.box,
+                      borderRadius: BorderRadius.circular(16.r),
+                      fieldHeight: 50.h,
+                      fieldWidth: 50.h,
+                      activeColor: primaryColorDark,
+                      selectedColor: primaryColor,
+                      selectedFillColor: primaryColor.withOpacity(0.30),
+                      inactiveFillColor: Colors.white,
+                      inactiveColor: primaryColorDark,
+                      activeFillColor: Colors.white,
+                    ),
+                    cursorColor: Colors.black,
+                    animationDuration: const Duration(milliseconds: 300),
+                    enableActiveFill: true,
+                    enablePinAutofill: true,
+
+                    keyboardType: TextInputType.number,
+                    boxShadows: const [
+                      BoxShadow(
+                        offset: Offset(0, 0),
+                        color: Colors.black12,
+                        blurRadius: 10,
+                      )
+                    ],
+                    onCompleted: (v) {
+                      debugPrint("Completed");
+                    },
+                    // onTap: () {
+                    //   print("Pressed");
+                    // },
+                    onChanged: (value) {
+                      debugPrint("onChanged: $value");
+                    },
+                    beforeTextPaste: (text) {
+                      debugPrint("beforeTextPaste: $text");
+                      //if you return true then it will show the paste confirmation dialog. Otherwise if false, then nothing will happen.
+                      //but you can show anything you want here, like your pop up saying wrong paste format or etc
+                      return true;
+                    },
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -138,10 +136,10 @@ class _OtpLayoutWidgetState extends ConsumerState<OtpLayoutWidget> {
                       if (sec != 0)
                         CustomText(
                           sec.toStringAsFixed(0),
-                          color: primaryOrangeColor,
+                          color: primaryColorDark,
                           bold: true,
                         ),
-                      CustomText("لم تصلك؟"),
+                      CustomText(S.of(context).didnt_recive_otp),
                       InkWell(
                         onTap: () {
                           if (sec == 0) {
@@ -155,7 +153,7 @@ class _OtpLayoutWidgetState extends ConsumerState<OtpLayoutWidget> {
                           }
                         },
                         child: CustomText(
-                          "ارسال مره اخره",
+                          S.of(context).ask_again,
                           textDecoration: TextDecoration.underline,
                           color: sec == 0 ? primaryOrangeColor : Colors.grey,
                         ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shafi/bottom_navigation_bar_screen.dart';
 import 'package:shafi/core/routing/routes.dart';
 import 'package:shafi/features/apointment_feature/presentaion/screens/apointment_summary_screen.dart';
 import 'package:shafi/features/apointment_feature/presentaion/screens/apointment_times_screen.dart';
@@ -15,6 +16,7 @@ import 'package:shafi/features/auth_feature/presentation/register/screens/regist
 import 'package:shafi/features/home_feature/presentation/widgets/home_screen.dart';
 import 'package:shafi/features/my_medicens/peresentaion/screens/medical_history_screen.dart';
 import 'package:shafi/features/my_medicens/peresentaion/screens/treatments_plans_screen.dart';
+import 'package:shafi/features/privacy/presentation/pages/privacy_screen.dart';
 import 'package:shafi/features/splash_feature/presentation/screens/splash_screen.dart';
 import 'package:shafi/features/vedio_call/video_call_screen.dart';
 
@@ -38,6 +40,11 @@ class RouteGenerator {
     if (settings.name == Routes.init) {
       return platformPageRoute(const SplashScreen());
     }
+
+    if (settings.name == Routes.bottomNavigationBarScreen) {
+      return platformPageRoute(const BottomNavigationBarScreen());
+    }
+
     if (settings.name == Routes.login) {
       return platformPageRoute(const LoginScreen());
     }
@@ -88,6 +95,9 @@ class RouteGenerator {
     }
     if (settings.name == Routes.treatmentPlansScreen) {
       return platformPageRoute(const TreatmentsPlansScreen());
+    }
+    if (settings.name == Routes.privacyScreen) {
+      return platformPageRoute(const PrivacyScreen());
     }
     // if (settings.name == Routes.startWorkScreen) {
     //   return platformPageRoute(const StartWorkScreen());

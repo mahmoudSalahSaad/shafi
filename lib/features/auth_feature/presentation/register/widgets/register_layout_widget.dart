@@ -6,6 +6,7 @@ import 'package:shafi/core/resources/color.dart';
 import 'package:shafi/core/utils/validators.dart';
 import 'package:shafi/features/auth_feature/domain/entities/user_entity.dart';
 import 'package:shafi/features/auth_feature/presentation/register/controllers/register_controller.dart';
+import 'package:shafi/generated/l10n.dart';
 import 'package:shafi/widgets/custom_button.dart';
 import 'package:shafi/widgets/custom_text.dart';
 import 'package:shafi/widgets/custom_text_field.dart';
@@ -30,9 +31,7 @@ class _RegisterLayoutWidgetState extends ConsumerState<RegisterLayoutWidget> {
 
   _onSubmit() async {
     if (_formKey.currentState!.validate()) {
-      ref
-          .read(registerControllerProvider.notifier)
-          .register(
+      ref.read(registerControllerProvider.notifier).register(
             UserEntity(
                 phone: "+964${phone.text}",
                 password: password.text,
@@ -57,7 +56,7 @@ class _RegisterLayoutWidgetState extends ConsumerState<RegisterLayoutWidget> {
   /// - Confirm password
   ///
   /// The widget is wrapped in a [Column] and includes a [CustomText]
-  /// widget with the title "تسجيل حساب جديد" at the top.
+  /// widget with the title  S.of(context).register at the top.
   ///
   /// The form is validated on submission, and if it is valid, the
   /// [RegisterController.register] function is called with the user's
@@ -68,7 +67,7 @@ class _RegisterLayoutWidgetState extends ConsumerState<RegisterLayoutWidget> {
       children: [
         /// Title of the form
         CustomText(
-          "تسجيل حساب جديد",
+          S.of(context).register,
           size: 22.h,
           bold: true,
         ),
@@ -97,13 +96,13 @@ class _RegisterLayoutWidgetState extends ConsumerState<RegisterLayoutWidget> {
                           if (value.isNotEmpty) {
                             return null;
                           } else {
-                            return "هذا الحقل مطلوب";
+                            return S.of(context).field_required;
                           }
                         } else {
-                          return "هذا الحقل مطلوب";
+                          return S.of(context).field_required;
                         }
                       },
-                      hint: "الاسم الول",
+                      hint: S.of(context).first_name,
                       prefixIcon: Icon(
                         Icons.hdr_strong_outlined,
                         size: 14.h,
@@ -114,16 +113,16 @@ class _RegisterLayoutWidgetState extends ConsumerState<RegisterLayoutWidget> {
                     CustomTextField(
                       isPassword: false,
                       controller: lastName,
-                      hint: "اسم العائله",
+                      hint: S.of(context).last_name,
                       onValidate: (value) {
                         if (value != null) {
                           if (value.isNotEmpty) {
                             return null;
                           } else {
-                            return "هذا الحقل مطلوب";
+                            return S.of(context).field_required;
                           }
                         } else {
-                          return "هذا الحقل مطلوب";
+                          return S.of(context).field_required;
                         }
                       },
                       width: 154.w,
@@ -140,7 +139,7 @@ class _RegisterLayoutWidgetState extends ConsumerState<RegisterLayoutWidget> {
                   isPassword: false,
                   controller: phone,
                   prefixIcon: Icon(Icons.phone_android_rounded),
-                  hint: "رقم الهااتف",
+                  hint: S.of(context).phone,
                   maxLength: 9,
                   inputFormats: [
                     FilteringTextInputFormatter.digitsOnly,
@@ -150,10 +149,10 @@ class _RegisterLayoutWidgetState extends ConsumerState<RegisterLayoutWidget> {
                       if (Validators.phoneNumber(value)) {
                         return null;
                       } else {
-                        return "رقم الهاتف يتكون من 9 ارقام";
+                        return S.of(context).phone_limit_message;
                       }
                     } else {
-                      return "برجاء ادخال رقم الهاتف";
+                      return S.of(context).password_field_required;
                     }
                   },
                   textInputType: TextInputType.phone,
@@ -176,13 +175,13 @@ class _RegisterLayoutWidgetState extends ConsumerState<RegisterLayoutWidget> {
                       if (value.isNotEmpty) {
                         return null;
                       } else {
-                        return "برجاء ادخال كلمة المرور";
+                        return S.of(context).password_field_required;
                       }
                     } else {
-                      return "برجاء ادخال كلمة المرور";
+                      return S.of(context).password_field_required;
                     }
                   },
-                  hint: "كلمة المرور",
+                  hint: S.of(context).password,
                   prefixIcon: Icon(
                     Icons.lock,
                     size: 14.h,
@@ -193,7 +192,7 @@ class _RegisterLayoutWidgetState extends ConsumerState<RegisterLayoutWidget> {
                 CustomTextField(
                   isPassword: true,
                   maxLines: 1,
-                  hint: "تأكيد كلمة المرور",
+                  hint: S.of(context).confirm_password,
                   controller: confirmPassword,
                   onValidate: (value) {
                     if (value != null) {
@@ -201,13 +200,13 @@ class _RegisterLayoutWidgetState extends ConsumerState<RegisterLayoutWidget> {
                         if (value == password.text) {
                           return null;
                         } else {
-                          return "تأكيد كلمة المرور يجب ان تتوافق مع كلمة المرور";
+                          return S.of(context).confirm_password_not_match;
                         }
                       } else {
-                        return "برجاء ادخال كلمة المرور";
+                        return S.of(context).confirm_password_field_required;
                       }
                     } else {
-                      return "برجاء ادخال كلمة المرور";
+                      return S.of(context).confirm_password_field_required;
                     }
                   },
                   prefixIcon: Icon(
@@ -222,7 +221,7 @@ class _RegisterLayoutWidgetState extends ConsumerState<RegisterLayoutWidget> {
                   onTap: () async {
                     await _onSubmit();
                   },
-                  buttonText: "تسجيل حساب جديد",
+                  buttonText: S.of(context).register,
                   textColor: kAppBarColor,
                   radius: 10.r,
                   loading: ref.watch(registerControllerProvider).isLoading,

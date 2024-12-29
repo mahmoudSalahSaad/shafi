@@ -66,7 +66,7 @@ class CustomButton extends StatelessWidget {
               ? Border.all(
                   color: borderColor ??
                       backgroundColor ??
-                      Theme.of(context).primaryColor)
+                      Theme.of(context).primaryColorDark)
               : null,
           boxShadow: [
             BoxShadow(
@@ -74,7 +74,7 @@ class CustomButton extends StatelessWidget {
                 spreadRadius: 1,
                 blurRadius: 5), // changes position of shadow
           ],
-          color: backgroundColor ?? primaryColor,
+          color: backgroundColor ?? primaryColorDark,
           //     gradient: LinearGradient(
           //                         colors: [Color(0xffFD4A51), ColorManager.red, Colors.red],
           //                         begin: Alignment.topCenter,
@@ -105,7 +105,7 @@ class CustomButton extends StatelessWidget {
                               )
                             : const SizedBox.shrink(),
                         CustomText("$buttonText",
-                            color: textColor ?? primaryColor,
+                            color: textColor ?? primaryColorDark,
                             size: 14.h,
                             bold: true),
                       ],

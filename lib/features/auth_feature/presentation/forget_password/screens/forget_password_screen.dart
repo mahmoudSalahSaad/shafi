@@ -6,12 +6,14 @@ import 'package:shafi/core/routing/navigation_services.dart';
 import 'package:shafi/core/routing/routes.dart';
 import 'package:shafi/features/auth_feature/presentation/forget_password/widgets/forget_password_layout_widget.dart';
 import 'package:shafi/features/auth_feature/presentation/login/widgets/auth_base_layout_widget.dart';
+import 'package:shafi/generated/l10n.dart';
 import 'package:shafi/widgets/custom_button.dart';
 
 class ForgetPasswordScreen extends ConsumerWidget {
   const ForgetPasswordScreen({super.key});
 
   @override
+
   /// Builds the UI for the [ForgetPasswordScreen].
   ///
   /// This screen is responsible for showing the UI for the user to enter their
@@ -33,7 +35,7 @@ class ForgetPasswordScreen extends ConsumerWidget {
               padding: EdgeInsets.symmetric(horizontal: 16.w),
               child: CustomButton(
                 height: 44.h,
-                buttonText: "اطلب",
+                buttonText: S.of(context).request,
                 textColor: kAppBarColor,
                 backgroundColor: backgroundColor,
                 radius: 10.r,

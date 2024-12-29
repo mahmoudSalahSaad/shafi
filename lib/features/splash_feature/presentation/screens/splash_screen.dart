@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:lottie/lottie.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:shafi/core/extensions/num_extensions.dart';
 import 'package:shafi/core/resources/resources.dart';
 import 'package:shafi/core/routing/navigation_services.dart';
@@ -16,7 +16,6 @@ class SplashScreen extends ConsumerStatefulWidget {
   ConsumerState<ConsumerStatefulWidget> createState() => _SplashScreenState();
 }
 
-
 class _SplashScreenState extends ConsumerState<SplashScreen> {
   @override
   void initState() {
@@ -26,7 +25,8 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
           await ref.read(userControllerProvider.notifier).getUser();
       if (userModel != null) {
         await ref.read(userControllerProvider.notifier).refreshToken();
-        NavigationService.pushNamedAndRemoveUntil(Routes.home);
+        NavigationService.pushNamedAndRemoveUntil(
+            Routes.bottomNavigationBarScreen);
       } else {
         NavigationService.pushNamedAndRemoveUntil(Routes.login);
       }
@@ -38,20 +38,21 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
     return Container(
       height: deviceHeight,
       width: deviceWidth,
-      decoration: BoxDecoration(color: backgroundColor),
+      decoration: BoxDecoration(color: Colors.white),
       child: Stack(
         alignment: Alignment.center,
         children: [
           Padding(
-            padding: EdgeInsets.only(top: 100.h),
-            child: LottieBuilder.asset(
-              Assets.splashLottie,
+            padding: EdgeInsets.only(top: 140.h),
+            child: LoadingAnimationWidget.staggeredDotsWave(
+              color: primaryColorDark,
+              size: 50.sp,
             ),
           ),
           Center(
               child: Padding(
             padding: EdgeInsets.only(right: 20.w),
-            child: Image.asset(Assets.logo),
+            child: Image.asset(Assets.appLogo),
           )),
         ],
       ),

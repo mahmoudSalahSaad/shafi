@@ -20,19 +20,22 @@ class GetBookingAvalibaleTimesUseCase
   * */
 
   @override
+
   /// Calls the repository to fetch available booking times
   ///
   /// [parameters] is an [ApointmentTimesEntity] object containing the
   /// appointment date and doctor ID.
   ///
   /// Returns a [Future] containing either an [ErrorModel] or a [BaseResponse].
-  Future<Either<ErrorModel, BaseResponse>> call(ApointmentTimesEntity parameters) async {
+  Future<Either<ErrorModel, BaseResponse>> call(
+      ApointmentTimesEntity parameters) async {
     // Delegate the call to the repository method
     return await apointmentRepository.getBookingAvalibaleTimes(
         parameters: parameters);
   }
 
   @override
+
   /// Calls the repository to fetch available booking times for testing
   /// purposes.
   ///

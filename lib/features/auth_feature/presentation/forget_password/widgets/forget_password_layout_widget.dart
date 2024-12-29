@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shafi/core/extensions/num_extensions.dart';
 import 'package:shafi/core/resources/values_manager.dart';
+import 'package:shafi/generated/l10n.dart';
 import 'package:shafi/widgets/custom_text.dart';
 import 'package:shafi/widgets/custom_text_field.dart';
 
@@ -10,6 +11,7 @@ class ForgetPasswordLayoutWidget extends StatelessWidget {
   });
 
   @override
+
   /// Builds the forget password layout widget.
   ///
   /// It includes a text that says "نسيت كلمةالمرور" and a form with a
@@ -25,13 +27,14 @@ class ForgetPasswordLayoutWidget extends StatelessWidget {
         children: [
           /// The title of the widget
           CustomText(
-            "نسيت كلمةالمرور",
+            S.of(context).forget_password_question,
             size: 22.h,
             bold: true,
           ),
           SizedBox(
             height: 16.h,
           ),
+
           /// The form to enter the email address
           Form(
               child: Padding(
@@ -47,6 +50,7 @@ class ForgetPasswordLayoutWidget extends StatelessWidget {
                 SizedBox(
                   height: 16.h,
                 ),
+
                 /// The email address field
                 CustomTextField(
                   hint: "بريد اليكتروني",
@@ -59,5 +63,4 @@ class ForgetPasswordLayoutWidget extends StatelessWidget {
       ),
     );
   }
-
 }

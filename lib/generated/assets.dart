@@ -3,6 +3,7 @@ class Assets {
   Assets._();
 
   static const String logo = "assets/images/SHAFI.png";
+  static const String appLogo = "assets/images/shafi-logo.png";
   static const String splashLottie = "assets/images/curves.json";
   static const String authLottie = "assets/images/auth_lottie.json";
   static const String imagesBk = "assets/images/bk.png";

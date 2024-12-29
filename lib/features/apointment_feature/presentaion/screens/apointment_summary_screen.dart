@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shafi/core/extensions/num_extensions.dart';
-import 'package:shafi/core/extensions/widget_extensions.dart';
 import 'package:shafi/core/resources/resources.dart';
 import 'package:shafi/core/routing/navigation_services.dart';
 import 'package:shafi/features/apointment_feature/presentaion/controllers/apointment_controller.dart';
 import 'package:shafi/features/apointment_feature/presentaion/controllers/questions_controller.dart';
 import 'package:shafi/features/auth_feature/presentation/controllers/user_controller.dart';
+import 'package:shafi/generated/l10n.dart';
 import 'package:shafi/widgets/custom_button.dart';
 import 'package:shafi/widgets/custom_text.dart';
 
@@ -19,7 +19,7 @@ class ApointmentSummaryScreen extends ConsumerWidget {
       backgroundColor: Colors.white,
       appBar: AppBar(
         title: CustomText(
-          "ملخص الطلب",
+          S.of(context).apointment_summary,
           size: 16.h,
           bold: true,
         ),
@@ -39,7 +39,7 @@ class ApointmentSummaryScreen extends ConsumerWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             CustomText(
-              "تاكيد على الحجز",
+              S.of(context).confirm_appointment,
               size: 18.h,
               bold: true,
             ),
@@ -70,7 +70,7 @@ class ApointmentSummaryScreen extends ConsumerWidget {
                             "${ref.read(questionsControllerProvider).requireValue.answers[index].title}",
                             size: 16.h,
                             bold: true,
-                            color: primaryColor,
+                            color: primaryColorDark,
                           ),
                           CustomText(
                             "${ref.read(questionsControllerProvider).requireValue.answers[index].answer}",
@@ -106,7 +106,7 @@ class ApointmentSummaryScreen extends ConsumerWidget {
                 child: Column(
                   children: [
                     CustomText(
-                      "تفاصيل الحجز",
+                      S.of(context).apointment_details,
                       size: 14.h,
                       bold: true,
                     ),
@@ -114,7 +114,7 @@ class ApointmentSummaryScreen extends ConsumerWidget {
                     Row(
                       children: [
                         CustomText(
-                          "اسم المريض:",
+                          S.of(context).patient_name,
                           size: 12.h,
                         ),
                         Spacer(),
@@ -133,7 +133,7 @@ class ApointmentSummaryScreen extends ConsumerWidget {
                     Row(
                       children: [
                         CustomText(
-                          "تاريخ الحجز:",
+                          S.of(context).apointment_date,
                           size: 12.h,
                         ),
                         Spacer(),
@@ -151,7 +151,7 @@ class ApointmentSummaryScreen extends ConsumerWidget {
                     Row(
                       children: [
                         CustomText(
-                          "معاد الحجز",
+                          S.of(context).apointment_time,
                           size: 12.h,
                         ),
                         Spacer(),
@@ -169,7 +169,7 @@ class ApointmentSummaryScreen extends ConsumerWidget {
                     Row(
                       children: [
                         CustomText(
-                          "اسم الطبيب",
+                          S.of(context).doctor_name,
                           size: 12.h,
                         ),
                         Spacer(),
@@ -190,9 +190,9 @@ class ApointmentSummaryScreen extends ConsumerWidget {
             ),
             SizedBox(height: 16.h),
             CustomButton(
-              buttonText: "ارسال",
+              buttonText: S.of(context).send,
               textColor: Colors.white,
-              backgroundColor: primaryColor,
+              backgroundColor: primaryColorDark,
               radius: 10.r,
               loading: ref.read(apointmentControllerProvider).isLoading,
               onTap: () async {
@@ -204,7 +204,7 @@ class ApointmentSummaryScreen extends ConsumerWidget {
           ],
         ),
       ),
-    ).rtl();
+    );
   }
 }
 
@@ -344,7 +344,6 @@ class ApointmentSummaryScreen extends ConsumerWidget {
 //           ),
 //         ),
 //       ),
-//     ).rtl();
+//     )  ;
 //   }
 // }
-

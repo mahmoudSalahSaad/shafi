@@ -4,6 +4,7 @@ import 'package:lottie/lottie.dart';
 import 'package:shafi/core/extensions/num_extensions.dart';
 import 'package:shafi/core/resources/resources.dart';
 import 'package:shafi/generated/assets.dart';
+import 'package:shafi/generated/l10n.dart';
 import 'package:shafi/widgets/custom_text.dart';
 
 class AuthBaseLayout extends StatelessWidget {
@@ -65,83 +66,80 @@ class AuthBaseLayout extends StatelessWidget {
       print("Title is $title and discription is $discription");
       print("Side lottie is $sideLottie");
     }
-    return Directionality(
-      textDirection: TextDirection.rtl,
-      child: SafeArea(
-        child: SizedBox(
-          height: deviceHeight,
-          width: deviceWidth,
-          child: Stack(
-            alignment: Alignment.topCenter,
-            children: [
-              Container(
-                width: deviceWidth,
-                height: 180.h,
-                padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 16.h),
-                decoration: BoxDecoration(
+    return SafeArea(
+      child: SizedBox(
+        height: deviceHeight,
+        width: deviceWidth,
+        child: Stack(
+          alignment: Alignment.topCenter,
+          children: [
+            Container(
+              width: deviceWidth,
+              height: 180.h,
+              padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 16.h),
+              decoration: BoxDecoration(
+                color: AppColorLight().kBottomNavigationBarColor,
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SizedBox(
+                        width: 220.w,
+                        child: CustomText(
+                          title ?? S.of(context).welcome_text,
+                          size: 12.h,
+                          bold: false,
+                          align: TextAlign.start,
+                        ),
+                      ),
+                      SizedBox(
+                        width: 220.w,
+                        child: CustomText(
+                          S.of(context).shafi,
+                          size: 22.h,
+                          bold: true,
+                          align: TextAlign.start,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 30.h,
+                      )
+                    ],
+                  ),
+                  sideLottie ??
+                      LottieBuilder.asset(
+                        Assets.authLottie,
+                        height: 200,
+                      ),
+                ],
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.only(top: 160),
+              height: deviceHeight,
+              decoration: BoxDecoration(
                   color: AppColorLight().kBottomNavigationBarColor,
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        SizedBox(
-                          width: 220.w,
-                          child: CustomText(
-                            title ?? "مرحبًا بك في تطبيقنا الطبي المتكامل.",
-                            size: 12.h,
-                            bold: false,
-                            align: TextAlign.start,
-                          ),
-                        ),
-                        SizedBox(
-                          width: 220.w,
-                          child: CustomText(
-                            "شافي",
-                            size: 22.h,
-                            bold: true,
-                            align: TextAlign.start,
-                          ),
-                        ),
-                        SizedBox(
-                          height: 30.h,
-                        )
-                      ],
-                    ),
-                    sideLottie ??
-                        LottieBuilder.asset(
-                          Assets.authLottie,
-                          height: 200,
-                        ),
-                  ],
-                ),
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(50.r),
+                    topRight: Radius.circular(50.r),
+                  ),
+                  boxShadow: [
+                    BoxShadow(
+                        color: Colors.black.withOpacity(0.3),
+                        offset: Offset(0, 0),
+                        blurRadius: 58),
+                  ]),
+              child: Padding(
+                padding: EdgeInsets.only(top: 20.h),
+                child: content,
               ),
-              Container(
-                margin: EdgeInsets.only(top: 160),
-                height: deviceHeight,
-                decoration: BoxDecoration(
-                    color: AppColorLight().kBottomNavigationBarColor,
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(50.r),
-                      topRight: Radius.circular(50.r),
-                    ),
-                    boxShadow: [
-                      BoxShadow(
-                          color: Colors.black.withOpacity(0.3),
-                          offset: Offset(0, 0),
-                          blurRadius: 58),
-                    ]),
-                child: Padding(
-                  padding: EdgeInsets.only(top: 20.h),
-                  child: content,
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

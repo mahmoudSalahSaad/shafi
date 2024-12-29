@@ -7,6 +7,7 @@ import 'package:shafi/core/resources/color.dart';
 import 'package:shafi/features/auth_feature/presentation/forget_password/controllers/otp_controller.dart';
 import 'package:shafi/features/auth_feature/presentation/forget_password/widgets/otp_layout_widget.dart';
 import 'package:shafi/features/auth_feature/presentation/login/widgets/auth_base_layout_widget.dart';
+import 'package:shafi/generated/l10n.dart';
 import 'package:shafi/widgets/custom_button.dart';
 
 class OtpScreen extends ConsumerStatefulWidget {
@@ -64,9 +65,9 @@ class _OtpScreenState extends ConsumerState<OtpScreen> {
               padding: EdgeInsets.symmetric(horizontal: 16.w),
               child: CustomButton(
                 height: 44.h,
-                buttonText: " اطلب ",
+                buttonText: S.of(context).request,
                 textColor: kAppBarColor,
-                backgroundColor: backgroundColor,
+                backgroundColor: primaryColorDark,
                 radius: 10.r,
                 loading: ref.watch(otpControllerProvider).isLoading,
                 onTap: () async {
@@ -90,4 +91,3 @@ class _OtpScreenState extends ConsumerState<OtpScreen> {
     );
   }
 }
-

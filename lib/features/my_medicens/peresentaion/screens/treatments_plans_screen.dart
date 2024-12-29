@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shafi/core/extensions/num_extensions.dart';
-import 'package:shafi/core/extensions/widget_extensions.dart';
 import 'package:shafi/core/resources/color.dart';
 import 'package:shafi/core/resources/values_manager.dart';
 import 'package:shafi/core/routing/navigation_services.dart';
@@ -157,6 +156,6 @@ class TreatmentsPlansScreen extends ConsumerWidget {
               ),
             ),
           ),
-    ).rtl();
+    );
   }
 }

@@ -1,6 +1,8 @@
 class Routes {
   static const String init = "/";
   static const String login = "/login";
+  static const String bottomNavigationBarScreen =
+      "/bottom_navigation_bar_screen";
   static const String register = "/register";
   static const String forgetPassword = "/forgot_password";
   static const String otpPassword = "/otp_password";
@@ -20,4 +22,5 @@ class Routes {
   static const String videoCallScreen = "/vedio_call_screen";
   static const String medicalHestoryScreen = "/medical_history_screen";
   static const String treatmentPlansScreen = "/treatment_plans_screen";
+  static const String privacyScreen= "/privacy_screen";
 }

@@ -7,8 +7,8 @@ const kAppBarColor = Color(0xffFDF2E9);
 
 const errorColor = Color(0xffc52828);
 
-const primaryColor = Color(0xff0D63D1);
-const primaryColorDark = Color(0xff010C11);
+const primaryColor = Color(0xffD2FAF1);
+const primaryColorDark = Color(0xff097E85);
 const primaryOrangeColor = Color(0xffFFA010);
 
 const textPrimary = Colors.black;

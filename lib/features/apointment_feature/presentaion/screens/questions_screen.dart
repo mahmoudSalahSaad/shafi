@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shafi/core/extensions/num_extensions.dart';
-import 'package:shafi/core/extensions/widget_extensions.dart';
 import 'package:shafi/core/resources/color.dart';
 import 'package:shafi/core/resources/values_manager.dart';
 import 'package:shafi/core/routing/navigation_services.dart';
@@ -10,6 +9,7 @@ import 'package:shafi/features/apointment_feature/data/models/doctor_model.dart'
 import 'package:shafi/features/apointment_feature/data/models/questions_model.dart';
 import 'package:shafi/features/apointment_feature/presentaion/controllers/questions_controller.dart';
 import 'package:shafi/features/apointment_feature/presentaion/screens/doctors_list_screen.dart';
+import 'package:shafi/generated/l10n.dart';
 import 'package:shafi/widgets/custom_button.dart';
 import 'package:shafi/widgets/custom_text.dart';
 import 'package:shafi/widgets/custom_text_field.dart';
@@ -32,9 +32,9 @@ class _QuestionsScreenState extends ConsumerState<QuestionsScreen> {
           : Padding(
               padding: EdgeInsets.symmetric(horizontal: 16.w),
               child: CustomButton(
-                buttonText: "انتقل الي الملخص",
+                buttonText: S.of(context).go_to_summary,
                 textColor: kAppBarColor,
-                backgroundColor: primaryColor,
+                backgroundColor: primaryColorDark,
                 radius: 10.r,
                 onTap: () {
                   NavigationService.push(Routes.apointmentSummaryScreen);
@@ -44,7 +44,7 @@ class _QuestionsScreenState extends ConsumerState<QuestionsScreen> {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       appBar: AppBar(
         title: CustomText(
-          "الرجاء الاجابه على الاسأله",
+          S.of(context).answer_the_questions,
           size: 14.h,
           bold: true,
         ),
@@ -104,7 +104,7 @@ class _QuestionsScreenState extends ConsumerState<QuestionsScreen> {
               ),
             ),
       ),
-    ).rtl();
+    );
   }
 }
 

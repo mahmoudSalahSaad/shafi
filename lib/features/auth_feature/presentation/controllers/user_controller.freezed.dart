@@ -17,6 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$UserState {
   UserModel? get user => throw _privateConstructorUsedError;
+  String? get locale => throw _privateConstructorUsedError;
 
   /// Create a copy of UserState
   /// with the given fields replaced by the non-null parameter values.
@@ -30,7 +31,7 @@ abstract class $UserStateCopyWith<$Res> {
   factory $UserStateCopyWith(UserState value, $Res Function(UserState) then) =
       _$UserStateCopyWithImpl<$Res, UserState>;
   @useResult
-  $Res call({UserModel? user});
+  $Res call({UserModel? user, String? locale});
 
   $UserModelCopyWith<$Res>? get user;
 }
@@ -51,12 +52,17 @@ class _$UserStateCopyWithImpl<$Res, $Val extends UserState>
   @override
   $Res call({
     Object? user = freezed,
+    Object? locale = freezed,
   }) {
     return _then(_value.copyWith(
       user: freezed == user
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
               as UserModel?,
+      locale: freezed == locale
+          ? _value.locale
+          : locale // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 
@@ -83,7 +89,7 @@ abstract class _$$UserStateImplCopyWith<$Res>
       __$$UserStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({UserModel? user});
+  $Res call({UserModel? user, String? locale});
 
   @override
   $UserModelCopyWith<$Res>? get user;
@@ -103,12 +109,17 @@ class __$$UserStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? user = freezed,
+    Object? locale = freezed,
   }) {
     return _then(_$UserStateImpl(
       user: freezed == user
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
               as UserModel?,
+      locale: freezed == locale
+          ? _value.locale
+          : locale // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -116,14 +127,17 @@ class __$$UserStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$UserStateImpl implements _UserState {
-  _$UserStateImpl({this.user});
+  _$UserStateImpl({this.user, this.locale = "ar"});
 
   @override
   final UserModel? user;
+  @override
+  @JsonKey()
+  final String? locale;
 
   @override
   String toString() {
-    return 'UserState(user: $user)';
+    return 'UserState(user: $user, locale: $locale)';
   }
 
   @override
@@ -131,11 +145,12 @@ class _$UserStateImpl implements _UserState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$UserStateImpl &&
-            (identical(other.user, user) || other.user == user));
+            (identical(other.user, user) || other.user == user) &&
+            (identical(other.locale, locale) || other.locale == locale));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, user);
+  int get hashCode => Object.hash(runtimeType, user, locale);
 
   /// Create a copy of UserState
   /// with the given fields replaced by the non-null parameter values.
@@ -147,10 +162,13 @@ class _$UserStateImpl implements _UserState {
 }
 
 abstract class _UserState implements UserState {
-  factory _UserState({final UserModel? user}) = _$UserStateImpl;
+  factory _UserState({final UserModel? user, final String? locale}) =
+      _$UserStateImpl;
 
   @override
   UserModel? get user;
+  @override
+  String? get locale;
 
   /// Create a copy of UserState
   /// with the given fields replaced by the non-null parameter values.

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shafi/core/extensions/num_extensions.dart';
-import 'package:shafi/core/extensions/widget_extensions.dart';
 import 'package:shafi/core/resources/resources.dart';
 import 'package:shafi/core/routing/navigation_services.dart';
 import 'package:shafi/core/routing/routes.dart';
 import 'package:shafi/features/apointment_feature/data/models/doctor_model.dart';
 import 'package:shafi/features/apointment_feature/presentaion/controllers/category_controller.dart';
 import 'package:shafi/features/apointment_feature/presentaion/screens/doctors_list_screen.dart';
+import 'package:shafi/generated/l10n.dart';
 import 'package:shafi/widgets/custom_button.dart';
 import 'package:shafi/widgets/custom_text.dart';
 import 'package:shimmer/shimmer.dart';
@@ -19,7 +19,7 @@ class SubCategoryScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       floatingActionButton: CustomButton(
-        buttonText: "التالي",
+        buttonText: S.of(context).next,
         textColor: Colors.white,
         onTap: () => NavigationService.push(Routes.questionsScreen),
         width: deviceWidth * .94,
@@ -27,7 +27,7 @@ class SubCategoryScreen extends ConsumerWidget {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       appBar: AppBar(
         title: CustomText(
-          "الاقسام",
+          S.of(context).sub_category,
           size: 14.h,
           bold: true,
         ),
@@ -59,7 +59,7 @@ class SubCategoryScreen extends ConsumerWidget {
                         border: Border.all(
                             color: data.selectedSubCategory ==
                                     data.subCategries[index]
-                                ? primaryColor
+                                ? primaryColorDark
                                 : navIconSelectedDark),
                         borderRadius: BorderRadius.circular(10.r),
                         boxShadow: [
@@ -101,6 +101,6 @@ class SubCategoryScreen extends ConsumerWidget {
                   ),
                 ),
               )),
-    ).rtl();
+    );
   }
 }

@@ -1,3 +1,5 @@
+import 'package:dartz/dartz.dart';
+import 'package:dio/dio.dart';
 import 'package:shafi/base_injection.dart';
 import 'package:shafi/core/base/base_response.dart';
 import 'package:shafi/core/routing/navigation_services.dart';
@@ -7,8 +9,6 @@ import 'package:shafi/core/services/local/storage_keys.dart';
 import 'package:shafi/data/datasource/remote/dio/dio_client.dart';
 import 'package:shafi/data/datasource/remote/exception/api_error_handler.dart';
 import 'package:shafi/data/datasource/remote/exception/error_widget.dart';
-import 'package:dartz/dartz.dart';
-import 'package:dio/dio.dart';
 
 import '../../utils/logger.dart';
 
@@ -28,8 +28,8 @@ class NetworkClient {
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
-        'Accept-Language': lang,
-        'User-Agents': 'android', 
+        'X-App-Locale': "ar",
+        'User-Agents': 'android',
       },
     );
     String? token = await prefs.getSecuredData(PrefKeys.token);

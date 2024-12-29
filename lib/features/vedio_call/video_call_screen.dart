@@ -10,6 +10,7 @@ import 'package:shafi/core/utils/constants.dart';
 import 'package:shafi/features/apointment_feature/presentaion/controllers/video_call_controller.dart';
 import 'package:shafi/features/auth_feature/presentation/controllers/user_controller.dart';
 import 'package:shafi/features/home_feature/data/models/apointment_model.dart';
+import 'package:shafi/generated/l10n.dart';
 import 'package:shafi/widgets/custom_text.dart';
 import 'package:shafi/widgets/tap_effect.dart';
 import 'package:wakelock_plus/wakelock_plus.dart';
@@ -179,7 +180,7 @@ class _VideoCallScreenState extends ConsumerState<VideoCallScreen> {
                     padding: const EdgeInsets.all(16),
                     margin: EdgeInsets.all(16),
                     decoration: BoxDecoration(
-                      color: primaryColor,
+                      color: primaryColorDark,
                       shape: BoxShape.circle,
                     ),
                     child: Icon(
@@ -224,7 +225,7 @@ class _VideoCallScreenState extends ConsumerState<VideoCallScreen> {
                     ),
                     child: const Icon(
                       Icons.flip_camera_android,
-                      color: primaryColor,
+                      color: primaryColorDark,
                     ),
                   ),
                 ),
@@ -252,12 +253,12 @@ class _VideoCallScreenState extends ConsumerState<VideoCallScreen> {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          LoadingAnimationWidget.beat(color: primaryColor, size: 60),
+          LoadingAnimationWidget.beat(color: Colors.white, size: 60),
           SizedBox(
             height: 12.h,
           ),
           CustomText(
-            "برجاء الانتظار",
+            S.of(context).please_wait,
             size: 20.h,
             color: Colors.white,
             bold: true,

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shafi/core/extensions/num_extensions.dart';
-import 'package:shafi/core/extensions/widget_extensions.dart';
 import 'package:shafi/core/resources/color.dart';
 import 'package:shafi/core/resources/values_manager.dart';
 import 'package:shafi/core/routing/navigation_services.dart';
 import 'package:shafi/features/my_medicens/domain/entity/medicane_entity.dart';
 import 'package:shafi/features/my_medicens/peresentaion/controllers/medicane_controller.dart';
 import 'package:shafi/generated/assets.dart';
+import 'package:shafi/generated/l10n.dart';
 import 'package:shafi/widgets/custom_button.dart';
 import 'package:shafi/widgets/custom_text.dart';
 import 'package:shafi/widgets/custom_text_field.dart';
@@ -15,19 +15,17 @@ import 'package:skeletonizer/skeletonizer.dart';
 
 class MedicalHistoryScreen extends ConsumerWidget {
   const MedicalHistoryScreen({super.key});
-
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       floatingActionButton: Padding(
         padding: const EdgeInsets.all(8.0),
         child: CustomButton(
-          buttonText: "اضافة دواء جديد",
+          buttonText: S.of(context).add_new_medicine,
           textColor: Colors.white,
           onTap: () {
             final nameEC = TextEditingController();
             final descriptionEC = TextEditingController();
-
             showDialog(
               context: context,
               builder: (_) {
@@ -53,16 +51,16 @@ class MedicalHistoryScreen extends ConsumerWidget {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             CustomText(
-                              "اضافة علاج",
+                              S.of(context).add_new_medicine,
                               size: 22.h,
                               bold: true,
-                              color: primaryColor,
+                              color: primaryColorDark,
                             ),
                             SizedBox(
                               height: 16.h,
                             ),
                             CustomTextField(
-                              hint: "اسم العلاج",
+                              hint: S.of(context).medicine_name,
                               controller: nameEC,
                               onChange: (p0) {
                                 nameEC.text = p0 ?? "";
@@ -73,7 +71,7 @@ class MedicalHistoryScreen extends ConsumerWidget {
                             SizedBox(
                               height: 150.h,
                               child: CustomTextField(
-                                hint: " تفاصيل العلاج",
+                                hint: S.of(context).medicine_description,
                                 isPassword: false,
                                 maxLines: 10,
                                 controller: descriptionEC,
@@ -99,12 +97,12 @@ class MedicalHistoryScreen extends ConsumerWidget {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 CustomButton(
-                                  buttonText: "حفظ",
+                                  buttonText: S.of(context).save,
                                   loading: ref
                                       .watch(medicaneControllerProvider)
                                       .isLoading,
                                   textColor: Colors.white,
-                                  backgroundColor: primaryColor,
+                                  backgroundColor: primaryColorDark,
                                   radius: 10.r,
                                   width: 150.w,
                                   height: 44.h,
@@ -119,7 +117,7 @@ class MedicalHistoryScreen extends ConsumerWidget {
                                   },
                                 ),
                                 CustomButton(
-                                  buttonText: "ألغاء",
+                                  buttonText: S.of(context).cancel,
                                   textColor: Colors.white,
                                   backgroundColor: Colors.red,
                                   radius: 10.r,
@@ -131,7 +129,7 @@ class MedicalHistoryScreen extends ConsumerWidget {
                             )
                           ],
                         ),
-                      ).rtl(),
+                      ),
                     ),
                   ),
                 );
@@ -186,7 +184,7 @@ class MedicalHistoryScreen extends ConsumerWidget {
               ),
             ),
           ),
-    ).rtl();
+    );
   }
 }
 
