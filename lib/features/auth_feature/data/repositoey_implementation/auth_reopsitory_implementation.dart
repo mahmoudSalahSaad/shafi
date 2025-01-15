@@ -100,8 +100,7 @@ class AuthReopsitoryImplementation extends AuthRepository {
   }
 
   @override
-  Future<Either<ErrorModel, UserModel>> verifyPhone(
-      String parameters) async {
+  Future<Either<ErrorModel, UserModel>> verifyPhone(String parameters) async {
     NetworkCallType type = NetworkCallType.post;
 
     Either<ErrorModel, BaseResponse> result = await networkClient(
@@ -113,6 +112,65 @@ class AuthReopsitoryImplementation extends AuthRepository {
       try {
         UserModel userModel = UserModel.fromJson(r.data);
         return Right(userModel);
+      } catch (e) {
+        return Left(ErrorModel(errorMessage: e.toString()));
+      }
+    });
+  }
+
+  @override
+  Future<Either<ErrorModel, List>> forgetPassword(UserEntity parameters) async {
+    NetworkCallType type = NetworkCallType.post;
+
+    Either<ErrorModel, BaseResponse> result = await networkClient(
+        url: "patients/verify-otp",
+        data: {"phone": parameters.phone},
+        type: type);
+
+    return result.fold((l) => Left(l), (r) {
+      try {
+        return Right([]);
+      } catch (e) {
+        return Left(ErrorModel(errorMessage: e.toString()));
+      }
+    });
+  }
+
+  @override
+  Future<Either<ErrorModel, List>> forgetPasswordVerifyOTP(
+      UserEntity parameters) async {
+    NetworkCallType type = NetworkCallType.post;
+
+    Either<ErrorModel, BaseResponse> result = await networkClient(
+        url: "patients/verify-otp",
+        data: {"phone": parameters.phone, "otp": parameters.otp},
+        type: type);
+
+    return result.fold((l) => Left(l), (r) {
+      try {
+        return Right([]);
+      } catch (e) {
+        return Left(ErrorModel(errorMessage: e.toString()));
+      }
+    });
+  }
+
+  @override
+  Future<Either<ErrorModel, UserModel>> resetPassword(
+      UserEntity parameters) async {
+    NetworkCallType type = NetworkCallType.post;
+
+    Either<ErrorModel, BaseResponse> result = await networkClient(
+        url: "patients/verify-otp",
+        data: {
+          "password": parameters.password,
+          "confirm_password": parameters.confirmPassword
+        },
+        type: type);
+
+    return result.fold((l) => Left(l), (r) {
+      try {
+        return Right(UserModel());
       } catch (e) {
         return Left(ErrorModel(errorMessage: e.toString()));
       }

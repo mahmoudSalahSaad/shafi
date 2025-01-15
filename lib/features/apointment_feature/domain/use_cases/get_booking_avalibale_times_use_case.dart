@@ -15,7 +15,7 @@ class GetBookingAvalibaleTimesUseCase
   * USE CASE
   * base on BaseUseCase
   * have Call and Call Test
-  * it could some operation here before sending data to the Bloc // Cubit // provider // Get x provider
+  * it could some operation here before dsending data to the Bloc // Cubit // provider // Get x provider
   *
   * */
 

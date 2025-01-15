@@ -5,6 +5,8 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:shafi/base_injection.dart';
 import 'package:shafi/core/base/base_usecase.dart';
+import 'package:shafi/core/routing/navigation_services.dart';
+import 'package:shafi/core/routing/routes.dart';
 import 'package:shafi/core/services/local/cache_consumer.dart';
 import 'package:shafi/core/services/local/storage_keys.dart';
 import 'package:shafi/features/auth_feature/data/models/user_model.dart';
@@ -83,8 +85,15 @@ class UserController extends _$UserController {
     RefreshUseCase refreshUseCase = getIt();
     AppPrefs appPrefs = getIt();
     final result = await refreshUseCase.call(NoParameters());
-    result.fold((l) {}, (r) async {
+    result.fold((l) {
+      if (l.errorMessage == "Unauthenticated") {
+        NavigationService.pushNamedAndRemoveUntil(Routes.login);
+      }
+    }, (r) async {
       await appPrefs.save(PrefKeys.token, r.authorization?.token);
+
+      NavigationService.pushNamedAndRemoveUntil(
+          Routes.bottomNavigationBarScreen);
     });
   }
 

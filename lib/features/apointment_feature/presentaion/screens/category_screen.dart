@@ -4,12 +4,10 @@ import 'package:shafi/core/extensions/num_extensions.dart';
 import 'package:shafi/core/resources/resources.dart';
 import 'package:shafi/core/routing/navigation_services.dart';
 import 'package:shafi/core/routing/routes.dart';
-import 'package:shafi/core/utils/alerts.dart';
 import 'package:shafi/features/apointment_feature/data/models/doctor_model.dart';
 import 'package:shafi/features/apointment_feature/presentaion/controllers/category_controller.dart';
 import 'package:shafi/features/apointment_feature/presentaion/screens/doctors_list_screen.dart';
 import 'package:shafi/generated/l10n.dart';
-import 'package:shafi/widgets/custom_button.dart';
 import 'package:shafi/widgets/custom_text.dart';
 import 'package:shimmer/shimmer.dart';
 
@@ -19,28 +17,7 @@ class CategoryScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
-      floatingActionButton: CustomButton(
-        buttonText: S.of(context).next,
-        textColor: Colors.white,
-        onTap: () {
-          if (ref
-                  .read(categoryControllerProvider)
-                  .requireValue
-                  .selectedCategory !=
-              null) {
-            ref.read(categoryControllerProvider.notifier).getSubCategory(
-                category: ref
-                    .read(categoryControllerProvider)
-                    .requireValue
-                    .selectedCategory!);
-            NavigationService.push(Routes.subCategoryScreen);
-          } else {
-            Alerts.showSnackBar(S.of(context).please_select_category);
-          }
-        },
-        width: deviceWidth * .94,
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      backgroundColor: primaryColor,
       appBar: AppBar(
         title: CustomText(
           S.of(context).category,
@@ -66,6 +43,14 @@ class CategoryScreen extends ConsumerWidget {
                       ref
                           .read(categoryControllerProvider.notifier)
                           .selectCategory(data.categories[index]);
+                      ref
+                          .read(categoryControllerProvider.notifier)
+                          .getSubCategory(
+                              category: ref
+                                  .read(categoryControllerProvider)
+                                  .requireValue
+                                  .selectedCategory!);
+                      NavigationService.push(Routes.subCategoryScreen);
                     },
                     child: Container(
                       padding: EdgeInsets.all(10.r),

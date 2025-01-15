@@ -5,7 +5,6 @@ import 'package:shafi/core/extensions/num_extensions.dart';
 import 'package:shafi/core/resources/color.dart';
 import 'package:shafi/core/routing/navigation_services.dart';
 import 'package:shafi/core/routing/routes.dart';
-import 'package:shafi/core/utils/alerts.dart';
 import 'package:shafi/features/apointment_feature/presentaion/controllers/apointment_controller.dart';
 import 'package:shafi/generated/l10n.dart';
 import 'package:shafi/widgets/custom_text.dart';
@@ -18,6 +17,7 @@ class ApointmentTimesScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(apointmentControllerProvider);
     return Scaffold(
+      backgroundColor: primaryColor,
       appBar: AppBar(
         title: CustomText(
           S.of(context).available_times,
@@ -62,7 +62,7 @@ class ApointmentTimesScreen extends ConsumerWidget {
                             padding: EdgeInsets.all(10.r),
                             decoration: BoxDecoration(
                               color: AppColorLight().kAppBarColor,
-                              border: Border.all(color: primaryOrangeColor),
+                              border: Border.all(color: primaryColorDark),
                               borderRadius: BorderRadius.circular(10.r),
                             ),
                             child: Column(
@@ -98,13 +98,7 @@ class ApointmentTimesScreen extends ConsumerWidget {
                                     time: state
                                         .requireValue.apointmentTimes[index]
                                         .toString());
-                            if (state.requireValue.selectedApointment != null) {
-                              NavigationService.push(Routes.categoryScreen);
-                            } else {
-                              Alerts.showSnackBar(
-                                  S.of(context).apointment_date_field_required,
-                                  alertsType: AlertsType.info);
-                            }
+                            NavigationService.push(Routes.categoryScreen);
                           },
                           child: Container(
                             decoration: BoxDecoration(
@@ -120,7 +114,7 @@ class ApointmentTimesScreen extends ConsumerWidget {
                                               state.requireValue
                                                   .apointmentTimes[index]
                                           ? primaryColor
-                                          : primaryOrangeColor),
+                                          : primaryColorDark),
                               borderRadius: BorderRadius.circular(10.r),
                             ),
                             child: Column(

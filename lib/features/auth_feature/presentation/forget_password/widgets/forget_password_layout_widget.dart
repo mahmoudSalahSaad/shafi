@@ -1,15 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:shafi/core/extensions/num_extensions.dart';
 import 'package:shafi/core/resources/values_manager.dart';
+import 'package:shafi/core/utils/validators.dart';
 import 'package:shafi/generated/l10n.dart';
 import 'package:shafi/widgets/custom_text.dart';
 import 'package:shafi/widgets/custom_text_field.dart';
 
-class ForgetPasswordLayoutWidget extends StatelessWidget {
+class ForgetPasswordLayoutWidget extends StatefulWidget {
   const ForgetPasswordLayoutWidget({
     super.key,
+    required this.formKey,
+    required this.textEditingController,
   });
 
+  final GlobalKey<FormState> formKey;
+  final TextEditingController textEditingController;
+
+  @override
+  State<ForgetPasswordLayoutWidget> createState() =>
+      _ForgetPasswordLayoutWidgetState();
+}
+
+class _ForgetPasswordLayoutWidgetState
+    extends State<ForgetPasswordLayoutWidget> {
   @override
 
   /// Builds the forget password layout widget.
@@ -37,28 +51,53 @@ class ForgetPasswordLayoutWidget extends StatelessWidget {
 
           /// The form to enter the email address
           Form(
+              key: widget.formKey,
               child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16.w),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                /// The instruction text
-                CustomText(
-                  "برجاء ادخال البريد أليكتروني وستصلك رساله لاكمال العمليه",
-                  align: TextAlign.start,
-                ),
-                SizedBox(
-                  height: 16.h,
-                ),
+                padding: EdgeInsets.symmetric(horizontal: 16.w),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    /// The instruction text
+                    CustomText(
+                      "برجاء ادخال رقم الهاتف وستصلك رساله لاكمال العمليه",
+                      align: TextAlign.start,
+                    ),
+                    SizedBox(
+                      height: 16.h,
+                    ),
 
-                /// The email address field
-                CustomTextField(
-                  hint: "بريد اليكتروني",
-                  isPassword: false,
+                    CustomTextField(
+                      isPassword: false,
+                      controller: widget.textEditingController,
+                      prefixIcon: Icon(Icons.phone_android_rounded),
+                      hint: S.of(context).phone,
+                      maxLength: 9,
+                      inputFormats: [
+                        FilteringTextInputFormatter.digitsOnly,
+                      ],
+                      onValidate: (value) {
+                        if (value != null) {
+                          if (Validators.phoneNumber(value)) {
+                            return null;
+                          } else {
+                            return S.of(context).phone_limit_message;
+                          }
+                        } else {
+                          return S.of(context).password_field_required;
+                        }
+                      },
+                      textInputType: TextInputType.phone,
+                      phoneWidget: Padding(
+                        padding: EdgeInsets.all(14.0.r),
+                        child: CustomText(
+                          "964+",
+                          bold: true,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
-              ],
-            ),
-          ))
+              ))
         ],
       ),
     );

@@ -18,4 +18,11 @@ abstract class AuthRepository {
   Future<Either<ErrorModel, UserModel>> refreshToken(NoParameters parameters);
   Future<Either<ErrorModel, UserModel>> verifyPhone(String parameters);
   Future<Either<ErrorModel, UserModel>> resend(NoParameters parameters);
+  Future<Either<ErrorModel, List<dynamic>>> forgetPassword(
+      UserEntity parameters);
+
+    Future<Either<ErrorModel, List<dynamic>>> forgetPasswordVerifyOTP(
+      UserEntity parameters);
+    Future<Either<ErrorModel, UserModel>> resetPassword(
+      UserEntity parameters);
 }

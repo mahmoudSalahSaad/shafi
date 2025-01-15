@@ -25,16 +25,16 @@ class BottomNavigationBarScreen extends ConsumerStatefulWidget {
 class _BottomNavigationBarScreenState
     extends ConsumerState<BottomNavigationBarScreen> {
   List<Widget> screens = [
-    HomeScreen(),
     MyHealthScreen(),
+    HomeScreen(),
     PersonalScreen(),
   ];
   Widget selectedScreen = HomeScreen();
-  int selectedIndex = 0;
+  int selectedIndex = 1;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: selectedIndex == 0
+      appBar: selectedIndex == 1
           ? AppBar(
               backgroundColor: primaryColor,
               leading: InkWell(
@@ -50,12 +50,12 @@ class _BottomNavigationBarScreenState
       bottomNavigationBar: BottomNavigationBar(
         items: [
           BottomNavigationBarItem(
-            icon: const Icon(Icons.add_circle_outlined),
-            label: S.of(context).book,
-          ),
-          BottomNavigationBarItem(
             icon: const Icon(Icons.favorite_border),
             label: S.of(context).my_health,
+          ),
+          BottomNavigationBarItem(
+            icon: const Icon(Icons.add_circle_outlined),
+            label: S.of(context).book,
           ),
           BottomNavigationBarItem(
             icon: const Icon(Icons.personal_injury_outlined),

@@ -27,6 +27,7 @@ class _QuestionsScreenState extends ConsumerState<QuestionsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: primaryColor,
       floatingActionButton: MediaQuery.of(context).viewInsets.bottom > 0
           ? null
           : Padding(
@@ -56,7 +57,8 @@ class _QuestionsScreenState extends ConsumerState<QuestionsScreen> {
               data: (data) {
                 return SingleChildScrollView(
                   child: Padding(
-                    padding: EdgeInsets.all(16.0.r),
+                    padding: EdgeInsets.only(
+                        bottom: 104.h, left: 16.w, right: 16.w, top: 16.h),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisSize: MainAxisSize.max,
@@ -175,6 +177,7 @@ class QuestionCheckBoxWidget extends ConsumerWidget {
                               size: 16.h,
                             ),
                             Checkbox(
+                                activeColor: primaryColorDark,
                                 value: ref
                                         .read(questionsControllerProvider)
                                         .requireValue
@@ -272,7 +275,7 @@ class QuestionRadioWidget extends ConsumerWidget {
                               ),
                               Radio<String>(
                                   value: questionsModel.options![index2].name!,
-                                  activeColor: primaryColor,
+                                  activeColor: primaryColorDark,
                                   groupValue: ref
                                           .read(questionsControllerProvider)
                                           .requireValue
@@ -364,7 +367,7 @@ class _QuestionTypeTextWidgetState
                   padding: EdgeInsets.all(16.0.h),
                   child: Icon(
                     Icons.question_answer,
-                    color: primaryColor,
+                    color: primaryColorDark,
                   ),
                 ),
               ],

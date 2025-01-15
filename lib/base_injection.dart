@@ -16,10 +16,13 @@ import 'package:shafi/features/apointment_feature/domain/use_cases/get_sub_categ
 import 'package:shafi/features/apointment_feature/domain/use_cases/video_call_request_use_case.dart';
 import 'package:shafi/features/auth_feature/data/repositoey_implementation/auth_reopsitory_implementation.dart';
 import 'package:shafi/features/auth_feature/domain/repository/auth_repository.dart';
+import 'package:shafi/features/auth_feature/domain/use_cases/forgot_password_use_case.dart';
+import 'package:shafi/features/auth_feature/domain/use_cases/forgot_password_verify_otp_use_case.dart';
 import 'package:shafi/features/auth_feature/domain/use_cases/login_use_case.dart';
 import 'package:shafi/features/auth_feature/domain/use_cases/refresh_use_case.dart';
 import 'package:shafi/features/auth_feature/domain/use_cases/register_use_case.dart';
 import 'package:shafi/features/auth_feature/domain/use_cases/resend_code_use_case.dart';
+import 'package:shafi/features/auth_feature/domain/use_cases/reset_password_use_case.dart';
 import 'package:shafi/features/auth_feature/domain/use_cases/verify_phone_use_case.dart';
 import 'package:shafi/features/home_feature/data/rempository_implementation/home_repository_implemention.dart';
 import 'package:shafi/features/home_feature/domain/repository/home_repository.dart';
@@ -80,6 +83,12 @@ Future<void> init() async {
       () => GetTreatmentPlansUseCase(medicalRepository: getIt()));
   getIt.registerLazySingleton(
       () => GetPrivacyUseCasae(privacyRepository: getIt()));
+  getIt.registerLazySingleton(
+      () => ForgotPasswordUseCase(authRefreshRepository: getIt()));
+  getIt.registerLazySingleton(
+      () => ForgotPasswordVerifyOTPUseCase(authRefreshRepository: getIt()));
+  getIt.registerLazySingleton(
+      () => ResetPasswordUseCase(authRefreshRepository: getIt()));
   // getIt.registerLazySingleton(() => ProjectsUseCase(homeRepo: getIt()));
   // getIt.registerLazySingleton(() => ShiftsUseCase(homeRepo: getIt()));
   // getIt.registerLazySingleton(() => CheckInUseCase(homeRepo: getIt()));

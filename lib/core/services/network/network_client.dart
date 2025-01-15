@@ -28,7 +28,7 @@ class NetworkClient {
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
-        'X-App-Locale': "ar",
+        'X-App-Locale': lang,
         'User-Agents': 'android',
       },
     );

@@ -145,7 +145,8 @@ class ApointmentController extends _$ApointmentController {
       state = AsyncData(ApointmentState());
       getMyApointments();
 
-      NavigationService.pushNamedAndRemoveUntil(Routes.home);
+      NavigationService.pushNamedAndRemoveUntil(
+          Routes.bottomNavigationBarScreen);
     });
   }
 

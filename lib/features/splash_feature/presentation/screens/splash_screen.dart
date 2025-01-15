@@ -25,8 +25,7 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
           await ref.read(userControllerProvider.notifier).getUser();
       if (userModel != null) {
         await ref.read(userControllerProvider.notifier).refreshToken();
-        NavigationService.pushNamedAndRemoveUntil(
-            Routes.bottomNavigationBarScreen);
+
       } else {
         NavigationService.pushNamedAndRemoveUntil(Routes.login);
       }

@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shafi/core/extensions/num_extensions.dart';
 import 'package:shafi/core/resources/color.dart';
-import 'package:shafi/core/routing/navigation_services.dart';
-import 'package:shafi/core/routing/routes.dart';
+import 'package:shafi/features/auth_feature/presentation/forget_password/controllers/forgot_password_controller.dart';
 import 'package:shafi/features/auth_feature/presentation/forget_password/widgets/forget_password_layout_widget.dart';
 import 'package:shafi/features/auth_feature/presentation/login/widgets/auth_base_layout_widget.dart';
 import 'package:shafi/generated/l10n.dart';
@@ -27,6 +26,8 @@ class ForgetPasswordScreen extends ConsumerWidget {
   /// show the UI for the user to enter their email address.
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final formKey = GlobalKey<FormState>();
+    final TextEditingController textEditingController = TextEditingController();
     return Scaffold(
       backgroundColor: Colors.white,
       floatingActionButton: MediaQuery.of(context).viewInsets.bottom > 0
@@ -40,12 +41,20 @@ class ForgetPasswordScreen extends ConsumerWidget {
                 backgroundColor: backgroundColor,
                 radius: 10.r,
                 onTap: () {
-                  NavigationService.push(Routes.otpPassword);
+                  if (formKey.currentState!.validate()) {
+                    ref
+                        .read(forgotPasswordControllerProvider.notifier)
+                        .forgetPassword(textEditingController.text);
+                  } else {}
                 },
               ),
             ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      body: AuthBaseLayout(content: ForgetPasswordLayoutWidget()),
+      body: AuthBaseLayout(
+          content: ForgetPasswordLayoutWidget(
+        formKey: formKey,
+        textEditingController: textEditingController,
+      )),
     );
   }
 }

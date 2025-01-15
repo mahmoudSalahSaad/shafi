@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
 import 'package:shafi/core/extensions/num_extensions.dart';
+import 'package:shafi/core/resources/resources.dart';
 import 'package:shafi/core/routing/navigation_services.dart';
+import 'package:shafi/core/routing/routes.dart';
 import 'package:shafi/features/apointment_feature/data/models/category_model.dart';
 import 'package:shafi/features/apointment_feature/data/models/doctor_model.dart';
 import 'package:shafi/features/apointment_feature/presentaion/controllers/apointment_controller.dart';
@@ -22,12 +24,14 @@ class _MyApointmentScreenState extends ConsumerState<MyApointmentScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: primaryColor,
       appBar: AppBar(
         title: CustomText(
           'مواعيدي',
           size: 14.h,
           bold: true,
         ),
+        backgroundColor: primaryColor,
         centerTitle: true,
         leading: GestureDetector(
           onTap: () {
@@ -50,8 +54,18 @@ class _MyApointmentScreenState extends ConsumerState<MyApointmentScreen> {
                     padding: EdgeInsets.symmetric(vertical: 16.h),
                     itemCount: data.myApointments.length,
                     itemBuilder: (_, index) {
-                      return ApointmentCardWidget(
-                        apointment: data.myApointments[index],
+                      return InkWell(
+                        onTap: () {
+                          if (data.myApointments[index].agora_channel != null) {
+                            NavigationService.push(Routes.videoCallScreen,
+                                arguments: {
+                                  "apointmentModel": data.myApointments[index]
+                                });
+                          }
+                        },
+                        child: ApointmentCardWidget(
+                          apointment: data.myApointments[index],
+                        ),
                       );
                     },
                   ),

@@ -11,7 +11,11 @@ import 'package:shafi/generated/l10n.dart';
 import 'package:shafi/widgets/custom_button.dart';
 
 class OtpScreen extends ConsumerStatefulWidget {
-  const OtpScreen({super.key});
+  const OtpScreen({
+    super.key,
+    this.type = "verifyOTP",
+  });
+  final String? type;
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() => _OtpScreenState();
@@ -73,9 +77,11 @@ class _OtpScreenState extends ConsumerState<OtpScreen> {
                 onTap: () async {
                   // Validate the form and send the OTP if it is valid
                   if (formKey.currentState!.validate()) {
-                    await ref
-                        .read(otpControllerProvider.notifier)
-                        .sendOtp(otp: textEditingController.text);
+                    if (widget.type == "verifyOTP") {
+                      await ref
+                          .read(otpControllerProvider.notifier)
+                          .sendOtp(otp: textEditingController.text);
+                    }
                   }
                 },
               ),

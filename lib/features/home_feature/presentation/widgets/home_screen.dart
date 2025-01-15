@@ -6,8 +6,6 @@ import 'package:shafi/core/extensions/num_extensions.dart';
 import 'package:shafi/core/resources/resources.dart';
 import 'package:shafi/core/routing/navigation_services.dart';
 import 'package:shafi/core/routing/routes.dart';
-import 'package:shafi/features/apointment_feature/data/models/category_model.dart';
-import 'package:shafi/features/apointment_feature/data/models/doctor_model.dart';
 import 'package:shafi/features/apointment_feature/presentaion/controllers/apointment_controller.dart';
 import 'package:shafi/features/apointment_feature/presentaion/screens/doctors_list_screen.dart';
 import 'package:shafi/features/auth_feature/presentation/controllers/user_controller.dart';
@@ -186,68 +184,59 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    CustomText(
-                      S.of(context).your_last_apointments,
-                      size: 16.h,
-                      bold: true,
-                    ),
-                    SizedBox(height: 8.h),
+                    // CustomText(
+                    //   S.of(context).your_last_apointments,
+                    //   size: 16.h,
+                    //   bold: true,
+                    // ),
+                    // SizedBox(height: 8.h),
                     // Display the list of appointments
-                    ref.watch(apointmentControllerProvider).when(
-                          data: (data) {
-                            return Column(
-                              children: List.generate(data.myApointments.length,
-                                  (index) {
-                                return InkWell(
-                                  onTap: () async {
-                                    if (data.myApointments[index]
-                                            .agora_channel !=
-                                        null) {
-                                      NavigationService.push(
-                                          Routes.videoCallScreen,
-                                          arguments: {
-                                            "apointmentModel":
-                                                data.myApointments[index]
-                                          });
-                                    }
-                                  },
-                                  child: ApointmentCardWidget(
-                                    apointment: data.myApointments[index],
-                                  ),
-                                );
-                              }),
-                            );
-                          },
-                          error: (error, _) => CustomText("$error "),
-                          loading: () => Skeletonizer(
-                              enabled: true,
-                              child: ListView.builder(
-                                shrinkWrap: true,
-                                padding: EdgeInsets.symmetric(vertical: 16.h),
-                                itemCount: 10,
-                                itemBuilder: (_, index) {
-                                  return ApointmentCardWidget(
-                                    apointment: ApointmentModel(
-                                        id: 1,
-                                        sub_category: CategoryModel(
-                                          id: 0,
-                                          name: "loading",
-                                        ),
-                                        category: CategoryModel(
-                                          id: 0,
-                                          name: "loading",
-                                        ),
-                                        doctor: DoctorModel(
-                                          id: 0,
-                                          name: "loading",
-                                        ),
-                                        date: "2024-12-02",
-                                        start_time: "06:20",
-                                        end_time: "06:20"),
-                                  );
-                                },
-                              )),
-                        ),
+                    // ref.watch(apointmentControllerProvider).when(
+                    //       data: (data) {
+                    //         return Column(
+                    //           children: List.generate(data.myApointments.length,
+                    //               (index) {
+                    //             return InkWell(
+                    //               onTap: () async {
+  
+                    //               },
+                    //               child: ApointmentCardWidget(
+                    //                 apointment: data.myApointments[index],
+                    //               ),
+                    //             );
+                    //           }),
+                    //         );
+                    //       },
+                    //       error: (error, _) => CustomText("$error "),
+                    //       loading: () => Skeletonizer(
+                    //           enabled: true,
+                    //           child: ListView.builder(
+                    //             shrinkWrap: true,
+                    //             padding: EdgeInsets.symmetric(vertical: 16.h),
+                    //             itemCount: 10,
+                    //             itemBuilder: (_, index) {
+                    //               return ApointmentCardWidget(
+                    //                 apointment: ApointmentModel(
+                    //                     id: 1,
+                    //                     sub_category: CategoryModel(
+                    //                       id: 0,
+                    //                       name: "loading",
+                    //                     ),
+                    //                     category: CategoryModel(
+                    //                       id: 0,
+                    //                       name: "loading",
+                    //                     ),
+                    //                     doctor: DoctorModel(
+                    //                       id: 0,
+                    //                       name: "loading",
+                    //                     ),
+                    //                     date: "2024-12-02",
+                    //                     start_time: "06:20",
+                    //                     end_time: "06:20"),
+                    //               );
+                    //             },
+                    //           )),
+                    //     ),
                   ],
                 ),
               )

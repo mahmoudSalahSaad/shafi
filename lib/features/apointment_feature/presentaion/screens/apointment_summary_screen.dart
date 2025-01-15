@@ -16,7 +16,7 @@ class ApointmentSummaryScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: primaryColor,
       appBar: AppBar(
         title: CustomText(
           S.of(context).apointment_summary,
@@ -24,7 +24,7 @@ class ApointmentSummaryScreen extends ConsumerWidget {
           bold: true,
         ),
         centerTitle: true,
-        backgroundColor: Colors.white,
+        backgroundColor: primaryColor,
         leading: InkWell(
           onTap: () {
             NavigationService.goBack();
