@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shafi/core/base/base_response.dart';
 import 'package:shafi/core/base/base_usecase.dart';
@@ -123,7 +124,7 @@ class AuthReopsitoryImplementation extends AuthRepository {
     NetworkCallType type = NetworkCallType.post;
 
     Either<ErrorModel, BaseResponse> result = await networkClient(
-        url: "patients/verify-otp",
+        url: "patients/forget-password/send-otp",
         data: {"phone": parameters.phone},
         type: type);
 
@@ -137,7 +138,7 @@ class AuthReopsitoryImplementation extends AuthRepository {
   }
 
   @override
-  Future<Either<ErrorModel, List>> forgetPasswordVerifyOTP(
+  Future<Either<ErrorModel, Map<String, dynamic>>> forgetPasswordVerifyOTP(
       UserEntity parameters) async {
     NetworkCallType type = NetworkCallType.post;
 
@@ -148,7 +149,7 @@ class AuthReopsitoryImplementation extends AuthRepository {
 
     return result.fold((l) => Left(l), (r) {
       try {
-        return Right([]);
+        return Right(r.data);
       } catch (e) {
         return Left(ErrorModel(errorMessage: e.toString()));
       }
@@ -156,21 +157,49 @@ class AuthReopsitoryImplementation extends AuthRepository {
   }
 
   @override
-  Future<Either<ErrorModel, UserModel>> resetPassword(
-      UserEntity parameters) async {
+  Future<Either<ErrorModel, List>> resetPassword(UserEntity parameters) async {
     NetworkCallType type = NetworkCallType.post;
 
     Either<ErrorModel, BaseResponse> result = await networkClient(
-        url: "patients/verify-otp",
+        url: "patients/reset-password",
         data: {
           "password": parameters.password,
-          "confirm_password": parameters.confirmPassword
+          "password_confirmation": parameters.confirmPassword,
+          "token": "${parameters.Token}"
         },
         type: type);
 
     return result.fold((l) => Left(l), (r) {
       try {
-        return Right(UserModel());
+        return Right(r.data);
+      } catch (e) {
+        return Left(ErrorModel(errorMessage: e.toString()));
+      }
+    });
+  }
+
+  //patients/update-profile
+  @override
+  Future<Either<ErrorModel, UserModel>> updateProfile(
+      UserEntity parameters) async {
+    NetworkCallType type = NetworkCallType.post;
+
+    FormData formData = FormData.fromMap({
+      "name": parameters.name,
+      "email": parameters.email,
+      "photo": await MultipartFile.fromFile(parameters.image ?? ""),
+    });
+
+    Either<ErrorModel, BaseResponse> result = await networkClient(
+        url: "patients/update-profile",
+        data: {},
+        formData: formData,
+        type: type);
+
+    return result.fold((l) => Left(l), (r) {
+      try {
+        final userModel = UserModel.fromJson(r.data);
+        return Right(userModel);
       } catch (e) {
         return Left(ErrorModel(errorMessage: e.toString()));
       }

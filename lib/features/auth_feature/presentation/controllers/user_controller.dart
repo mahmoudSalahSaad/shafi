@@ -47,7 +47,6 @@ class UserController extends _$UserController {
   saveUser(UserModel user) async {
     AppPrefs appPrefs = getIt();
     await appPrefs.save(PrefKeys.user, json.encode(user.toJson()));
-    await appPrefs.save(PrefKeys.token, user.authorization?.token);
     state = AsyncData(state.requireValue.copyWith(user: user));
   }
 

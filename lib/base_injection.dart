@@ -23,6 +23,7 @@ import 'package:shafi/features/auth_feature/domain/use_cases/refresh_use_case.da
 import 'package:shafi/features/auth_feature/domain/use_cases/register_use_case.dart';
 import 'package:shafi/features/auth_feature/domain/use_cases/resend_code_use_case.dart';
 import 'package:shafi/features/auth_feature/domain/use_cases/reset_password_use_case.dart';
+import 'package:shafi/features/auth_feature/domain/use_cases/update_profile_use_case.dart';
 import 'package:shafi/features/auth_feature/domain/use_cases/verify_phone_use_case.dart';
 import 'package:shafi/features/home_feature/data/rempository_implementation/home_repository_implemention.dart';
 import 'package:shafi/features/home_feature/domain/repository/home_repository.dart';
@@ -89,6 +90,8 @@ Future<void> init() async {
       () => ForgotPasswordVerifyOTPUseCase(authRefreshRepository: getIt()));
   getIt.registerLazySingleton(
       () => ResetPasswordUseCase(authRefreshRepository: getIt()));
+  getIt.registerLazySingleton(
+      () => UpdateProfileUseCase(authRefreshRepository: getIt()));
   // getIt.registerLazySingleton(() => ProjectsUseCase(homeRepo: getIt()));
   // getIt.registerLazySingleton(() => ShiftsUseCase(homeRepo: getIt()));
   // getIt.registerLazySingleton(() => CheckInUseCase(homeRepo: getIt()));

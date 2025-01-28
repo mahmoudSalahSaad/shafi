@@ -1,7 +1,9 @@
 {
     "login": "تسجيل الدخول",
-    "register": "التسجيل",
+    "register": "تسجيل حساب جديد",
     "email": "البريد الإلكتروني",
+    "valid_email" : "يرجى ادخال بريد إلكتروني صحيح" , 
+
     "password": "كلمة المرور",
     "first_name": "الاسم الأول",
     "last_name": "الاسم الأخير",
@@ -9,7 +11,7 @@
     "address": "العنوان",
     "welcome_text": "مرحباً بك في تطبيقنا الطبي المتكامل.",
     "shafi": "شافي",
-    "phone_limit_message": "رقم الهاتف يتكون من 9 أرقام.",
+    "phone_limit_message": "رقم الهاتف يتكون من ٢٠ رقام.",
     "phone_field_required": "حقل رقم الهاتف مطلوب.",
     "password_field_required": "حقل كلمة المرور مطلوب.",
     "forget_password_question": "نسيت كلمة السر؟",

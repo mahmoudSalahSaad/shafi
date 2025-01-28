@@ -99,7 +99,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "phone_field_required":
             MessageLookupByLibrary.simpleMessage("حقل رقم الهاتف مطلوب."),
         "phone_limit_message": MessageLookupByLibrary.simpleMessage(
-            "رقم الهاتف يتكون من 9 أرقام."),
+            "رقم الهاتف يتكون من ٢٠ رقام."),
         "please_select_category":
             MessageLookupByLibrary.simpleMessage("الرجاء اختيار الفئة"),
         "please_select_sub_category":
@@ -107,7 +107,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "please_wait": MessageLookupByLibrary.simpleMessage("يرجى الانتظار"),
         "privacy_policy":
             MessageLookupByLibrary.simpleMessage("سياسة الخصوصية"),
-        "register": MessageLookupByLibrary.simpleMessage("التسجيل"),
+        "register": MessageLookupByLibrary.simpleMessage("تسجيل حساب جديد"),
         "request": MessageLookupByLibrary.simpleMessage("طلب"),
         "ru": MessageLookupByLibrary.simpleMessage("الروسية"),
         "save": MessageLookupByLibrary.simpleMessage("حفظ"),
@@ -116,6 +116,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "sub_category": MessageLookupByLibrary.simpleMessage("الفرعية"),
         "update_profile":
             MessageLookupByLibrary.simpleMessage("تحديث الملف الشخصي"),
+        "valid_email": MessageLookupByLibrary.simpleMessage(
+            "يرجى ادخال بريد إلكتروني صحيح"),
         "welcome_text": MessageLookupByLibrary.simpleMessage(
             "مرحباً بك في تطبيقنا الطبي المتكامل."),
         "yes": MessageLookupByLibrary.simpleMessage("نعم"),

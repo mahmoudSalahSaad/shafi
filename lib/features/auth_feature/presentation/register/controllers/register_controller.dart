@@ -3,6 +3,8 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:shafi/base_injection.dart';
 import 'package:shafi/core/routing/navigation_services.dart';
 import 'package:shafi/core/routing/routes.dart';
+import 'package:shafi/core/services/local/cache_consumer.dart';
+import 'package:shafi/core/services/local/storage_keys.dart';
 import 'package:shafi/core/utils/alerts.dart';
 import 'package:shafi/features/auth_feature/data/models/user_model.dart';
 import 'package:shafi/features/auth_feature/domain/entities/user_entity.dart';
@@ -16,6 +18,7 @@ part 'register_state.dart';
 @riverpod
 class RegisterController extends _$RegisterController {
   @override
+
   /// Initializes the [RegisterController] with a default value of [RegisterState].
   ///
   /// This is a future because it's used in [riverpod]'s [FutureProvider].
@@ -27,7 +30,6 @@ class RegisterController extends _$RegisterController {
     return state.requireValue;
   }
 
-
   register(UserEntity userCardintials) async {
     Future.delayed(Duration.zero, () => state = AsyncLoading());
     RegisterUseCase registerUseCase = getIt();
@@ -37,8 +39,11 @@ class RegisterController extends _$RegisterController {
       state = AsyncData(state.requireValue);
     }, (r) async {
       state = AsyncData(state.requireValue.copyWith(user: r));
+      AppPrefs appPrefs = getIt();
+      await appPrefs.save(PrefKeys.token, r.authorization?.token);
       await ref.read(userControllerProvider.notifier).saveUser(r);
-      NavigationService.push(Routes.otpPassword);
+      NavigationService.push(Routes.otpPassword,
+          arguments: {"type": "verifyOTP"});
     });
   }
 }

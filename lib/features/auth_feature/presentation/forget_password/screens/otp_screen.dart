@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shafi/core/extensions/num_extensions.dart';
 import 'package:shafi/core/resources/color.dart';
+import 'package:shafi/features/auth_feature/domain/entities/user_entity.dart';
+import 'package:shafi/features/auth_feature/presentation/forget_password/controllers/forgot_password_controller.dart';
 import 'package:shafi/features/auth_feature/presentation/forget_password/controllers/otp_controller.dart';
 import 'package:shafi/features/auth_feature/presentation/forget_password/widgets/otp_layout_widget.dart';
 import 'package:shafi/features/auth_feature/presentation/login/widgets/auth_base_layout_widget.dart';
@@ -81,6 +83,13 @@ class _OtpScreenState extends ConsumerState<OtpScreen> {
                       await ref
                           .read(otpControllerProvider.notifier)
                           .sendOtp(otp: textEditingController.text);
+                    } else {
+                      await ref
+                          .read(forgotPasswordControllerProvider.notifier)
+                          .verifyUser(UserEntity(
+                              phone: "",
+                              password: "",
+                              otp: textEditingController.text));
                     }
                   }
                 },

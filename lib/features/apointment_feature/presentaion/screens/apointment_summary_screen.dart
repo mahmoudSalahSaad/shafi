@@ -69,12 +69,17 @@ class ApointmentSummaryScreen extends ConsumerWidget {
                           CustomText(
                             "${ref.read(questionsControllerProvider).requireValue.answers[index].title}",
                             size: 16.h,
+                            align: TextAlign.start,
                             bold: true,
                             color: primaryColorDark,
+                          ),
+                          SizedBox(
+                            height: 8,
                           ),
                           CustomText(
                             "${ref.read(questionsControllerProvider).requireValue.answers[index].answer}",
                             size: 14.h,
+                            align: TextAlign.start,
                             bold: true,
                           ),
                           index !=
@@ -85,7 +90,7 @@ class ApointmentSummaryScreen extends ConsumerWidget {
                                           .length -
                                       1
                               ? Divider(
-                                  height: 1.h,
+                                  height: 10.h,
                                 )
                               : SizedBox.shrink()
                         ],

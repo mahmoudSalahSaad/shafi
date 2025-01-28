@@ -18,10 +18,12 @@ abstract class Patient with _$Patient {
   factory Patient(
       {final int? id,
       final String? name,
+      final String? photo,
       final String? phone,
+      final String? email,
       final String? address,
       final bool? is_active,
-     @Default(false) final bool? is_phone_verified}) = _Patient;
+      @Default(false) final bool? is_phone_verified}) = _Patient;
 
   factory Patient.fromJson(Map<String, dynamic> json) =>
       _$PatientFromJson(json);

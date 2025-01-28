@@ -24,6 +24,7 @@ class HomeRepositoryImplemention extends HomeRepository {
   /// If there is an error, returns a [Left] with an [ErrorModel]
   /// containing the error message.
   @override
+
   /// Gets a list of appointments for a given patient
   ///
   /// [parameters] is a NoParameters object, which is a placeholder
@@ -38,7 +39,7 @@ class HomeRepositoryImplemention extends HomeRepository {
   Future<Either<ErrorModel, List<ApointmentModel>>> getApointements(
       {required NoParameters parameters}) async {
     // The URL for the API endpoint
-    String url = "patients/appointments";
+    String url = "patients/appointments?featured=true";
 
     // The data to be sent in the request body
     Map<String, dynamic> data = {};
@@ -70,6 +71,7 @@ class HomeRepositoryImplemention extends HomeRepository {
   }
 
   @override
+
   /// Fetches a list of available appointment dates
   ///
   /// [parameters] is a NoParameters object, which is a placeholder

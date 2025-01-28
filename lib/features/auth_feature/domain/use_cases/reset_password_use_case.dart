@@ -1,12 +1,11 @@
 import 'package:dartz/dartz.dart';
 import 'package:shafi/data/datasource/remote/exception/error_widget.dart';
-import 'package:shafi/features/auth_feature/data/models/user_model.dart';
 import 'package:shafi/features/auth_feature/domain/entities/user_entity.dart';
 import 'package:shafi/features/auth_feature/domain/repository/auth_repository.dart';
 
 import '../../../../core/base/base_usecase.dart';
 
-class ResetPasswordUseCase extends BaseUseCase<UserModel, UserEntity> {
+class ResetPasswordUseCase extends BaseUseCase<List, UserEntity> {
   final AuthRepository authRefreshRepository;
 
   ResetPasswordUseCase({required this.authRefreshRepository});
@@ -19,13 +18,12 @@ class ResetPasswordUseCase extends BaseUseCase<UserModel, UserEntity> {
   * */
 
   @override
-
-  Future<Either<ErrorModel, UserModel>> call(UserEntity parameters) async {
+  Future<Either<ErrorModel, List>> call(UserEntity parameters) async {
     return await authRefreshRepository.resetPassword(parameters);
   }
 
   @override
-  Future<Either<ErrorModel, UserModel>> callTest(UserEntity parameters) async {
+  Future<Either<ErrorModel, List>> callTest(UserEntity parameters) async {
     return await authRefreshRepository.resetPassword(parameters);
   }
 }

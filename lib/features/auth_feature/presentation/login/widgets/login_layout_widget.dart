@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shafi/core/extensions/num_extensions.dart';
 import 'package:shafi/core/resources/resources.dart';
@@ -29,10 +28,10 @@ class _LoginLayoutState extends ConsumerState<LoginLayout> {
 
   _onSubmit() async {
     if (_formKey.currentState!.validate()) {
-      print("phoneeeeeeeeee===>${"+964${phoneEc.text}"}");
+      print("phoneeeeeeeeee===>${phoneEc.text}");
       await ref.read(loginControllerProvider.notifier).login(
             UserEntity(
-              phone: "+964${phoneEc.text}",
+              phone: phoneEc.text,
               password: passwordEc.text,
             ),
           );
@@ -109,11 +108,8 @@ class _LoginLayoutState extends ConsumerState<LoginLayout> {
                     isPassword: false,
                     controller: phoneEc,
                     prefixIcon: Icon(Icons.phone_android_rounded),
-                    hint: S.of(context).phone,
-                    maxLength: 9,
-                    inputFormats: [
-                      FilteringTextInputFormatter.digitsOnly,
-                    ],
+                    hint: "0011222333444",
+                    inputFormats: [],
                     onValidate: (value) {
                       if (value != null) {
                         if (Validators.phoneNumber(value)) {
@@ -126,13 +122,6 @@ class _LoginLayoutState extends ConsumerState<LoginLayout> {
                       }
                     },
                     textInputType: TextInputType.phone,
-                    phoneWidget: Padding(
-                      padding: EdgeInsets.all(14.0.r),
-                      child: CustomText(
-                        "964+",
-                        bold: true,
-                      ),
-                    ),
                   ),
                   SizedBox(
                     height: 16.h,

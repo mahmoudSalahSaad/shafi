@@ -17,6 +17,7 @@ import 'package:shafi/features/home_feature/presentation/widgets/home_screen.dar
 import 'package:shafi/features/my_medicens/peresentaion/screens/medical_history_screen.dart';
 import 'package:shafi/features/my_medicens/peresentaion/screens/treatments_plans_screen.dart';
 import 'package:shafi/features/privacy/presentation/pages/privacy_screen.dart';
+import 'package:shafi/features/profile/presentation/pages/update_profile_screen.dart';
 import 'package:shafi/features/splash_feature/presentation/screens/splash_screen.dart';
 import 'package:shafi/features/vedio_call/video_call_screen.dart';
 
@@ -102,6 +103,9 @@ class RouteGenerator {
     }
     if (settings.name == Routes.privacyScreen) {
       return platformPageRoute(const PrivacyScreen());
+    }
+    if (settings.name == Routes.updateProfileScreen) {
+      return platformPageRoute(const UpdateProfileScreen());
     }
     // if (settings.name == Routes.startWorkScreen) {
     //   return platformPageRoute(const StartWorkScreen());

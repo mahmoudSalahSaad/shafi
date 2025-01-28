@@ -40,6 +40,7 @@ class ForgetPasswordScreen extends ConsumerWidget {
                 textColor: kAppBarColor,
                 backgroundColor: backgroundColor,
                 radius: 10.r,
+                loading: ref.watch(forgotPasswordControllerProvider).isLoading,
                 onTap: () {
                   if (formKey.currentState!.validate()) {
                     ref

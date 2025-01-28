@@ -1,13 +1,18 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lottie/lottie.dart';
+import 'package:shafi/base_injection.dart';
 import 'package:shafi/core/extensions/num_extensions.dart';
 import 'package:shafi/core/resources/resources.dart';
+import 'package:shafi/core/routing/navigation_services.dart';
+import 'package:shafi/core/services/local/cache_consumer.dart';
+import 'package:shafi/features/auth_feature/presentation/controllers/user_controller.dart';
 import 'package:shafi/generated/assets.dart';
 import 'package:shafi/generated/l10n.dart';
 import 'package:shafi/widgets/custom_text.dart';
 
-class AuthBaseLayout extends StatelessWidget {
+class AuthBaseLayout extends ConsumerWidget {
   const AuthBaseLayout({
     super.key,
     required this.content,
@@ -59,7 +64,93 @@ class AuthBaseLayout extends StatelessWidget {
   /// to the [AuthBaseLayout] widget. If this parameter is not provided, the
   /// default description is used.
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    Future<dynamic> showLangButtomSheet(
+        BuildContext context, AppPrefs appPrefs) {
+      return showModalBottomSheet(
+          context: context,
+          builder: (_) {
+            return SizedBox(
+              height: 154,
+              width: deviceWidth,
+              child: Padding(
+                padding: EdgeInsets.all(16.h),
+                child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      CustomText(S.of(context).change_language,
+                          size: 18.h, bold: true),
+                      InkWell(
+                        onTap: () async {
+                          ref
+                              .read(userControllerProvider.notifier)
+                              .setLocale("ar");
+                          NavigationService.goBack();
+                        },
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            CustomText(
+                              S.of(context).ar,
+                              size: 16.h,
+                            ),
+                            Radio(
+                                value: 0,
+                                groupValue: ref
+                                            .watch(userControllerProvider)
+                                            .requireValue
+                                            .locale ==
+                                        "ar"
+                                    ? 0
+                                    : 1,
+                                onChanged: (val) async {
+                                  ref
+                                      .read(userControllerProvider.notifier)
+                                      .setLocale("ar");
+                                  NavigationService.goBack();
+                                })
+                          ],
+                        ),
+                      ),
+                      InkWell(
+                        onTap: () async {
+                          ref
+                              .read(userControllerProvider.notifier)
+                              .setLocale("en");
+                          NavigationService.goBack();
+                          // NavigationService.push(Routes.init);
+                        },
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            CustomText(
+                              S.of(context).en,
+                              size: 16.h,
+                            ),
+                            Radio(
+                                value: 1,
+                                groupValue: ref
+                                            .watch(userControllerProvider)
+                                            .requireValue
+                                            .locale ==
+                                        "en"
+                                    ? 1
+                                    : 0,
+                                onChanged: (val) async {
+                                  ref
+                                      .read(userControllerProvider.notifier)
+                                      .setLocale("en");
+                                  NavigationService.goBack();
+                                })
+                          ],
+                        ),
+                      ),
+                    ]),
+              ),
+            );
+          });
+    }
+
     if (kDebugMode) {
       print("Building AuthBaseLayout widget");
       print("Device width is $deviceWidth and device height is $deviceHeight");
@@ -139,6 +230,21 @@ class AuthBaseLayout extends StatelessWidget {
                 child: content,
               ),
             ),
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Row(
+                children: [
+                  InkWell(
+                    onTap: () async {
+                      AppPrefs appPrefs = getIt();
+                      await showLangButtomSheet(context, appPrefs);
+                      // NavigationService.pushNamedAndRemoveUntil(Routes.init);
+                    },
+                    child: Icon(Icons.language),
+                  ),
+                ],
+              ),
+            )
           ],
         ),
       ),

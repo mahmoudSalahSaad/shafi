@@ -20,6 +20,7 @@ class CustomTextField extends StatefulWidget {
   final TextInputType? textInputType;
   final List<TextInputFormatter>? inputFormats;
   final int? maxLines;
+  final String? initalValue;
 
   const CustomTextField(
       {super.key,
@@ -37,7 +38,8 @@ class CustomTextField extends StatefulWidget {
       this.maxLength,
       this.textInputType,
       this.inputFormats,
-      this.maxLines});
+      this.maxLines,
+      this.initalValue});
 
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
@@ -57,7 +59,8 @@ class _CustomTextFieldState extends State<CustomTextField> {
         ),
       ], borderRadius: BorderRadius.circular(8.h)),
       child: TextFormField(
-        maxLines: widget.maxLines,
+        initialValue: widget.initalValue,
+        maxLines: widget.maxLines ?? 1,
         textDirection:
             widget.phoneWidget != null ? TextDirection.ltr : TextDirection.rtl,
         inputFormatters: widget.inputFormats,

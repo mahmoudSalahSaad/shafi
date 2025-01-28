@@ -3,6 +3,8 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:shafi/base_injection.dart';
 import 'package:shafi/core/routing/navigation_services.dart';
 import 'package:shafi/core/routing/routes.dart';
+import 'package:shafi/core/services/local/cache_consumer.dart';
+import 'package:shafi/core/services/local/storage_keys.dart';
 import 'package:shafi/core/utils/alerts.dart';
 import 'package:shafi/features/apointment_feature/presentaion/controllers/apointment_controller.dart';
 import 'package:shafi/features/auth_feature/data/models/user_model.dart';
@@ -42,6 +44,9 @@ class LoginController extends _$LoginController {
       Alerts.showSnackBar("${l.errorMessage}", alertsType: AlertsType.error);
       state = AsyncData(state.requireValue);
     }, (r) async {
+      AppPrefs appPrefs = getIt();
+      await appPrefs.save(PrefKeys.token, r.authorization?.token);
+
       await ref.read(userControllerProvider.notifier).saveUser(r);
       Future.delayed(Duration.zero, () {
         state = AsyncData(state.requireValue.copyWith(user: r));

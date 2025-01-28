@@ -305,7 +305,7 @@ class PersonalScreen extends ConsumerWidget {
                   ),
                   ListTile(
                     onTap: () {
-                      NavigationService.push(Routes.myApointmentScreen);
+                      NavigationService.push(Routes.updateProfileScreen);
                     },
                     leading: const Icon(Icons.person,
                         size: 20.0, color: Colors.black),

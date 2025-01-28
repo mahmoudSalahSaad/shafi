@@ -15,19 +15,11 @@ class Validators {
     }
   }
 
-
-  static bool phoneNumber(String str){
-    if(isNumeric(str)){
-      if(str.length == 9 ){
-        return true ; 
-      }else{
-        return false ; 
-      }
-    }else{
-      return false ; 
+  static bool phoneNumber(String str) {
+    if (str.length <= 20) {
+      return true;
+    } else {
+      return false;
     }
   }
-
-
-  
 }

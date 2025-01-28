@@ -1,15 +1,15 @@
 import 'package:dartz/dartz.dart';
 import 'package:shafi/data/datasource/remote/exception/error_widget.dart';
+import 'package:shafi/features/auth_feature/data/models/user_model.dart';
 import 'package:shafi/features/auth_feature/domain/entities/user_entity.dart';
 import 'package:shafi/features/auth_feature/domain/repository/auth_repository.dart';
 
 import '../../../../core/base/base_usecase.dart';
 
-class ForgotPasswordVerifyOTPUseCase
-    extends BaseUseCase<Map<String, dynamic>, UserEntity> {
+class UpdateProfileUseCase extends BaseUseCase<UserModel, UserEntity> {
   final AuthRepository authRefreshRepository;
 
-  ForgotPasswordVerifyOTPUseCase({required this.authRefreshRepository});
+  UpdateProfileUseCase({required this.authRefreshRepository});
   /*
   * USE CASE
   * base on BaseUseCase
@@ -19,14 +19,12 @@ class ForgotPasswordVerifyOTPUseCase
   * */
 
   @override
-  Future<Either<ErrorModel, Map<String, dynamic>>> call(
-      UserEntity parameters) async {
-    return await authRefreshRepository.forgetPasswordVerifyOTP(parameters);
+  Future<Either<ErrorModel, UserModel>> call(UserEntity parameters) async {
+    return await authRefreshRepository.updateProfile(parameters);
   }
 
   @override
-  Future<Either<ErrorModel, Map<String, dynamic>>> callTest(
-      UserEntity parameters) async {
-    return await authRefreshRepository.forgetPasswordVerifyOTP(parameters);
+  Future<Either<ErrorModel, UserModel>> callTest(UserEntity parameters) async {
+    return await authRefreshRepository.updateProfile(parameters);
   }
 }

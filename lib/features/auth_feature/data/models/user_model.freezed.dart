@@ -225,7 +225,9 @@ Patient _$PatientFromJson(Map<String, dynamic> json) {
 mixin _$Patient {
   int? get id => throw _privateConstructorUsedError;
   String? get name => throw _privateConstructorUsedError;
+  String? get photo => throw _privateConstructorUsedError;
   String? get phone => throw _privateConstructorUsedError;
+  String? get email => throw _privateConstructorUsedError;
   String? get address => throw _privateConstructorUsedError;
   bool? get is_active => throw _privateConstructorUsedError;
   bool? get is_phone_verified => throw _privateConstructorUsedError;
@@ -247,7 +249,9 @@ abstract class $PatientCopyWith<$Res> {
   $Res call(
       {int? id,
       String? name,
+      String? photo,
       String? phone,
+      String? email,
       String? address,
       bool? is_active,
       bool? is_phone_verified});
@@ -270,7 +274,9 @@ class _$PatientCopyWithImpl<$Res, $Val extends Patient>
   $Res call({
     Object? id = freezed,
     Object? name = freezed,
+    Object? photo = freezed,
     Object? phone = freezed,
+    Object? email = freezed,
     Object? address = freezed,
     Object? is_active = freezed,
     Object? is_phone_verified = freezed,
@@ -284,9 +290,17 @@ class _$PatientCopyWithImpl<$Res, $Val extends Patient>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
+      photo: freezed == photo
+          ? _value.photo
+          : photo // ignore: cast_nullable_to_non_nullable
+              as String?,
       phone: freezed == phone
           ? _value.phone
           : phone // ignore: cast_nullable_to_non_nullable
+              as String?,
+      email: freezed == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
               as String?,
       address: freezed == address
           ? _value.address
@@ -314,7 +328,9 @@ abstract class _$$PatientImplCopyWith<$Res> implements $PatientCopyWith<$Res> {
   $Res call(
       {int? id,
       String? name,
+      String? photo,
       String? phone,
+      String? email,
       String? address,
       bool? is_active,
       bool? is_phone_verified});
@@ -335,7 +351,9 @@ class __$$PatientImplCopyWithImpl<$Res>
   $Res call({
     Object? id = freezed,
     Object? name = freezed,
+    Object? photo = freezed,
     Object? phone = freezed,
+    Object? email = freezed,
     Object? address = freezed,
     Object? is_active = freezed,
     Object? is_phone_verified = freezed,
@@ -349,9 +367,17 @@ class __$$PatientImplCopyWithImpl<$Res>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
+      photo: freezed == photo
+          ? _value.photo
+          : photo // ignore: cast_nullable_to_non_nullable
+              as String?,
       phone: freezed == phone
           ? _value.phone
           : phone // ignore: cast_nullable_to_non_nullable
+              as String?,
+      email: freezed == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
               as String?,
       address: freezed == address
           ? _value.address
@@ -375,7 +401,9 @@ class _$PatientImpl implements _Patient {
   _$PatientImpl(
       {this.id,
       this.name,
+      this.photo,
       this.phone,
+      this.email,
       this.address,
       this.is_active,
       this.is_phone_verified = false});
@@ -388,7 +416,11 @@ class _$PatientImpl implements _Patient {
   @override
   final String? name;
   @override
+  final String? photo;
+  @override
   final String? phone;
+  @override
+  final String? email;
   @override
   final String? address;
   @override
@@ -399,7 +431,7 @@ class _$PatientImpl implements _Patient {
 
   @override
   String toString() {
-    return 'Patient(id: $id, name: $name, phone: $phone, address: $address, is_active: $is_active, is_phone_verified: $is_phone_verified)';
+    return 'Patient(id: $id, name: $name, photo: $photo, phone: $phone, email: $email, address: $address, is_active: $is_active, is_phone_verified: $is_phone_verified)';
   }
 
   @override
@@ -409,7 +441,9 @@ class _$PatientImpl implements _Patient {
             other is _$PatientImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
+            (identical(other.photo, photo) || other.photo == photo) &&
             (identical(other.phone, phone) || other.phone == phone) &&
+            (identical(other.email, email) || other.email == email) &&
             (identical(other.address, address) || other.address == address) &&
             (identical(other.is_active, is_active) ||
                 other.is_active == is_active) &&
@@ -419,8 +453,8 @@ class _$PatientImpl implements _Patient {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, id, name, phone, address, is_active, is_phone_verified);
+  int get hashCode => Object.hash(runtimeType, id, name, photo, phone, email,
+      address, is_active, is_phone_verified);
 
   /// Create a copy of Patient
   /// with the given fields replaced by the non-null parameter values.
@@ -442,7 +476,9 @@ abstract class _Patient implements Patient {
   factory _Patient(
       {final int? id,
       final String? name,
+      final String? photo,
       final String? phone,
+      final String? email,
       final String? address,
       final bool? is_active,
       final bool? is_phone_verified}) = _$PatientImpl;
@@ -454,7 +490,11 @@ abstract class _Patient implements Patient {
   @override
   String? get name;
   @override
+  String? get photo;
+  @override
   String? get phone;
+  @override
+  String? get email;
   @override
   String? get address;
   @override

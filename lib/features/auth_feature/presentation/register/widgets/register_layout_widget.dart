@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shafi/core/extensions/num_extensions.dart';
 import 'package:shafi/core/resources/color.dart';
@@ -33,7 +32,7 @@ class _RegisterLayoutWidgetState extends ConsumerState<RegisterLayoutWidget> {
     if (_formKey.currentState!.validate()) {
       ref.read(registerControllerProvider.notifier).register(
             UserEntity(
-                phone: "+964${phone.text}",
+                phone: phone.text,
                 password: password.text,
                 confirmPassword: confirmPassword.text,
                 name: "${firstName.text} ${lastName.text}"),
@@ -139,11 +138,8 @@ class _RegisterLayoutWidgetState extends ConsumerState<RegisterLayoutWidget> {
                   isPassword: false,
                   controller: phone,
                   prefixIcon: Icon(Icons.phone_android_rounded),
-                  hint: S.of(context).phone,
-                  maxLength: 9,
-                  inputFormats: [
-                    FilteringTextInputFormatter.digitsOnly,
-                  ],
+                  hint: "0011222333444",
+                  inputFormats: [],
                   onValidate: (value) {
                     if (value != null) {
                       if (Validators.phoneNumber(value)) {
@@ -156,20 +152,13 @@ class _RegisterLayoutWidgetState extends ConsumerState<RegisterLayoutWidget> {
                     }
                   },
                   textInputType: TextInputType.phone,
-                  phoneWidget: Padding(
-                    padding: EdgeInsets.all(14.0.r),
-                    child: CustomText(
-                      "964+",
-                      bold: true,
-                    ),
-                  ),
+                  phoneWidget: SizedBox(),
                 ),
-
-                /// Password
                 CustomTextField(
-                  controller: password,
                   isPassword: true,
+                  controller: password,
                   maxLines: 1,
+                  hint: S.of(context).password,
                   onValidate: (value) {
                     if (value != null) {
                       if (value.isNotEmpty) {
@@ -181,32 +170,28 @@ class _RegisterLayoutWidgetState extends ConsumerState<RegisterLayoutWidget> {
                       return S.of(context).password_field_required;
                     }
                   },
-                  hint: S.of(context).password,
                   prefixIcon: Icon(
                     Icons.lock,
                     size: 14.h,
                   ),
                 ),
-
-                /// Confirm password
                 CustomTextField(
                   isPassword: true,
+                  controller: confirmPassword,
                   maxLines: 1,
                   hint: S.of(context).confirm_password,
-                  controller: confirmPassword,
                   onValidate: (value) {
                     if (value != null) {
                       if (value.isNotEmpty) {
-                        if (value == password.text) {
-                          return null;
-                        } else {
+                        if (value != password.text) {
                           return S.of(context).confirm_password_not_match;
                         }
+                        return null;
                       } else {
                         return S.of(context).confirm_password_field_required;
                       }
                     } else {
-                      return S.of(context).confirm_password_field_required;
+                      return S.of(context).password_field_required;
                     }
                   },
                   prefixIcon: Icon(

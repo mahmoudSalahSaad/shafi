@@ -27,7 +27,9 @@ _$PatientImpl _$$PatientImplFromJson(Map<String, dynamic> json) =>
     _$PatientImpl(
       id: (json['id'] as num?)?.toInt(),
       name: json['name'] as String?,
+      photo: json['photo'] as String?,
       phone: json['phone'] as String?,
+      email: json['email'] as String?,
       address: json['address'] as String?,
       is_active: json['is_active'] as bool?,
       is_phone_verified: json['is_phone_verified'] as bool? ?? false,
@@ -37,7 +39,9 @@ Map<String, dynamic> _$$PatientImplToJson(_$PatientImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
+      'photo': instance.photo,
       'phone': instance.phone,
+      'email': instance.email,
       'address': instance.address,
       'is_active': instance.is_active,
       'is_phone_verified': instance.is_phone_verified,

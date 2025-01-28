@@ -108,7 +108,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "phone_field_required": MessageLookupByLibrary.simpleMessage(
             "The phone number field is required."),
         "phone_limit_message": MessageLookupByLibrary.simpleMessage(
-            "The phone number consists of 9 digits."),
+            "The phone number consists of 20 digits."),
         "please_select_category":
             MessageLookupByLibrary.simpleMessage("Please select category"),
         "please_select_sub_category":
@@ -125,6 +125,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "sub_category": MessageLookupByLibrary.simpleMessage("Sub Category"),
         "update_profile":
             MessageLookupByLibrary.simpleMessage("Update Profile"),
+        "valid_email":
+            MessageLookupByLibrary.simpleMessage("please enter a valid email"),
         "welcome_text": MessageLookupByLibrary.simpleMessage(
             "Welcome to our integrated medical application."),
         "yes": MessageLookupByLibrary.simpleMessage("Yes"),

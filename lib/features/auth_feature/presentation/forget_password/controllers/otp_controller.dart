@@ -48,7 +48,8 @@ class OtpController extends _$OtpController {
       await ref.read(userControllerProvider.notifier).saveUser(userModel!);
       await ref.read(getApointmentDatesControllerProvider.notifier).build();
 
-      NavigationService.pushNamedAndRemoveUntil(Routes.home);
+      NavigationService.pushNamedAndRemoveUntil(
+          Routes.bottomNavigationBarScreen);
       state = AsyncData("");
     });
   }

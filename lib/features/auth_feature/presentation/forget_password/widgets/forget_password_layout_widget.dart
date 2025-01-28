@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:shafi/core/extensions/num_extensions.dart';
 import 'package:shafi/core/resources/values_manager.dart';
 import 'package:shafi/core/utils/validators.dart';
@@ -70,11 +69,8 @@ class _ForgetPasswordLayoutWidgetState
                       isPassword: false,
                       controller: widget.textEditingController,
                       prefixIcon: Icon(Icons.phone_android_rounded),
-                      hint: S.of(context).phone,
-                      maxLength: 9,
-                      inputFormats: [
-                        FilteringTextInputFormatter.digitsOnly,
-                      ],
+                      hint: "0011222333444",
+                      inputFormats: [],
                       onValidate: (value) {
                         if (value != null) {
                           if (Validators.phoneNumber(value)) {
@@ -87,13 +83,6 @@ class _ForgetPasswordLayoutWidgetState
                         }
                       },
                       textInputType: TextInputType.phone,
-                      phoneWidget: Padding(
-                        padding: EdgeInsets.all(14.0.r),
-                        child: CustomText(
-                          "964+",
-                          bold: true,
-                        ),
-                      ),
                     ),
                   ],
                 ),

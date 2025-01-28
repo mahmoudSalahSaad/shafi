@@ -80,6 +80,16 @@ class S {
     );
   }
 
+  /// `please enter a valid email`
+  String get valid_email {
+    return Intl.message(
+      'please enter a valid email',
+      name: 'valid_email',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Password`
   String get password {
     return Intl.message(
@@ -150,10 +160,10 @@ class S {
     );
   }
 
-  /// `The phone number consists of 9 digits.`
+  /// `The phone number consists of 20 digits.`
   String get phone_limit_message {
     return Intl.message(
-      'The phone number consists of 9 digits.',
+      'The phone number consists of 20 digits.',
       name: 'phone_limit_message',
       desc: '',
       args: [],
