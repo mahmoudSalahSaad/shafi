@@ -64,6 +64,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "delete_account": MessageLookupByLibrary.simpleMessage("حذف الحساب"),
         "delete_account_message": MessageLookupByLibrary.simpleMessage(
             "هل أنت متأكد من رغبتك في حذف حسابك؟"),
+        "delete_message":
+            MessageLookupByLibrary.simpleMessage("هل تريد حذف حسابك؟"),
         "didnt_recive_otp":
             MessageLookupByLibrary.simpleMessage("لم تتلقى الرمز؟"),
         "doctor_name": MessageLookupByLibrary.simpleMessage("اسم الطبيب"),

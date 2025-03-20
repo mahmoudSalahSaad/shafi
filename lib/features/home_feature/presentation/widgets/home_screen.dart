@@ -197,7 +197,14 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                               children: List.generate(data.myApointments.length,
                                   (index) {
                                 return InkWell(
-                                  onTap: () async {},
+                                  onTap: () async {
+                                    NavigationService.push(
+                                        Routes.videoCallScreen,
+                                        arguments: {
+                                          "apointmentModel":
+                                              data.myApointments[index]
+                                        });
+                                  },
                                   child: ApointmentCardWidget(
                                     apointment: data.myApointments[index],
                                   ),

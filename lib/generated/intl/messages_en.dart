@@ -70,6 +70,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Delete Account"),
         "delete_account_message": MessageLookupByLibrary.simpleMessage(
             "Are you sure you want to delete your account?"),
+        "delete_message": MessageLookupByLibrary.simpleMessage(
+            "Are you sure you want to delete your account?"),
         "didnt_recive_otp":
             MessageLookupByLibrary.simpleMessage("Didn\'t receive the OTP?"),
         "doctor_name": MessageLookupByLibrary.simpleMessage("Doctor Name"),
@@ -122,6 +124,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "save": MessageLookupByLibrary.simpleMessage("Save"),
         "send": MessageLookupByLibrary.simpleMessage("Send"),
         "shafi": MessageLookupByLibrary.simpleMessage("SHAFI"),
+        "ssssss": MessageLookupByLibrary.simpleMessage("ssssss"),
         "sub_category": MessageLookupByLibrary.simpleMessage("Sub Category"),
         "update_profile":
             MessageLookupByLibrary.simpleMessage("Update Profile"),

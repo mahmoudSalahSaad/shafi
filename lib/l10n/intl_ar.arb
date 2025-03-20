@@ -73,5 +73,7 @@
         "medicine_name" : "اسم الدواء" ,
         "medicine_description" : "وصف الدواء" , 
         "save":"حفظ" , 
-        "cancel" : "إلغاء"  
+        "cancel" : "إلغاء"   , 
+        "delete_message" : "هل تريد حذف حسابك؟" 
+      
     }

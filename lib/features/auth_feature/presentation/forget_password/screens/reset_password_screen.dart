@@ -9,16 +9,17 @@ import 'package:shafi/features/auth_feature/presentation/login/widgets/auth_base
 import 'package:shafi/generated/l10n.dart';
 import 'package:shafi/widgets/custom_button.dart';
 
-class ResetPasswordScreen extends ConsumerWidget {
+class ResetPasswordScreen extends ConsumerStatefulWidget {
   const ResetPasswordScreen({super.key});
 
   @override
+  ConsumerState<ConsumerStatefulWidget> createState() =>
+      _ResetPasswordScreenState();
+}
 
-  /// Builds the reset password screen with a scaffold layout.
-  ///
-  /// The screen includes a floating action button for submitting the password
-  /// change and an authentication base layout displaying the reset password widget.
-  Widget build(BuildContext context, WidgetRef ref) {
+class _ResetPasswordScreenState extends ConsumerState<ResetPasswordScreen> {
+  @override
+  Widget build(BuildContext context) {
     final formKey = GlobalKey<FormState>();
     final TextEditingController passwordEc = TextEditingController();
     final TextEditingController confirmPasswordEC = TextEditingController();

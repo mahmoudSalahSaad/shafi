@@ -10,4 +10,6 @@ class Constants {
   static String appName = "Shafi";
 
   static String agoraAppId = 'b9b56a51aa164d0cb4756de02cac53b2';
+  static String accountId = "ed5deb8c-cfd1-48dd-b5af-7fe4f56c45de";
+  static String accountSecret = "123456";
 }

@@ -176,6 +176,28 @@ class _LoginLayoutState extends ConsumerState<LoginLayout> {
                     textColor: kAppBarColor,
                     radius: 10.r,
                     loading: ref.watch(loginControllerProvider).isLoading,
+                  ),
+                  SizedBox(
+                    height: 16.h,
+                  ),
+                  CustomButton(
+                    height: 44.h,
+                    buttonText: "Login With Bank ID",
+                    onTap: () {
+                      Future.delayed(Duration.zero, () async {
+                        print("dasdsda");
+                        await ref
+                            .read(loginControllerProvider.notifier)
+                            .loginWithBankId();
+                      });
+                    },
+                    textColor: kAppBarColor,
+                    radius: 10.r,
+                    loading: ref
+                            .watch(loginControllerProvider)
+                            .requireValue
+                            .isLoginWithBankIdLoading ??
+                        false,
                   )
                 ],
               ),

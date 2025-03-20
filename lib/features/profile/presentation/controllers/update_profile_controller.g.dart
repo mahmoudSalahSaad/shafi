@@ -7,7 +7,7 @@ part of 'update_profile_controller.dart';
 // **************************************************************************
 
 String _$updateProfileControllerHash() =>
-    r'1653f49ef9f0cc08bbb7082b77d4e350d2cf49d2';
+    r'42d1b8ee2e9a792204ec5f7f9e68e4bc96aa85e2';
 
 /// See also [UpdateProfileController].
 @ProviderFor(UpdateProfileController)

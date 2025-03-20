@@ -11,6 +11,7 @@ import 'package:shafi/features/auth_feature/data/models/user_model.dart';
 import 'package:shafi/features/auth_feature/presentation/controllers/user_controller.dart';
 import 'package:shafi/features/home_feature/presentation/widgets/home_screen.dart';
 import 'package:shafi/generated/l10n.dart';
+import 'package:shafi/widgets/custom_button.dart';
 import 'package:shafi/widgets/custom_text.dart';
 import 'package:shafi/widgets/cutom_shimmer_image.dart';
 
@@ -277,7 +278,7 @@ class PersonalScreen extends ConsumerWidget {
                     leading: ClipRRect(
                       borderRadius: BorderRadius.circular(100),
                       child: CustomShimmerImage(
-                        image:
+                        image: state.photo ??
                             "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png",
                         height: 60.h,
                         width: 60.h,
@@ -381,8 +382,53 @@ class PersonalScreen extends ConsumerWidget {
                     // padding: EdgeInsets.zero,
                   ),
                   ListTile(
-                    onTap: () {
-                      NavigationService.push(Routes.myApointmentScreen);
+                    onTap: () async {
+                      showModalBottomSheet(
+                          context: context,
+                          builder: (_) {
+                            return Padding(
+                              padding: EdgeInsets.all(32.h),
+                              child: Wrap(
+                                spacing: 10.h,
+                                runSpacing: 10.h,
+                                children: [
+                                  CustomText(
+                                    S.of(context).delete_account_message,
+                                    size: 20.h,
+                                  ),
+                                  SizedBox(
+                                    height: 8.h,
+                                  ),
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      CustomButton(
+                                        width: 150.w,
+                                        buttonText: S.of(context).yes,
+                                        textColor: Colors.white,
+                                        onTap: () async {
+                                          ref
+                                              .read(userControllerProvider
+                                                  .notifier)
+                                              .deleteUser();
+                                        },
+                                      ),
+                                      CustomButton(
+                                        width: 150.w,
+                                        buttonText: S.of(context).no,
+                                        textColor: Colors.white,
+                                        backgroundColor: Colors.red,
+                                        onTap: () async {
+                                          NavigationService.goBack();
+                                        },
+                                      ),
+                                    ],
+                                  )
+                                ],
+                              ),
+                            );
+                          });
                     },
                     leading: const Icon(Icons.person_remove_alt_1,
                         size: 20.0, color: Colors.black),

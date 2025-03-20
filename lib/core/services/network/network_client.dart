@@ -15,6 +15,7 @@ import '../../utils/logger.dart';
 class NetworkClient {
   Future<Either<ErrorModel, BaseResponse>> call({
     required Map<String, dynamic> data,
+    Map<String, dynamic>? AdditionalHeader,
     required String url,
     required NetworkCallType type,
     FormData? formData,
@@ -30,6 +31,7 @@ class NetworkClient {
         'Accept': 'application/json',
         'X-App-Locale': lang,
         'User-Agents': 'android',
+        'X-Tenant': 'iq',
       },
     );
     String? token = await prefs.getSecuredData(PrefKeys.token);

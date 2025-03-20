@@ -198,8 +198,45 @@ class AuthReopsitoryImplementation extends AuthRepository {
 
     return result.fold((l) => Left(l), (r) {
       try {
-        final userModel = UserModel.fromJson(r.data);
+        final userModel = UserModel(patient: Patient.fromJson(r.data));
+        print("userModel===>$userModel");
         return Right(userModel);
+      } catch (e) {
+        return Left(ErrorModel(errorMessage: e.toString()));
+      }
+    });
+  }
+
+  @override
+  Future<Either<ErrorModel, List>> deleteAccount(
+      NoParameters parameters) async {
+    NetworkCallType type = NetworkCallType.post;
+
+    Either<ErrorModel, BaseResponse> result = await networkClient(
+        url: "patients/remove-account", data: {}, type: type);
+
+    return result.fold((l) => Left(l), (r) {
+      try {
+        return Right([]);
+      } catch (e) {
+        return Left(ErrorModel(errorMessage: e.toString()));
+      }
+    });
+  }
+
+  @override
+  Future<Either<ErrorModel, UserModel>> userLoginWithBankId(
+      UserEntity parameters) async {
+    NetworkCallType type = NetworkCallType.post;
+
+    Either<ErrorModel, BaseResponse> result = await networkClient(
+        url: "patients/login-with-bank-id",
+        data: {"id_number": parameters.phone, "name": parameters.email},
+        type: type);
+
+    return result.fold((l) => Left(l), (r) {
+      try {
+        return Right(UserModel.fromJson(r.data));
       } catch (e) {
         return Left(ErrorModel(errorMessage: e.toString()));
       }

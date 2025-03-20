@@ -25,4 +25,9 @@ abstract class AuthRepository {
       UserEntity parameters);
   Future<Either<ErrorModel, List>> resetPassword(UserEntity parameters);
   Future<Either<ErrorModel, UserModel>> updateProfile(UserEntity parameters);
+  Future<Either<ErrorModel, List>> deleteAccount(NoParameters parameters);
+
+
+    Future<Either<ErrorModel, UserModel>> userLoginWithBankId(UserEntity parameters);
+
 }

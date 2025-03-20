@@ -8,26 +8,19 @@ import 'package:shafi/features/auth_feature/presentation/login/widgets/auth_base
 import 'package:shafi/generated/l10n.dart';
 import 'package:shafi/widgets/custom_button.dart';
 
-class ForgetPasswordScreen extends ConsumerWidget {
+class ForgetPasswordScreen extends ConsumerStatefulWidget {
   const ForgetPasswordScreen({super.key});
 
   @override
+  ConsumerState<ConsumerStatefulWidget> createState() =>
+      _ForgetPasswordScreenState();
+}
 
-  /// Builds the UI for the [ForgetPasswordScreen].
-  ///
-  /// This screen is responsible for showing the UI for the user to enter their
-  /// email address and request a password reset.
-  ///
-  /// The screen consists of a [CustomButton] with text "اطلب" which is used to
-  /// request the password reset. The button is only shown if the keyboard is not
-  /// visible.
-  ///
-  /// The screen also consists of a [ForgetPasswordLayoutWidget] which is used to
-  /// show the UI for the user to enter their email address.
+class _ForgetPasswordScreenState extends ConsumerState<ForgetPasswordScreen> {
+  final formKey = GlobalKey<FormState>();
+  final TextEditingController textEditingController = TextEditingController();
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final formKey = GlobalKey<FormState>();
-    final TextEditingController textEditingController = TextEditingController();
+  Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       floatingActionButton: MediaQuery.of(context).viewInsets.bottom > 0

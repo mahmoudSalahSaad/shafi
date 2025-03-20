@@ -23,8 +23,13 @@ class UpdateProfileController extends _$UpdateProfileController {
     result.fold((l) {
       state = AsyncError(l.errorMessage.toString(), StackTrace.current);
       Alerts.showSnackBar("${l.errorMessage}");
-    }, (r) {
-      ref.read(userControllerProvider.notifier).saveUser(r);
+    }, (r) async {
+      print("fghjkpl===>${r.toJson()}");
+      Future.delayed(Duration.zero, () async {
+        await ref.read(userControllerProvider.notifier).saveUser(r);
+      });
+      await ref.read(userControllerProvider.notifier).getUser();
+
       state = AsyncData(null);
     });
   }

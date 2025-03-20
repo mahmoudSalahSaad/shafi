@@ -71,6 +71,8 @@
     "medicine_name" : "Medicine Name" ,
     "medicine_description" : "Medicine Description" , 
     "save":"Save" , 
-    "cancel" : "cancel"  
+    "cancel" : "cancel" , 
+    "delete_message" : "Are you sure you want to delete your account?" , 
+    "ssssss" : "ssssss"
 
 }

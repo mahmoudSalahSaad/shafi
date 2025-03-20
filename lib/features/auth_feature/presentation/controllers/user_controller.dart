@@ -9,8 +9,10 @@ import 'package:shafi/core/routing/navigation_services.dart';
 import 'package:shafi/core/routing/routes.dart';
 import 'package:shafi/core/services/local/cache_consumer.dart';
 import 'package:shafi/core/services/local/storage_keys.dart';
+import 'package:shafi/core/utils/alerts.dart';
 import 'package:shafi/features/auth_feature/data/models/user_model.dart';
 import 'package:shafi/features/auth_feature/domain/use_cases/refresh_use_case.dart';
+import 'package:shafi/features/auth_feature/domain/use_cases/remove_account_use_case.dart';
 import 'package:shafi/generated/l10n.dart';
 
 part 'user_controller.freezed.dart';
@@ -46,8 +48,11 @@ class UserController extends _$UserController {
 
   saveUser(UserModel user) async {
     AppPrefs appPrefs = getIt();
+
+    print("fghjkpl===>${user.toJson()}");
     await appPrefs.save(PrefKeys.user, json.encode(user.toJson()));
     state = AsyncData(state.requireValue.copyWith(user: user));
+    print("fghjkpl===>${state.requireValue.user}");
   }
 
   Future<UserModel?> getUser() async {
@@ -78,6 +83,23 @@ class UserController extends _$UserController {
     state = AsyncData(
       state.requireValue.copyWith(user: null),
     );
+  }
+
+  deleteUser() async {
+    RemoveAccountUseCase removeAccountUseCase = getIt();
+    Future.delayed(Duration.zero, () async {
+      state = AsyncLoading();
+    });
+    final result = await removeAccountUseCase.call(NoParameters());
+    result.fold((l) {
+      Alerts.showSnackBar(l.errorMessage ?? "", alertsType: AlertsType.error);
+      state = AsyncError(l, StackTrace.current);
+    }, (r) {
+      clearUser();
+      state = AsyncData(state.requireValue.copyWith(user: null));
+            NavigationService.pushNamedAndRemoveUntil(Routes.login);
+
+    });
   }
 
   refreshToken() async {

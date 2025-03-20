@@ -2,12 +2,11 @@
 
 import 'dart:io';
 
-
-import 'package:shafi/core/utils/constants.dart';
-import 'package:shafi/base_injection.dart';
 import 'package:dio/dio.dart';
 // ///package:my_rick_and_morty/
 import 'package:logger/logger.dart';
+import 'package:shafi/base_injection.dart';
+import 'package:shafi/core/utils/constants.dart';
 
 import '../../../../core/services/local/cache_consumer.dart';
 import '../../../../core/services/local/storage_keys.dart';
@@ -41,13 +40,13 @@ class DioClient {
     dio = dioC ?? Dio();
     dio!
       ..options.baseUrl = baseUrl
-      ..options.connectTimeout =  Constants.connectTimeout
-      ..options.receiveTimeout =   Constants.connectTimeout
+      ..options.connectTimeout = Constants.connectTimeout
+      ..options.receiveTimeout = Constants.connectTimeout
       ..httpClientAdapter
       ..options.headers = {
         'Accept': 'application/json; charset=UTF-8',
         'x-api-key': AppURL.kAPIKey,
-        'Content-Type': 'application/json; charset=UTF-8',
+        // 'Content-Type': 'application/json; charset=UTF-8',
         'Content-Language': 'en',
         // 'Authorization': 'Bearer $token',
       };
@@ -224,7 +223,8 @@ Future<FormData?> _buildFileData({
   if (filePath != null) {
     String fName = filePath.split('/').last;
     Map<String, dynamic> body = {
-      fileName ?? "image": await MultipartFile.fromFile(filePath, filename: fName),
+      fileName ?? "image":
+          await MultipartFile.fromFile(filePath, filename: fName),
     };
     data = FormData.fromMap(body);
     log('dio', 'files $body');
@@ -232,7 +232,8 @@ Future<FormData?> _buildFileData({
     for (String path in filePathList) {
       String fileName = path.split('/').last;
       data = FormData.fromMap({
-        filePathListName ?? "images[]": await MultipartFile.fromFile(path, filename: fileName),
+        filePathListName ?? "images[]":
+            await MultipartFile.fromFile(path, filename: fileName),
       });
     }
   } else if (filesPath != null) {
@@ -241,14 +242,20 @@ Future<FormData?> _buildFileData({
       if (file.path != null) {
         log('dio', 'file - name: ${file.name} - path: ${file.path}  ');
         String fileName = file.path!.split('/').last;
-        body.addAll({file.name: await MultipartFile.fromFile(file.path!, filename: fileName)});
+        body.addAll({
+          file.name:
+              await MultipartFile.fromFile(file.path!, filename: fileName)
+        });
       } else {
         for (var i = 0; i <= (file.paths?.length ?? 0) - 1; i++) {
           String path = file.paths![i];
           // for(String path in file.paths??[]){
           log('dio', 'files name: ${file.name}[$i] - path: $path  ');
           String fileName = path.split('/').last;
-          body.addAll({'${file.name}[$i]': await MultipartFile.fromFile(path, filename: fileName)});
+          body.addAll({
+            '${file.name}[$i]':
+                await MultipartFile.fromFile(path, filename: fileName)
+          });
         }
       }
     }

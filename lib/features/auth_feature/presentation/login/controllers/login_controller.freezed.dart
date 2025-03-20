@@ -17,6 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$LoginState {
   UserModel? get user => throw _privateConstructorUsedError;
+  bool? get isLoginWithBankIdLoading => throw _privateConstructorUsedError;
 
   /// Create a copy of LoginState
   /// with the given fields replaced by the non-null parameter values.
@@ -31,7 +32,7 @@ abstract class $LoginStateCopyWith<$Res> {
           LoginState value, $Res Function(LoginState) then) =
       _$LoginStateCopyWithImpl<$Res, LoginState>;
   @useResult
-  $Res call({UserModel? user});
+  $Res call({UserModel? user, bool? isLoginWithBankIdLoading});
 
   $UserModelCopyWith<$Res>? get user;
 }
@@ -52,12 +53,17 @@ class _$LoginStateCopyWithImpl<$Res, $Val extends LoginState>
   @override
   $Res call({
     Object? user = freezed,
+    Object? isLoginWithBankIdLoading = freezed,
   }) {
     return _then(_value.copyWith(
       user: freezed == user
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
               as UserModel?,
+      isLoginWithBankIdLoading: freezed == isLoginWithBankIdLoading
+          ? _value.isLoginWithBankIdLoading
+          : isLoginWithBankIdLoading // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ) as $Val);
   }
 
@@ -84,7 +90,7 @@ abstract class _$$LoginStateImplCopyWith<$Res>
       __$$LoginStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({UserModel? user});
+  $Res call({UserModel? user, bool? isLoginWithBankIdLoading});
 
   @override
   $UserModelCopyWith<$Res>? get user;
@@ -104,12 +110,17 @@ class __$$LoginStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? user = freezed,
+    Object? isLoginWithBankIdLoading = freezed,
   }) {
     return _then(_$LoginStateImpl(
       user: freezed == user
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
               as UserModel?,
+      isLoginWithBankIdLoading: freezed == isLoginWithBankIdLoading
+          ? _value.isLoginWithBankIdLoading
+          : isLoginWithBankIdLoading // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }
@@ -117,14 +128,17 @@ class __$$LoginStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$LoginStateImpl implements _LoginState {
-  _$LoginStateImpl({this.user});
+  _$LoginStateImpl({this.user, this.isLoginWithBankIdLoading = false});
 
   @override
   final UserModel? user;
+  @override
+  @JsonKey()
+  final bool? isLoginWithBankIdLoading;
 
   @override
   String toString() {
-    return 'LoginState(user: $user)';
+    return 'LoginState(user: $user, isLoginWithBankIdLoading: $isLoginWithBankIdLoading)';
   }
 
   @override
@@ -132,11 +146,14 @@ class _$LoginStateImpl implements _LoginState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LoginStateImpl &&
-            (identical(other.user, user) || other.user == user));
+            (identical(other.user, user) || other.user == user) &&
+            (identical(
+                    other.isLoginWithBankIdLoading, isLoginWithBankIdLoading) ||
+                other.isLoginWithBankIdLoading == isLoginWithBankIdLoading));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, user);
+  int get hashCode => Object.hash(runtimeType, user, isLoginWithBankIdLoading);
 
   /// Create a copy of LoginState
   /// with the given fields replaced by the non-null parameter values.
@@ -148,10 +165,14 @@ class _$LoginStateImpl implements _LoginState {
 }
 
 abstract class _LoginState implements LoginState {
-  factory _LoginState({final UserModel? user}) = _$LoginStateImpl;
+  factory _LoginState(
+      {final UserModel? user,
+      final bool? isLoginWithBankIdLoading}) = _$LoginStateImpl;
 
   @override
   UserModel? get user;
+  @override
+  bool? get isLoginWithBankIdLoading;
 
   /// Create a copy of LoginState
   /// with the given fields replaced by the non-null parameter values.
