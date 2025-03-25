@@ -7,4 +7,5 @@ class PrefKeys {
   static const String lang = "lang";
   static const String countryId = "cakljsndkjasndkjasd";
   static const String user = "MahmoudSalahSaadFayed" ; 
+  static const String country = "country";
 }

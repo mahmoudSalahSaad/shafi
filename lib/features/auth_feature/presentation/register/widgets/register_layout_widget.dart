@@ -138,7 +138,11 @@ class _RegisterLayoutWidgetState extends ConsumerState<RegisterLayoutWidget> {
                   isPassword: false,
                   controller: phone,
                   prefixIcon: Icon(Icons.phone_android_rounded),
-                  hint: "0011222333444",
+                  hint: "11222333444",
+                  phoneWidget: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Text("964+"),
+                  ),
                   inputFormats: [],
                   onValidate: (value) {
                     if (value != null) {
@@ -152,7 +156,6 @@ class _RegisterLayoutWidgetState extends ConsumerState<RegisterLayoutWidget> {
                     }
                   },
                   textInputType: TextInputType.phone,
-                  phoneWidget: SizedBox(),
                 ),
                 CustomTextField(
                   isPassword: true,

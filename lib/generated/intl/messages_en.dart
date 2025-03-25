@@ -47,7 +47,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "ar": MessageLookupByLibrary.simpleMessage("Arabic"),
         "ask_again": MessageLookupByLibrary.simpleMessage("Ask Again"),
         "ask_for_apointment":
-            MessageLookupByLibrary.simpleMessage("Ask For Appointment Now"),
+            MessageLookupByLibrary.simpleMessage("Book your appointment"),
         "available_times":
             MessageLookupByLibrary.simpleMessage("Available Times"),
         "book": MessageLookupByLibrary.simpleMessage("Book"),
@@ -77,6 +77,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "doctor_name": MessageLookupByLibrary.simpleMessage("Doctor Name"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
         "en": MessageLookupByLibrary.simpleMessage("English"),
+        "enter_ssn": MessageLookupByLibrary.simpleMessage("Enter SSN"),
         "es": MessageLookupByLibrary.simpleMessage("Spanish"),
         "field_required":
             MessageLookupByLibrary.simpleMessage("The field is required."),
@@ -130,10 +131,12 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Update Profile"),
         "valid_email":
             MessageLookupByLibrary.simpleMessage("please enter a valid email"),
+        "valid_ssn":
+            MessageLookupByLibrary.simpleMessage("Please enter a valid SSN"),
         "welcome_text": MessageLookupByLibrary.simpleMessage(
             "Welcome to our integrated medical application."),
         "yes": MessageLookupByLibrary.simpleMessage("Yes"),
         "your_last_apointments":
-            MessageLookupByLibrary.simpleMessage("Your Last Appointments")
+            MessageLookupByLibrary.simpleMessage("Your last appointments")
       };
 }

@@ -23,15 +23,16 @@ class NetworkClient {
     DioClient dioClient = getIt<DioClient>();
     late Response response;
     AppPrefs prefs = getIt();
-    String lang = await prefs.get(PrefKeys.lang, defaultValue: "ar");
+    String? lang = await prefs.get(PrefKeys.lang);
+    String countryId = await prefs.get(PrefKeys.countryId, defaultValue: "iq");
 
     Options options = Options(
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
-        'X-App-Locale': lang,
+        'X-App-Locale': lang ?? "ar",
         'User-Agents': 'android',
-        'X-Tenant': 'iq',
+        'X-Tenant': countryId,
       },
     );
     String? token = await prefs.getSecuredData(PrefKeys.token);

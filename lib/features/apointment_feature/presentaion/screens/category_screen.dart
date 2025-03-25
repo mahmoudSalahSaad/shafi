@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shafi/core/extensions/num_extensions.dart';
@@ -43,14 +44,8 @@ class CategoryScreen extends ConsumerWidget {
                       ref
                           .read(categoryControllerProvider.notifier)
                           .selectCategory(data.categories[index]);
-                      ref
-                          .read(categoryControllerProvider.notifier)
-                          .getSubCategory(
-                              category: ref
-                                  .read(categoryControllerProvider)
-                                  .requireValue
-                                  .selectedCategory!);
-                      NavigationService.push(Routes.subCategoryScreen);
+
+                      NavigationService.push(Routes.questionsScreen);
                     },
                     child: Container(
                       padding: EdgeInsets.all(10.r),
@@ -73,9 +68,20 @@ class CategoryScreen extends ConsumerWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          CustomText(
-                            "${data.categories[index].name}",
-                            size: 16.h,
+                          Row(
+                            children: [
+                              SizedBox(
+                                height: 50.h,
+                                width: 50.h,
+                                child: CachedNetworkImage(
+                                    imageUrl:
+                                        data.categories[index].image ?? ""),
+                              ),
+                              CustomText(
+                                "${data.categories[index].name}",
+                                size: 16.h,
+                              ),
+                            ],
                           ),
                           Icon(
                             Icons.arrow_forward_ios_rounded,

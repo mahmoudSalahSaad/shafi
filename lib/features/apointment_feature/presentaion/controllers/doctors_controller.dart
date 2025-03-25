@@ -1,8 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:shafi/base_injection.dart';
-import 'package:shafi/core/routing/navigation_services.dart';
-import 'package:shafi/core/routing/routes.dart';
 import 'package:shafi/features/apointment_feature/data/models/doctor_model.dart';
 import 'package:shafi/features/apointment_feature/domain/entity/apointment_times_entity.dart';
 import 'package:shafi/features/apointment_feature/domain/use_cases/get_doctors_use_case.dart';
@@ -58,7 +56,21 @@ class DoctorsController extends _$DoctorsController {
     ref
         .read(apointmentControllerProvider.notifier)
         .selectDoctor(doctor: doctor);
-    ref.read(apointmentControllerProvider.notifier).getApointmentTimes();
-    NavigationService.push(Routes.apointmentTimesScreen);
+
+    if (doctor.typesOfAppointment!.length == 1) {
+      selectedDoctorType(type: doctor.typesOfAppointment!.first);
+      ref
+          .read(apointmentControllerProvider.notifier)
+          .setApointtmentType(type: doctor.typesOfAppointment!.first);
+    }
+  }
+
+  selectedDoctorType({required String type}) {
+    state = AsyncData(
+      state.requireValue.copyWith(selectedDoctorType: type),
+    );
+    ref
+        .read(apointmentControllerProvider.notifier)
+        .setApointtmentType(type: type);
   }
 }

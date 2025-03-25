@@ -108,7 +108,11 @@ class _LoginLayoutState extends ConsumerState<LoginLayout> {
                     isPassword: false,
                     controller: phoneEc,
                     prefixIcon: Icon(Icons.phone_android_rounded),
-                    hint: "0011222333444",
+                    hint: "11222333444",
+                    phoneWidget: Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Text("964+"),
+                    ),
                     inputFormats: [],
                     onValidate: (value) {
                       if (value != null) {
@@ -177,28 +181,6 @@ class _LoginLayoutState extends ConsumerState<LoginLayout> {
                     radius: 10.r,
                     loading: ref.watch(loginControllerProvider).isLoading,
                   ),
-                  SizedBox(
-                    height: 16.h,
-                  ),
-                  CustomButton(
-                    height: 44.h,
-                    buttonText: "Login With Bank ID",
-                    onTap: () {
-                      Future.delayed(Duration.zero, () async {
-                        print("dasdsda");
-                        await ref
-                            .read(loginControllerProvider.notifier)
-                            .loginWithBankId();
-                      });
-                    },
-                    textColor: kAppBarColor,
-                    radius: 10.r,
-                    loading: ref
-                            .watch(loginControllerProvider)
-                            .requireValue
-                            .isLoginWithBankIdLoading ??
-                        false,
-                  )
                 ],
               ),
             ),

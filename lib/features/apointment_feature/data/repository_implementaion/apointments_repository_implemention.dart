@@ -41,6 +41,7 @@ class ApointmentsRepositoryImplemention extends ApointmentRepository {
     formData.fields.add(MapEntry("start_time", parameters.startTime));
     formData.fields.add(MapEntry("category_id", parameters.categoryId));
     formData.fields.add(MapEntry("subcategory_id", parameters.subCategoryId));
+    formData.fields.add(MapEntry("type", parameters.type.toString()));
 
     /// Add the answers to the form data
     for (int i = 0; i < parameters.answers.length; i++) {
@@ -85,6 +86,7 @@ class ApointmentsRepositoryImplemention extends ApointmentRepository {
     final Map<String, dynamic> data = {
       "day": parameters.apointmentDate,
       "doctor_id": parameters.doctorId,
+      "type": parameters.type
     };
 
     /// Make the network call
@@ -155,10 +157,10 @@ class ApointmentsRepositoryImplemention extends ApointmentRepository {
     NetworkCallType type = NetworkCallType.post;
 
     // The URL to call and the data to send with the request
-    Either<ErrorModel, BaseResponse> result =
-        await networkClient(url: "booking/available-doctors", data: {
-          "day" : parameters.apointmentDate
-        }, type: type);
+    Either<ErrorModel, BaseResponse> result = await networkClient(
+        url: "booking/available-doctors",
+        data: {"day": parameters.apointmentDate},
+        type: type);
 
     // Process the result of the network call
     return result.fold((l) => Left(l), (r) {
@@ -259,10 +261,10 @@ class ApointmentsRepositoryImplemention extends ApointmentRepository {
     NetworkCallType type = NetworkCallType.post;
 
     // Perform the network call with the specified URL and request data
-    Either<ErrorModel, BaseResponse> result =
-        await networkClient(url: "video-call/join", data: {
-          "appointment_id": parameters
-        }, type: type);
+    Either<ErrorModel, BaseResponse> result = await networkClient(
+        url: "video-call/join",
+        data: {"appointment_id": parameters},
+        type: type);
 
     // Process the result of the network call
     return result.fold((l) => Left(l), (r) {

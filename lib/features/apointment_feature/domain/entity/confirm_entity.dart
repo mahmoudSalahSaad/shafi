@@ -8,6 +8,7 @@ class ConfirmEntity extends Equatable {
   final String categoryId;
   final String subCategoryId;
   final String date;
+  final String? type;
 
   const ConfirmEntity(
       {required this.doctorId,
@@ -15,6 +16,7 @@ class ConfirmEntity extends Equatable {
       required this.categoryId,
       required this.date,
       required this.startTime,
+      required this.type,
       required this.subCategoryId});
   @override
   List<Object> get props => [

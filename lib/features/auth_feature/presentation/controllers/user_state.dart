@@ -4,5 +4,5 @@ part of 'user_controller.dart';
 abstract class UserState with _$UserState {
   factory UserState(
       {final UserModel? user,
-      @Default("ar") final String? locale}) = _UserState;
+      @Default("ar") final String? locale ,  final String? country}) = _UserState;
 }

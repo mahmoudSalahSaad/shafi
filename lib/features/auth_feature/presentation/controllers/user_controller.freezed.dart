@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$UserState {
   UserModel? get user => throw _privateConstructorUsedError;
   String? get locale => throw _privateConstructorUsedError;
+  String? get country => throw _privateConstructorUsedError;
 
   /// Create a copy of UserState
   /// with the given fields replaced by the non-null parameter values.
@@ -31,7 +32,7 @@ abstract class $UserStateCopyWith<$Res> {
   factory $UserStateCopyWith(UserState value, $Res Function(UserState) then) =
       _$UserStateCopyWithImpl<$Res, UserState>;
   @useResult
-  $Res call({UserModel? user, String? locale});
+  $Res call({UserModel? user, String? locale, String? country});
 
   $UserModelCopyWith<$Res>? get user;
 }
@@ -53,6 +54,7 @@ class _$UserStateCopyWithImpl<$Res, $Val extends UserState>
   $Res call({
     Object? user = freezed,
     Object? locale = freezed,
+    Object? country = freezed,
   }) {
     return _then(_value.copyWith(
       user: freezed == user
@@ -62,6 +64,10 @@ class _$UserStateCopyWithImpl<$Res, $Val extends UserState>
       locale: freezed == locale
           ? _value.locale
           : locale // ignore: cast_nullable_to_non_nullable
+              as String?,
+      country: freezed == country
+          ? _value.country
+          : country // ignore: cast_nullable_to_non_nullable
               as String?,
     ) as $Val);
   }
@@ -89,7 +95,7 @@ abstract class _$$UserStateImplCopyWith<$Res>
       __$$UserStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({UserModel? user, String? locale});
+  $Res call({UserModel? user, String? locale, String? country});
 
   @override
   $UserModelCopyWith<$Res>? get user;
@@ -110,6 +116,7 @@ class __$$UserStateImplCopyWithImpl<$Res>
   $Res call({
     Object? user = freezed,
     Object? locale = freezed,
+    Object? country = freezed,
   }) {
     return _then(_$UserStateImpl(
       user: freezed == user
@@ -120,6 +127,10 @@ class __$$UserStateImplCopyWithImpl<$Res>
           ? _value.locale
           : locale // ignore: cast_nullable_to_non_nullable
               as String?,
+      country: freezed == country
+          ? _value.country
+          : country // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -127,17 +138,19 @@ class __$$UserStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$UserStateImpl implements _UserState {
-  _$UserStateImpl({this.user, this.locale = "ar"});
+  _$UserStateImpl({this.user, this.locale = "ar", this.country});
 
   @override
   final UserModel? user;
   @override
   @JsonKey()
   final String? locale;
+  @override
+  final String? country;
 
   @override
   String toString() {
-    return 'UserState(user: $user, locale: $locale)';
+    return 'UserState(user: $user, locale: $locale, country: $country)';
   }
 
   @override
@@ -146,11 +159,12 @@ class _$UserStateImpl implements _UserState {
         (other.runtimeType == runtimeType &&
             other is _$UserStateImpl &&
             (identical(other.user, user) || other.user == user) &&
-            (identical(other.locale, locale) || other.locale == locale));
+            (identical(other.locale, locale) || other.locale == locale) &&
+            (identical(other.country, country) || other.country == country));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, user, locale);
+  int get hashCode => Object.hash(runtimeType, user, locale, country);
 
   /// Create a copy of UserState
   /// with the given fields replaced by the non-null parameter values.
@@ -162,13 +176,17 @@ class _$UserStateImpl implements _UserState {
 }
 
 abstract class _UserState implements UserState {
-  factory _UserState({final UserModel? user, final String? locale}) =
-      _$UserStateImpl;
+  factory _UserState(
+      {final UserModel? user,
+      final String? locale,
+      final String? country}) = _$UserStateImpl;
 
   @override
   UserModel? get user;
   @override
   String? get locale;
+  @override
+  String? get country;
 
   /// Create a copy of UserState
   /// with the given fields replaced by the non-null parameter values.

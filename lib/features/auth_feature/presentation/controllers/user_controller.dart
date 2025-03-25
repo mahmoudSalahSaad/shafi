@@ -97,8 +97,7 @@ class UserController extends _$UserController {
     }, (r) {
       clearUser();
       state = AsyncData(state.requireValue.copyWith(user: null));
-            NavigationService.pushNamedAndRemoveUntil(Routes.login);
-
+      NavigationService.pushNamedAndRemoveUntil(Routes.login);
     });
   }
 
@@ -129,5 +128,17 @@ class UserController extends _$UserController {
     AppPrefs appPrefs = getIt();
     String? locale = await appPrefs.get(PrefKeys.lang);
     return locale ?? 'ar';
+  }
+
+  setCountry(String country) async {
+    AppPrefs appPrefs = getIt();
+    await appPrefs.save(PrefKeys.countryId, country);
+    state = AsyncData(state.requireValue.copyWith(country: country));
+  }
+
+  getCountry() async {
+    AppPrefs appPrefs = getIt();
+    String? country = await appPrefs.get(PrefKeys.countryId);
+    return country ?? 'iq';
   }
 }

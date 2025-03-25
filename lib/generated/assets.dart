@@ -13,6 +13,8 @@ class Assets {
   static const String medicalPatternJpg = "assets/images/medical_pattern.jpg";
   static const String imagesGifPaySuccessfully =
       "assets/images/gif/pay_successfully.gif";
+  static const String swedenFlagPng = "assets/images/Flag_of_Sweden.png";
+  static const String iraqFlagPng = "assets/images/Flag-Iraq.png";
   static const String imagesGps = "assets/images/gps.png";
   static const String imagesIcCall = "assets/images/ic_call.png";
   static const String imagesIcFacebook = "assets/images/ic_facebook.png";

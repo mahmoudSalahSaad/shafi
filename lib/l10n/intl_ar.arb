@@ -74,6 +74,8 @@
         "medicine_description" : "وصف الدواء" , 
         "save":"حفظ" , 
         "cancel" : "إلغاء"   , 
-        "delete_message" : "هل تريد حذف حسابك؟" 
+        "delete_message" : "هل تريد حذف حسابك؟"  , 
+        "enter_ssn" : "ادخل الرقم القومي" , 
+        "valid_ssn" : "الرجاء ادخال رقم قومي صحيح"
       
     }

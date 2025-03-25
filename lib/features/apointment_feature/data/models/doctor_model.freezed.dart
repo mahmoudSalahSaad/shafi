@@ -23,6 +23,8 @@ mixin _$DoctorModel {
   int? get id => throw _privateConstructorUsedError;
   String? get name => throw _privateConstructorUsedError;
   String? get photo => throw _privateConstructorUsedError;
+  @JsonKey(name: "types_of_appointment")
+  List<String>? get typesOfAppointment => throw _privateConstructorUsedError;
 
   /// Serializes this DoctorModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -40,7 +42,11 @@ abstract class $DoctorModelCopyWith<$Res> {
           DoctorModel value, $Res Function(DoctorModel) then) =
       _$DoctorModelCopyWithImpl<$Res, DoctorModel>;
   @useResult
-  $Res call({int? id, String? name, String? photo});
+  $Res call(
+      {int? id,
+      String? name,
+      String? photo,
+      @JsonKey(name: "types_of_appointment") List<String>? typesOfAppointment});
 }
 
 /// @nodoc
@@ -61,6 +67,7 @@ class _$DoctorModelCopyWithImpl<$Res, $Val extends DoctorModel>
     Object? id = freezed,
     Object? name = freezed,
     Object? photo = freezed,
+    Object? typesOfAppointment = freezed,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -75,6 +82,10 @@ class _$DoctorModelCopyWithImpl<$Res, $Val extends DoctorModel>
           ? _value.photo
           : photo // ignore: cast_nullable_to_non_nullable
               as String?,
+      typesOfAppointment: freezed == typesOfAppointment
+          ? _value.typesOfAppointment
+          : typesOfAppointment // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
     ) as $Val);
   }
 }
@@ -87,7 +98,11 @@ abstract class _$$DoctorModelImplCopyWith<$Res>
       __$$DoctorModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int? id, String? name, String? photo});
+  $Res call(
+      {int? id,
+      String? name,
+      String? photo,
+      @JsonKey(name: "types_of_appointment") List<String>? typesOfAppointment});
 }
 
 /// @nodoc
@@ -106,6 +121,7 @@ class __$$DoctorModelImplCopyWithImpl<$Res>
     Object? id = freezed,
     Object? name = freezed,
     Object? photo = freezed,
+    Object? typesOfAppointment = freezed,
   }) {
     return _then(_$DoctorModelImpl(
       id: freezed == id
@@ -120,6 +136,10 @@ class __$$DoctorModelImplCopyWithImpl<$Res>
           ? _value.photo
           : photo // ignore: cast_nullable_to_non_nullable
               as String?,
+      typesOfAppointment: freezed == typesOfAppointment
+          ? _value._typesOfAppointment
+          : typesOfAppointment // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
     ));
   }
 }
@@ -127,7 +147,13 @@ class __$$DoctorModelImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$DoctorModelImpl implements _DoctorModel {
-  _$DoctorModelImpl({this.id, this.name, this.photo});
+  _$DoctorModelImpl(
+      {this.id,
+      this.name,
+      this.photo,
+      @JsonKey(name: "types_of_appointment")
+      final List<String>? typesOfAppointment = const []})
+      : _typesOfAppointment = typesOfAppointment;
 
   factory _$DoctorModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$DoctorModelImplFromJson(json);
@@ -138,10 +164,21 @@ class _$DoctorModelImpl implements _DoctorModel {
   final String? name;
   @override
   final String? photo;
+  final List<String>? _typesOfAppointment;
+  @override
+  @JsonKey(name: "types_of_appointment")
+  List<String>? get typesOfAppointment {
+    final value = _typesOfAppointment;
+    if (value == null) return null;
+    if (_typesOfAppointment is EqualUnmodifiableListView)
+      return _typesOfAppointment;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @override
   String toString() {
-    return 'DoctorModel(id: $id, name: $name, photo: $photo)';
+    return 'DoctorModel(id: $id, name: $name, photo: $photo, typesOfAppointment: $typesOfAppointment)';
   }
 
   @override
@@ -151,12 +188,15 @@ class _$DoctorModelImpl implements _DoctorModel {
             other is _$DoctorModelImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
-            (identical(other.photo, photo) || other.photo == photo));
+            (identical(other.photo, photo) || other.photo == photo) &&
+            const DeepCollectionEquality()
+                .equals(other._typesOfAppointment, _typesOfAppointment));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, photo);
+  int get hashCode => Object.hash(runtimeType, id, name, photo,
+      const DeepCollectionEquality().hash(_typesOfAppointment));
 
   /// Create a copy of DoctorModel
   /// with the given fields replaced by the non-null parameter values.
@@ -178,7 +218,9 @@ abstract class _DoctorModel implements DoctorModel {
   factory _DoctorModel(
       {final int? id,
       final String? name,
-      final String? photo}) = _$DoctorModelImpl;
+      final String? photo,
+      @JsonKey(name: "types_of_appointment")
+      final List<String>? typesOfAppointment}) = _$DoctorModelImpl;
 
   factory _DoctorModel.fromJson(Map<String, dynamic> json) =
       _$DoctorModelImpl.fromJson;
@@ -189,6 +231,9 @@ abstract class _DoctorModel implements DoctorModel {
   String? get name;
   @override
   String? get photo;
+  @override
+  @JsonKey(name: "types_of_appointment")
+  List<String>? get typesOfAppointment;
 
   /// Create a copy of DoctorModel
   /// with the given fields replaced by the non-null parameter values.

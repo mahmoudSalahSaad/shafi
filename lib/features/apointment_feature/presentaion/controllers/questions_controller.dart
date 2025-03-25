@@ -50,7 +50,7 @@ class QuestionsController extends _$QuestionsController {
         categoryId: ref
             .read(categoryControllerProvider)
             .requireValue
-            .selectedSubCategory!
+            .selectedCategory!
             .id!));
     result.fold((l) {
       state = AsyncError("${l.errorMessage}", StackTrace.current);

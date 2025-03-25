@@ -11,6 +11,7 @@ import 'package:shafi/features/apointment_feature/domain/entity/confirm_entity.d
 import 'package:shafi/features/apointment_feature/domain/use_cases/booking_submetion_use_case.dart';
 import 'package:shafi/features/apointment_feature/domain/use_cases/get_booking_avalibale_times_use_case.dart';
 import 'package:shafi/features/apointment_feature/presentaion/controllers/category_controller.dart';
+import 'package:shafi/features/apointment_feature/presentaion/controllers/doctors_controller.dart';
 import 'package:shafi/features/apointment_feature/presentaion/controllers/questions_controller.dart';
 import 'package:shafi/features/home_feature/data/models/apointment_model.dart';
 import 'package:shafi/features/home_feature/domain/use_cases/get_apointments_use_case.dart';
@@ -66,7 +67,11 @@ class ApointmentController extends _$ApointmentController {
     final result = await getBookingAvalibaleTimesUseCase.call(
       ApointmentTimesEntity(
           apointmentDate: state.requireValue.selectedDate.toString(),
-          doctorId: state.requireValue.selectedDoctor!.id!),
+          doctorId: state.requireValue.selectedDoctor!.id!,
+          type: ref
+              .read(doctorsControllerProvider)
+              .requireValue
+              .selectedDoctorType),
     );
 
     result.fold(
@@ -126,12 +131,8 @@ class ApointmentController extends _$ApointmentController {
           .toString(),
       date: state.requireValue.selectedDate.toString(),
       startTime: state.requireValue.selectedApointment!,
-      subCategoryId: ref
-          .read(categoryControllerProvider)
-          .requireValue
-          .selectedSubCategory!
-          .id
-          .toString(),
+      subCategoryId: "",
+      type: state.requireValue.type,
     ));
 
     result.fold((l) {
@@ -170,5 +171,9 @@ class ApointmentController extends _$ApointmentController {
         );
       },
     );
+  }
+
+  setApointtmentType({required String type}) {
+    state = AsyncData(state.requireValue.copyWith(type: type));
   }
 }

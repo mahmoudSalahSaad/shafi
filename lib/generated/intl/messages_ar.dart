@@ -71,6 +71,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "doctor_name": MessageLookupByLibrary.simpleMessage("اسم الطبيب"),
         "email": MessageLookupByLibrary.simpleMessage("البريد الإلكتروني"),
         "en": MessageLookupByLibrary.simpleMessage("الإنجليزية"),
+        "enter_ssn": MessageLookupByLibrary.simpleMessage("ادخل الرقم القومي"),
         "es": MessageLookupByLibrary.simpleMessage("الإسبانية"),
         "field_required": MessageLookupByLibrary.simpleMessage("الحقل مطلوب."),
         "first_name": MessageLookupByLibrary.simpleMessage("الاسم الأول"),
@@ -120,6 +121,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("تحديث الملف الشخصي"),
         "valid_email": MessageLookupByLibrary.simpleMessage(
             "يرجى ادخال بريد إلكتروني صحيح"),
+        "valid_ssn":
+            MessageLookupByLibrary.simpleMessage("الرجاء ادخال رقم قومي صحيح"),
         "welcome_text": MessageLookupByLibrary.simpleMessage(
             "مرحباً بك في تطبيقنا الطبي المتكامل."),
         "yes": MessageLookupByLibrary.simpleMessage("نعم"),

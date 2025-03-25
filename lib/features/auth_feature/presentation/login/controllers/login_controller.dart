@@ -68,7 +68,7 @@ class LoginController extends _$LoginController {
 
   // Other methods and properties...
 
-  loginWithBankId() async {
+  loginWithBankId(String ssn) async {
     state =
         AsyncData(state.requireValue.copyWith(isLoginWithBankIdLoading: true));
 
@@ -84,12 +84,12 @@ class LoginController extends _$LoginController {
       },
       contentType: "application/json",
     );
-
+    //199608061223
     try {
       Response response =
           await dioClient.post("https://stgapi.idkollen.se/v3/bankid-se/auth",
               data: {
-                "ssn": "199608061223",
+                "ssn": ssn,
                 "ipAddress": "8.8.8.8",
                 "pinRequired": true,
                 "intent": "Shafi need to verify your identity",

@@ -310,20 +310,20 @@ class S {
     );
   }
 
-  /// `Ask For Appointment Now`
+  /// `Book your appointment`
   String get ask_for_apointment {
     return Intl.message(
-      'Ask For Appointment Now',
+      'Book your appointment',
       name: 'ask_for_apointment',
       desc: '',
       args: [],
     );
   }
 
-  /// `Your Last Appointments`
+  /// `Your last appointments`
   String get your_last_apointments {
     return Intl.message(
-      'Your Last Appointments',
+      'Your last appointments',
       name: 'your_last_apointments',
       desc: '',
       args: [],
@@ -799,6 +799,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Enter SSN`
+  String get enter_ssn {
+    return Intl.message(
+      'Enter SSN',
+      name: 'enter_ssn',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter a valid SSN`
+  String get valid_ssn {
+    return Intl.message(
+      'Please enter a valid SSN',
+      name: 'valid_ssn',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
@@ -808,6 +828,7 @@ class AppLocalizationDelegate extends LocalizationsDelegate<S> {
     return const <Locale>[
       Locale.fromSubtags(languageCode: 'en'),
       Locale.fromSubtags(languageCode: 'ar'),
+      Locale.fromSubtags(languageCode: 'sv'),
     ];
   }
 

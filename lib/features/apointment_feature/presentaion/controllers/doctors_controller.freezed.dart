@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$DoctorsState {
   List<DoctorModel> get doctors => throw _privateConstructorUsedError;
   DoctorModel? get selectedDoctor => throw _privateConstructorUsedError;
+  String? get selectedDoctorType => throw _privateConstructorUsedError;
 
   /// Create a copy of DoctorsState
   /// with the given fields replaced by the non-null parameter values.
@@ -32,7 +33,10 @@ abstract class $DoctorsStateCopyWith<$Res> {
           DoctorsState value, $Res Function(DoctorsState) then) =
       _$DoctorsStateCopyWithImpl<$Res, DoctorsState>;
   @useResult
-  $Res call({List<DoctorModel> doctors, DoctorModel? selectedDoctor});
+  $Res call(
+      {List<DoctorModel> doctors,
+      DoctorModel? selectedDoctor,
+      String? selectedDoctorType});
 
   $DoctorModelCopyWith<$Res>? get selectedDoctor;
 }
@@ -54,6 +58,7 @@ class _$DoctorsStateCopyWithImpl<$Res, $Val extends DoctorsState>
   $Res call({
     Object? doctors = null,
     Object? selectedDoctor = freezed,
+    Object? selectedDoctorType = freezed,
   }) {
     return _then(_value.copyWith(
       doctors: null == doctors
@@ -64,6 +69,10 @@ class _$DoctorsStateCopyWithImpl<$Res, $Val extends DoctorsState>
           ? _value.selectedDoctor
           : selectedDoctor // ignore: cast_nullable_to_non_nullable
               as DoctorModel?,
+      selectedDoctorType: freezed == selectedDoctorType
+          ? _value.selectedDoctorType
+          : selectedDoctorType // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 
@@ -90,7 +99,10 @@ abstract class _$$DoctorsStateImplCopyWith<$Res>
       __$$DoctorsStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<DoctorModel> doctors, DoctorModel? selectedDoctor});
+  $Res call(
+      {List<DoctorModel> doctors,
+      DoctorModel? selectedDoctor,
+      String? selectedDoctorType});
 
   @override
   $DoctorModelCopyWith<$Res>? get selectedDoctor;
@@ -111,6 +123,7 @@ class __$$DoctorsStateImplCopyWithImpl<$Res>
   $Res call({
     Object? doctors = null,
     Object? selectedDoctor = freezed,
+    Object? selectedDoctorType = freezed,
   }) {
     return _then(_$DoctorsStateImpl(
       doctors: null == doctors
@@ -121,6 +134,10 @@ class __$$DoctorsStateImplCopyWithImpl<$Res>
           ? _value.selectedDoctor
           : selectedDoctor // ignore: cast_nullable_to_non_nullable
               as DoctorModel?,
+      selectedDoctorType: freezed == selectedDoctorType
+          ? _value.selectedDoctorType
+          : selectedDoctorType // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -129,7 +146,9 @@ class __$$DoctorsStateImplCopyWithImpl<$Res>
 
 class _$DoctorsStateImpl implements _DoctorsState {
   _$DoctorsStateImpl(
-      {final List<DoctorModel> doctors = const [], this.selectedDoctor})
+      {final List<DoctorModel> doctors = const [],
+      this.selectedDoctor,
+      this.selectedDoctorType})
       : _doctors = doctors;
 
   final List<DoctorModel> _doctors;
@@ -143,10 +162,12 @@ class _$DoctorsStateImpl implements _DoctorsState {
 
   @override
   final DoctorModel? selectedDoctor;
+  @override
+  final String? selectedDoctorType;
 
   @override
   String toString() {
-    return 'DoctorsState(doctors: $doctors, selectedDoctor: $selectedDoctor)';
+    return 'DoctorsState(doctors: $doctors, selectedDoctor: $selectedDoctor, selectedDoctorType: $selectedDoctorType)';
   }
 
   @override
@@ -156,12 +177,17 @@ class _$DoctorsStateImpl implements _DoctorsState {
             other is _$DoctorsStateImpl &&
             const DeepCollectionEquality().equals(other._doctors, _doctors) &&
             (identical(other.selectedDoctor, selectedDoctor) ||
-                other.selectedDoctor == selectedDoctor));
+                other.selectedDoctor == selectedDoctor) &&
+            (identical(other.selectedDoctorType, selectedDoctorType) ||
+                other.selectedDoctorType == selectedDoctorType));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType,
-      const DeepCollectionEquality().hash(_doctors), selectedDoctor);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_doctors),
+      selectedDoctor,
+      selectedDoctorType);
 
   /// Create a copy of DoctorsState
   /// with the given fields replaced by the non-null parameter values.
@@ -175,12 +201,15 @@ class _$DoctorsStateImpl implements _DoctorsState {
 abstract class _DoctorsState implements DoctorsState {
   factory _DoctorsState(
       {final List<DoctorModel> doctors,
-      final DoctorModel? selectedDoctor}) = _$DoctorsStateImpl;
+      final DoctorModel? selectedDoctor,
+      final String? selectedDoctorType}) = _$DoctorsStateImpl;
 
   @override
   List<DoctorModel> get doctors;
   @override
   DoctorModel? get selectedDoctor;
+  @override
+  String? get selectedDoctorType;
 
   /// Create a copy of DoctorsState
   /// with the given fields replaced by the non-null parameter values.

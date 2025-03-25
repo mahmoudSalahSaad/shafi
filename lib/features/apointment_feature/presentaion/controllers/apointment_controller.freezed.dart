@@ -21,6 +21,7 @@ mixin _$ApointmentState {
   String? get selectedDate => throw _privateConstructorUsedError;
   DoctorModel? get selectedDoctor => throw _privateConstructorUsedError;
   List<ApointmentModel> get myApointments => throw _privateConstructorUsedError;
+  String? get type => throw _privateConstructorUsedError;
 
   /// Create a copy of ApointmentState
   /// with the given fields replaced by the non-null parameter values.
@@ -40,7 +41,8 @@ abstract class $ApointmentStateCopyWith<$Res> {
       String? selectedApointment,
       String? selectedDate,
       DoctorModel? selectedDoctor,
-      List<ApointmentModel> myApointments});
+      List<ApointmentModel> myApointments,
+      String? type});
 
   $DoctorModelCopyWith<$Res>? get selectedDoctor;
 }
@@ -65,6 +67,7 @@ class _$ApointmentStateCopyWithImpl<$Res, $Val extends ApointmentState>
     Object? selectedDate = freezed,
     Object? selectedDoctor = freezed,
     Object? myApointments = null,
+    Object? type = freezed,
   }) {
     return _then(_value.copyWith(
       apointmentTimes: null == apointmentTimes
@@ -87,6 +90,10 @@ class _$ApointmentStateCopyWithImpl<$Res, $Val extends ApointmentState>
           ? _value.myApointments
           : myApointments // ignore: cast_nullable_to_non_nullable
               as List<ApointmentModel>,
+      type: freezed == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 
@@ -118,7 +125,8 @@ abstract class _$$ApointmentStateImplCopyWith<$Res>
       String? selectedApointment,
       String? selectedDate,
       DoctorModel? selectedDoctor,
-      List<ApointmentModel> myApointments});
+      List<ApointmentModel> myApointments,
+      String? type});
 
   @override
   $DoctorModelCopyWith<$Res>? get selectedDoctor;
@@ -142,6 +150,7 @@ class __$$ApointmentStateImplCopyWithImpl<$Res>
     Object? selectedDate = freezed,
     Object? selectedDoctor = freezed,
     Object? myApointments = null,
+    Object? type = freezed,
   }) {
     return _then(_$ApointmentStateImpl(
       apointmentTimes: null == apointmentTimes
@@ -164,6 +173,10 @@ class __$$ApointmentStateImplCopyWithImpl<$Res>
           ? _value._myApointments
           : myApointments // ignore: cast_nullable_to_non_nullable
               as List<ApointmentModel>,
+      type: freezed == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -176,7 +189,8 @@ class _$ApointmentStateImpl implements _ApointmentState {
       this.selectedApointment,
       this.selectedDate,
       this.selectedDoctor,
-      final List<ApointmentModel> myApointments = const []})
+      final List<ApointmentModel> myApointments = const [],
+      this.type})
       : _apointmentTimes = apointmentTimes,
         _myApointments = myApointments;
 
@@ -205,8 +219,11 @@ class _$ApointmentStateImpl implements _ApointmentState {
   }
 
   @override
+  final String? type;
+
+  @override
   String toString() {
-    return 'ApointmentState(apointmentTimes: $apointmentTimes, selectedApointment: $selectedApointment, selectedDate: $selectedDate, selectedDoctor: $selectedDoctor, myApointments: $myApointments)';
+    return 'ApointmentState(apointmentTimes: $apointmentTimes, selectedApointment: $selectedApointment, selectedDate: $selectedDate, selectedDoctor: $selectedDoctor, myApointments: $myApointments, type: $type)';
   }
 
   @override
@@ -223,7 +240,8 @@ class _$ApointmentStateImpl implements _ApointmentState {
             (identical(other.selectedDoctor, selectedDoctor) ||
                 other.selectedDoctor == selectedDoctor) &&
             const DeepCollectionEquality()
-                .equals(other._myApointments, _myApointments));
+                .equals(other._myApointments, _myApointments) &&
+            (identical(other.type, type) || other.type == type));
   }
 
   @override
@@ -233,7 +251,8 @@ class _$ApointmentStateImpl implements _ApointmentState {
       selectedApointment,
       selectedDate,
       selectedDoctor,
-      const DeepCollectionEquality().hash(_myApointments));
+      const DeepCollectionEquality().hash(_myApointments),
+      type);
 
   /// Create a copy of ApointmentState
   /// with the given fields replaced by the non-null parameter values.
@@ -251,7 +270,8 @@ abstract class _ApointmentState implements ApointmentState {
       final String? selectedApointment,
       final String? selectedDate,
       final DoctorModel? selectedDoctor,
-      final List<ApointmentModel> myApointments}) = _$ApointmentStateImpl;
+      final List<ApointmentModel> myApointments,
+      final String? type}) = _$ApointmentStateImpl;
 
   @override
   List<dynamic> get apointmentTimes;
@@ -263,6 +283,8 @@ abstract class _ApointmentState implements ApointmentState {
   DoctorModel? get selectedDoctor;
   @override
   List<ApointmentModel> get myApointments;
+  @override
+  String? get type;
 
   /// Create a copy of ApointmentState
   /// with the given fields replaced by the non-null parameter values.

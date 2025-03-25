@@ -11,6 +11,10 @@ _$DoctorModelImpl _$$DoctorModelImplFromJson(Map<String, dynamic> json) =>
       id: (json['id'] as num?)?.toInt(),
       name: json['name'] as String?,
       photo: json['photo'] as String?,
+      typesOfAppointment: (json['types_of_appointment'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList() ??
+          const [],
     );
 
 Map<String, dynamic> _$$DoctorModelImplToJson(_$DoctorModelImpl instance) =>
@@ -18,4 +22,5 @@ Map<String, dynamic> _$$DoctorModelImplToJson(_$DoctorModelImpl instance) =>
       'id': instance.id,
       'name': instance.name,
       'photo': instance.photo,
+      'types_of_appointment': instance.typesOfAppointment,
     };

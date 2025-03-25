@@ -22,6 +22,7 @@ CategoryModel _$CategoryModelFromJson(Map<String, dynamic> json) {
 mixin _$CategoryModel {
   int? get id => throw _privateConstructorUsedError;
   String? get name => throw _privateConstructorUsedError;
+  String? get image => throw _privateConstructorUsedError;
 
   /// Serializes this CategoryModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -39,7 +40,7 @@ abstract class $CategoryModelCopyWith<$Res> {
           CategoryModel value, $Res Function(CategoryModel) then) =
       _$CategoryModelCopyWithImpl<$Res, CategoryModel>;
   @useResult
-  $Res call({int? id, String? name});
+  $Res call({int? id, String? name, String? image});
 }
 
 /// @nodoc
@@ -59,6 +60,7 @@ class _$CategoryModelCopyWithImpl<$Res, $Val extends CategoryModel>
   $Res call({
     Object? id = freezed,
     Object? name = freezed,
+    Object? image = freezed,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -68,6 +70,10 @@ class _$CategoryModelCopyWithImpl<$Res, $Val extends CategoryModel>
       name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      image: freezed == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
               as String?,
     ) as $Val);
   }
@@ -81,7 +87,7 @@ abstract class _$$CategoryModelImplCopyWith<$Res>
       __$$CategoryModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int? id, String? name});
+  $Res call({int? id, String? name, String? image});
 }
 
 /// @nodoc
@@ -99,6 +105,7 @@ class __$$CategoryModelImplCopyWithImpl<$Res>
   $Res call({
     Object? id = freezed,
     Object? name = freezed,
+    Object? image = freezed,
   }) {
     return _then(_$CategoryModelImpl(
       id: freezed == id
@@ -109,6 +116,10 @@ class __$$CategoryModelImplCopyWithImpl<$Res>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
+      image: freezed == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -116,7 +127,7 @@ class __$$CategoryModelImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$CategoryModelImpl implements _CategoryModel {
-  _$CategoryModelImpl({this.id, this.name});
+  _$CategoryModelImpl({this.id, this.name, this.image});
 
   factory _$CategoryModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$CategoryModelImplFromJson(json);
@@ -125,10 +136,12 @@ class _$CategoryModelImpl implements _CategoryModel {
   final int? id;
   @override
   final String? name;
+  @override
+  final String? image;
 
   @override
   String toString() {
-    return 'CategoryModel(id: $id, name: $name)';
+    return 'CategoryModel(id: $id, name: $name, image: $image)';
   }
 
   @override
@@ -137,12 +150,13 @@ class _$CategoryModelImpl implements _CategoryModel {
         (other.runtimeType == runtimeType &&
             other is _$CategoryModelImpl &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.name, name) || other.name == name));
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.image, image) || other.image == image));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, id, name);
+  int get hashCode => Object.hash(runtimeType, id, name, image);
 
   /// Create a copy of CategoryModel
   /// with the given fields replaced by the non-null parameter values.
@@ -161,8 +175,10 @@ class _$CategoryModelImpl implements _CategoryModel {
 }
 
 abstract class _CategoryModel implements CategoryModel {
-  factory _CategoryModel({final int? id, final String? name}) =
-      _$CategoryModelImpl;
+  factory _CategoryModel(
+      {final int? id,
+      final String? name,
+      final String? image}) = _$CategoryModelImpl;
 
   factory _CategoryModel.fromJson(Map<String, dynamic> json) =
       _$CategoryModelImpl.fromJson;
@@ -171,6 +187,8 @@ abstract class _CategoryModel implements CategoryModel {
   int? get id;
   @override
   String? get name;
+  @override
+  String? get image;
 
   /// Create a copy of CategoryModel
   /// with the given fields replaced by the non-null parameter values.

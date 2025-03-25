@@ -32,4 +32,5 @@ void main() async {
 final supportedLocales = <Locale>[
   const Locale('ar'),
   const Locale('en'),
+  const Locale('sv'),
 ];

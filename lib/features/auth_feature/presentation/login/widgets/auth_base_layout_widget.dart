@@ -71,7 +71,7 @@ class AuthBaseLayout extends ConsumerWidget {
           context: context,
           builder: (_) {
             return SizedBox(
-              height: 154,
+              height: 210,
               width: deviceWidth,
               child: Padding(
                 padding: EdgeInsets.all(16.h),
@@ -145,6 +145,39 @@ class AuthBaseLayout extends ConsumerWidget {
                           ],
                         ),
                       ),
+                      InkWell(
+                        onTap: () async {
+                          ref
+                              .read(userControllerProvider.notifier)
+                              .setLocale("sv");
+                          NavigationService.goBack();
+                          // NavigationService.push(Routes.init);
+                        },
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            CustomText(
+                              "Svenska",
+                              size: 16.h,
+                            ),
+                            Radio(
+                                value: 2,
+                                groupValue: ref
+                                            .watch(userControllerProvider)
+                                            .requireValue
+                                            .locale ==
+                                        "sv"
+                                    ? 2
+                                    : 0,
+                                onChanged: (val) async {
+                                  ref
+                                      .read(userControllerProvider.notifier)
+                                      .setLocale("sv");
+                                  NavigationService.goBack();
+                                })
+                          ],
+                        ),
+                      )
                     ]),
               ),
             );

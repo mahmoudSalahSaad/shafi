@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shafi/core/extensions/num_extensions.dart';
 import 'package:shafi/core/resources/color.dart';
+import 'package:shafi/features/auth_feature/presentation/controllers/user_controller.dart';
 import 'package:shafi/widgets/tap_effect.dart';
 
-class CustomTextField extends StatefulWidget {
+class CustomTextField extends ConsumerStatefulWidget {
   final double? width;
   final String? hint;
   final TextEditingController? controller;
@@ -42,10 +44,10 @@ class CustomTextField extends StatefulWidget {
       this.initalValue});
 
   @override
-  State<CustomTextField> createState() => _CustomTextFieldState();
+  ConsumerState<CustomTextField> createState() => _CustomTextFieldState();
 }
 
-class _CustomTextFieldState extends State<CustomTextField> {
+class _CustomTextFieldState extends ConsumerState<CustomTextField> {
   bool secure = true;
   @override
   Widget build(BuildContext context) {
@@ -61,8 +63,11 @@ class _CustomTextFieldState extends State<CustomTextField> {
       child: TextFormField(
         initialValue: widget.initalValue,
         maxLines: widget.maxLines ?? 1,
+        textAlign: TextAlign.center,
         textDirection:
-            widget.phoneWidget != null ? TextDirection.ltr : TextDirection.rtl,
+            ref.watch(userControllerProvider).requireValue.locale == "en"
+                ? TextDirection.ltr
+                : TextDirection.ltr,
         inputFormatters: widget.inputFormats,
         maxLength: widget.maxLength,
         keyboardType: widget.textInputType,

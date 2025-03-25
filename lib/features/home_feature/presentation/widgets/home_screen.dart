@@ -486,7 +486,7 @@ class _ApointmentCardWidgetState extends State<ApointmentCardWidget> {
                     height: 10.h,
                   ),
                   CustomText(
-                    "${widget.apointment.sub_category?.name}",
+                    "${widget.apointment.category?.name}",
                     size: 16.h,
                     pv: 0,
                   ),

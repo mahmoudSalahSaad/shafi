@@ -25,8 +25,8 @@
     "book" : "Book" , 
     "my_health" : "My Health" ,
     "personal" : "Personal" , 
-    "ask_for_apointment" : "Ask For Appointment Now" ,
-    "your_last_apointments" : "Your Last Appointments" , 
+    "ask_for_apointment" : "Book your appointment" ,
+    "your_last_apointments" : "Your last appointments" , 
     "update_profile" : "Update Profile" , 
     "my_apointments" : "My Appointments" , 
     "my_medicines" : "My Medicines" ,
@@ -73,6 +73,8 @@
     "save":"Save" , 
     "cancel" : "cancel" , 
     "delete_message" : "Are you sure you want to delete your account?" , 
-    "ssssss" : "ssssss"
+    "ssssss" : "ssssss" , 
+    "enter_ssn" : "Enter SSN" , 
+    "valid_ssn" : "Please enter a valid SSN" 
 
 }
