@@ -23,8 +23,10 @@ class NetworkClient {
     DioClient dioClient = getIt<DioClient>();
     late Response response;
     AppPrefs prefs = getIt();
-    String? lang = await prefs.get(PrefKeys.lang);
+    String? lang = await prefs.getSecuredData(PrefKeys.lang);
     String countryId = await prefs.get(PrefKeys.countryId, defaultValue: "iq");
+
+    print('Locale $lang');
 
     Options options = Options(
       headers: {

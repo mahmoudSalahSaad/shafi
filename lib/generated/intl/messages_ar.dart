@@ -117,6 +117,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "send": MessageLookupByLibrary.simpleMessage("إرسال"),
         "shafi": MessageLookupByLibrary.simpleMessage("شافي"),
         "sub_category": MessageLookupByLibrary.simpleMessage("الفرعية"),
+        "treatment_plan":
+            MessageLookupByLibrary.simpleMessage("البرنامج العلاجي"),
         "update_profile":
             MessageLookupByLibrary.simpleMessage("تحديث الملف الشخصي"),
         "valid_email": MessageLookupByLibrary.simpleMessage(

@@ -98,9 +98,11 @@ class DoctorCardWidget extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return GestureDetector(
       onTap: () {
-        ref
-            .read(doctorsControllerProvider.notifier)
-            .selectdoctor(doctor: doctorModel);
+        if (doctorModel.typesOfAppointment!.length == 1) {
+          ref
+              .read(doctorsControllerProvider.notifier)
+              .selectdoctor(doctor: doctorModel);
+        }
       },
       child: Container(
         padding: EdgeInsets.all(10.h),
@@ -161,11 +163,6 @@ class DoctorCardWidget extends ConsumerWidget {
                           size: 14.h,
                           color: Colors.black,
                         ),
-                        CustomText(
-                          "عام",
-                          size: 14.h,
-                          color: Colors.black,
-                        )
                       ],
                     )
                   ],
@@ -194,6 +191,9 @@ class DoctorCardWidget extends ConsumerWidget {
                                   .selectedDoctorType ??
                               "none",
                           onChanged: (value) {
+                            ref
+                                .read(doctorsControllerProvider.notifier)
+                                .selectdoctor(doctor: doctorModel);
                             ref
                                 .read(doctorsControllerProvider.notifier)
                                 .selectedDoctorType(type: value.toString());

@@ -12,14 +12,22 @@ import 'core/resources/theme/theme.dart';
 import 'core/routing/navigation_services.dart';
 import 'core/routing/route_generator.dart';
 
-class MyApp extends StatefulWidget {
+class MyApp extends ConsumerStatefulWidget {
   const MyApp({super.key});
 
   @override
-  State<MyApp> createState() => _MyAppState();
+  ConsumerState<MyApp> createState() => _MyAppState();
 }
 
-class _MyAppState extends State<MyApp> {
+class _MyAppState extends ConsumerState<MyApp> {
+  @override
+  void initState() {
+    super.initState();
+    Future.delayed(Duration.zero, () {
+      ref.watch(userControllerProvider);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     appContext = context;
@@ -27,7 +35,8 @@ class _MyAppState extends State<MyApp> {
         const SystemUiOverlayStyle(statusBarColor: primaryColorDark));
     return Consumer(
       builder: (BuildContext context, WidgetRef ref, Widget? child) {
-        print(ref.watch(userControllerProvider).requireValue.locale);
+        final state = ref.watch(userControllerProvider).requireValue;
+
         return MaterialApp(
           theme: lightTheme,
           color: Theme.of(context).scaffoldBackgroundColor,
@@ -43,10 +52,9 @@ class _MyAppState extends State<MyApp> {
             GlobalWidgetsLocalizations.delegate,
             GlobalCupertinoLocalizations.delegate,
           ],
-          locale: Locale(
-              ref.watch(userControllerProvider).requireValue.locale ?? "ar"),
+          locale: Locale(state.locale ?? "en"),
           supportedLocales: S.delegate.supportedLocales,
-          title: 'Shafi Demo',
+          title: 'Shafi',
           debugShowCheckedModeBanner: false,
           navigatorKey: NavigationService.navigationKey,
           initialRoute: Routes.init,

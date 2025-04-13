@@ -108,11 +108,9 @@ class _LoginLayoutState extends ConsumerState<LoginLayout> {
                     isPassword: false,
                     controller: phoneEc,
                     prefixIcon: Icon(Icons.phone_android_rounded),
-                    hint: "11222333444",
-                    phoneWidget: Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: Text("964+"),
-                    ),
+                    hint: "96411222333444+",
+                    
+                    phoneWidget: SizedBox(),
                     inputFormats: [],
                     onValidate: (value) {
                       if (value != null) {

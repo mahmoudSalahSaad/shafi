@@ -69,8 +69,10 @@ class LoginController extends _$LoginController {
   // Other methods and properties...
 
   loginWithBankId(String ssn) async {
-    state =
-        AsyncData(state.requireValue.copyWith(isLoginWithBankIdLoading: true));
+    Future.delayed(Duration.zero, () {
+      state = AsyncData(
+          state.requireValue.copyWith(isLoginWithBankIdLoading: true));
+    });
 
     Dio dioClient = Dio();
 
@@ -87,7 +89,7 @@ class LoginController extends _$LoginController {
     //199608061223
     try {
       Response response =
-          await dioClient.post("https://stgapi.idkollen.se/v3/bankid-se/auth",
+          await dioClient.post("https://api.idkollen.se/v3/bankid-se/auth",
               data: {
                 "ssn": ssn,
                 "ipAddress": "8.8.8.8",
@@ -140,7 +142,7 @@ class LoginController extends _$LoginController {
 
     try {
       Response response = await dioClient.get(
-          "https://stgapi.idkollen.se/v3/bankid-se/auth/$id",
+          "https://api.idkollen.se/v3/bankid-se/auth/$id",
           options: options);
       print("response12 ${response.data}");
 

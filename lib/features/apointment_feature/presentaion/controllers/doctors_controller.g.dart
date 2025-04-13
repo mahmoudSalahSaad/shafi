@@ -6,7 +6,7 @@ part of 'doctors_controller.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$doctorsControllerHash() => r'9f2feeb592b6d8267d9184d0e323d62257510713';
+String _$doctorsControllerHash() => r'93f3a2f15f27830cb8a2a3d0b30e318a095f608b';
 
 /// See also [DoctorsController].
 @ProviderFor(DoctorsController)

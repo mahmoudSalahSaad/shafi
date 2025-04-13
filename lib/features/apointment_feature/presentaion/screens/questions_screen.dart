@@ -354,7 +354,7 @@ class _QuestionTypeTextWidgetState
           ),
           CustomTextField(
             isPassword: false,
-            hint: "اضف اجابة",
+            hint: "",
             maxLines: 5,
             onChange: (val) {
               ref.read(questionsControllerProvider.notifier).addAnswer(

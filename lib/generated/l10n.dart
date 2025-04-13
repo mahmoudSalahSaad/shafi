@@ -819,6 +819,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Treatment Plan`
+  String get treatment_plan {
+    return Intl.message(
+      'Treatment Plan',
+      name: 'treatment_plan',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

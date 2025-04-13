@@ -7,7 +7,7 @@ part of 'apointment_controller.dart';
 // **************************************************************************
 
 String _$apointmentControllerHash() =>
-    r'46457203b161f4f0b8565dea4649d5bbcce1b853';
+    r'46da85633f23969a5bbff4d0aa0904a870a2b2cb';
 
 /// See also [ApointmentController].
 @ProviderFor(ApointmentController)

@@ -33,180 +33,182 @@ class ApointmentSummaryScreen extends ConsumerWidget {
         ),
         elevation: 0,
       ),
-      body: Padding(
-        padding: EdgeInsets.all(16.r),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            CustomText(
-              S.of(context).confirm_appointment,
-              size: 18.h,
-              bold: true,
-            ),
-            SizedBox(height: 16.h),
-            SizedBox(
-              width: double.infinity,
-              child: Card(
-                elevation: 4,
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.all(16.r),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              CustomText(
+                S.of(context).confirm_appointment,
+                size: 18.h,
+                bold: true,
+              ),
+              SizedBox(height: 16.h),
+              SizedBox(
+                width: double.infinity,
+                child: Card(
+                  elevation: 4,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.r),
+                  ),
+                  child: Padding(
+                    padding: EdgeInsets.all(16.r),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.max,
+                      children: List.generate(
+                          ref
+                              .read(questionsControllerProvider)
+                              .requireValue
+                              .answers
+                              .length, (index) {
+                        return Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            CustomText(
+                              "${ref.read(questionsControllerProvider).requireValue.answers[index].title}",
+                              size: 16.h,
+                              align: TextAlign.start,
+                              bold: true,
+                              color: primaryColorDark,
+                            ),
+                            SizedBox(
+                              height: 8,
+                            ),
+                            CustomText(
+                              "${ref.read(questionsControllerProvider).requireValue.answers[index].answer}",
+                              size: 14.h,
+                              align: TextAlign.start,
+                              bold: true,
+                            ),
+                            index !=
+                                    ref
+                                            .read(questionsControllerProvider)
+                                            .requireValue
+                                            .answers
+                                            .length -
+                                        1
+                                ? Divider(
+                                    height: 10.h,
+                                  )
+                                : SizedBox.shrink()
+                          ],
+                        );
+                      }),
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(height: 16.h),
+              Card(
+                elevation: 4.0,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10.r),
                 ),
                 child: Padding(
                   padding: EdgeInsets.all(16.r),
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisSize: MainAxisSize.max,
-                    children: List.generate(
-                        ref
-                            .read(questionsControllerProvider)
-                            .requireValue
-                            .answers
-                            .length, (index) {
-                      return Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      CustomText(
+                        S.of(context).apointment_details,
+                        size: 14.h,
+                        bold: true,
+                      ),
+                      SizedBox(height: 8.h),
+                      Row(
                         children: [
                           CustomText(
-                            "${ref.read(questionsControllerProvider).requireValue.answers[index].title}",
-                            size: 16.h,
-                            align: TextAlign.start,
-                            bold: true,
-                            color: primaryColorDark,
+                            S.of(context).patient_name,
+                            size: 12.h,
                           ),
-                          SizedBox(
-                            height: 8,
-                          ),
+                          Spacer(),
                           CustomText(
-                            "${ref.read(questionsControllerProvider).requireValue.answers[index].answer}",
-                            size: 14.h,
-                            align: TextAlign.start,
-                            bold: true,
+                            ref
+                                .read(userControllerProvider)
+                                .requireValue
+                                .user!
+                                .patient!
+                                .name!,
+                            size: 12.h,
                           ),
-                          index !=
-                                  ref
-                                          .read(questionsControllerProvider)
-                                          .requireValue
-                                          .answers
-                                          .length -
-                                      1
-                              ? Divider(
-                                  height: 10.h,
-                                )
-                              : SizedBox.shrink()
                         ],
-                      );
-                    }),
+                      ),
+                      SizedBox(height: 8.h),
+                      Row(
+                        children: [
+                          CustomText(
+                            S.of(context).apointment_date,
+                            size: 12.h,
+                          ),
+                          Spacer(),
+                          CustomText(
+                            ref
+                                    .read(apointmentControllerProvider)
+                                    .requireValue
+                                    .selectedDate ??
+                                '',
+                            size: 12.h,
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 8.h),
+                      Row(
+                        children: [
+                          CustomText(
+                            S.of(context).apointment_time,
+                            size: 12.h,
+                          ),
+                          Spacer(),
+                          CustomText(
+                            ref
+                                    .read(apointmentControllerProvider)
+                                    .requireValue
+                                    .selectedApointment ??
+                                '',
+                            size: 12.h,
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 8.h),
+                      Row(
+                        children: [
+                          CustomText(
+                            S.of(context).doctor_name,
+                            size: 12.h,
+                          ),
+                          Spacer(),
+                          CustomText(
+                            ref
+                                    .read(apointmentControllerProvider)
+                                    .requireValue
+                                    .selectedDoctor!
+                                    .name ??
+                                '',
+                            size: 12.h,
+                          ),
+                        ],
+                      )
+                    ],
                   ),
                 ),
               ),
-            ),
-            SizedBox(height: 16.h),
-            Card(
-              elevation: 4.0,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10.r),
+              SizedBox(height: 16.h),
+              CustomButton(
+                buttonText: S.of(context).send,
+                textColor: Colors.white,
+                backgroundColor: primaryColorDark,
+                radius: 10.r,
+                loading: ref.read(apointmentControllerProvider).isLoading,
+                onTap: () async {
+                  await ref
+                      .read(apointmentControllerProvider.notifier)
+                      .bookSubmition();
+                },
               ),
-              child: Padding(
-                padding: EdgeInsets.all(16.r),
-                child: Column(
-                  children: [
-                    CustomText(
-                      S.of(context).apointment_details,
-                      size: 14.h,
-                      bold: true,
-                    ),
-                    SizedBox(height: 8.h),
-                    Row(
-                      children: [
-                        CustomText(
-                          S.of(context).patient_name,
-                          size: 12.h,
-                        ),
-                        Spacer(),
-                        CustomText(
-                          ref
-                              .read(userControllerProvider)
-                              .requireValue
-                              .user!
-                              .patient!
-                              .name!,
-                          size: 12.h,
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: 8.h),
-                    Row(
-                      children: [
-                        CustomText(
-                          S.of(context).apointment_date,
-                          size: 12.h,
-                        ),
-                        Spacer(),
-                        CustomText(
-                          ref
-                                  .read(apointmentControllerProvider)
-                                  .requireValue
-                                  .selectedDate ??
-                              '',
-                          size: 12.h,
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: 8.h),
-                    Row(
-                      children: [
-                        CustomText(
-                          S.of(context).apointment_time,
-                          size: 12.h,
-                        ),
-                        Spacer(),
-                        CustomText(
-                          ref
-                                  .read(apointmentControllerProvider)
-                                  .requireValue
-                                  .selectedApointment ??
-                              '',
-                          size: 12.h,
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: 8.h),
-                    Row(
-                      children: [
-                        CustomText(
-                          S.of(context).doctor_name,
-                          size: 12.h,
-                        ),
-                        Spacer(),
-                        CustomText(
-                          ref
-                                  .read(apointmentControllerProvider)
-                                  .requireValue
-                                  .selectedDoctor!
-                                  .name ??
-                              '',
-                          size: 12.h,
-                        ),
-                      ],
-                    )
-                  ],
-                ),
-              ),
-            ),
-            SizedBox(height: 16.h),
-            CustomButton(
-              buttonText: S.of(context).send,
-              textColor: Colors.white,
-              backgroundColor: primaryColorDark,
-              radius: 10.r,
-              loading: ref.read(apointmentControllerProvider).isLoading,
-              onTap: () async {
-                await ref
-                    .read(apointmentControllerProvider.notifier)
-                    .bookSubmition();
-              },
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

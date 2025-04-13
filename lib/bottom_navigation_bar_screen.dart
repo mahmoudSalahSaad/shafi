@@ -34,6 +34,7 @@ class _BottomNavigationBarScreenState
   int selectedIndex = 1;
   @override
   Widget build(BuildContext context) {
+    ref.watch(userControllerProvider);
     return Scaffold(
       appBar: selectedIndex == 1
           ? AppBar(
@@ -86,6 +87,7 @@ class _BottomNavigationBarScreenState
     return showModalBottomSheet(
         context: context,
         builder: (_) {
+          ref.watch(userControllerProvider);
           return SizedBox(
             height: 210.h,
             width: deviceWidth,
@@ -98,7 +100,7 @@ class _BottomNavigationBarScreenState
                         size: 18.h, bold: true),
                     InkWell(
                       onTap: () async {
-                        ref
+                        await ref
                             .read(userControllerProvider.notifier)
                             .setLocale("ar");
                         NavigationService.goBack();
@@ -212,7 +214,7 @@ class PersonalScreen extends ConsumerWidget {
           context: context,
           builder: (_) {
             return SizedBox(
-              height: 154,
+              height: 210.h,
               width: deviceWidth,
               child: Padding(
                 padding: EdgeInsets.all(16.h),

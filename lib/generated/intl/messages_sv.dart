@@ -44,7 +44,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "ar": MessageLookupByLibrary.simpleMessage("Arabiska"),
         "ask_again": MessageLookupByLibrary.simpleMessage("Be om igen"),
         "ask_for_apointment":
-            MessageLookupByLibrary.simpleMessage("Boka en tid nu"),
+            MessageLookupByLibrary.simpleMessage("Boka din tid"),
         "available_times":
             MessageLookupByLibrary.simpleMessage("Tillgängliga tider"),
         "book": MessageLookupByLibrary.simpleMessage("Boka"),
@@ -59,16 +59,16 @@ class MessageLookup extends MessageLookupByLibrary {
         "confirm_password_field_required": MessageLookupByLibrary.simpleMessage(
             "Bekräfta lösenordsfältet är obligatoriskt."),
         "confirm_password_not_match": MessageLookupByLibrary.simpleMessage(
-            "Lösenordet matchar inte bekräftelsen."),
+            "Bekräfta lösenordet matchar inte."),
         "de": MessageLookupByLibrary.simpleMessage("Tyska"),
         "delete": MessageLookupByLibrary.simpleMessage("Radera"),
         "delete_account": MessageLookupByLibrary.simpleMessage("Radera konto"),
         "delete_account_message": MessageLookupByLibrary.simpleMessage(
             "Är du säker på att du vill radera ditt konto?"),
-        "delete_message":
-            MessageLookupByLibrary.simpleMessage("Vill du radera ditt konto?"),
+        "delete_message": MessageLookupByLibrary.simpleMessage(
+            "Är du säker på att du vill radera ditt konto?"),
         "didnt_recive_otp":
-            MessageLookupByLibrary.simpleMessage("Fick du inte koden?"),
+            MessageLookupByLibrary.simpleMessage("Fick du inte OTP?"),
         "doctor_name": MessageLookupByLibrary.simpleMessage("Läkarens namn"),
         "email": MessageLookupByLibrary.simpleMessage("E-post"),
         "en": MessageLookupByLibrary.simpleMessage("Engelska"),
@@ -78,7 +78,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Fältet är obligatoriskt."),
         "first_name": MessageLookupByLibrary.simpleMessage("Förnamn"),
         "forget_password_question":
-            MessageLookupByLibrary.simpleMessage("Glömt lösenordet?"),
+            MessageLookupByLibrary.simpleMessage("Glömt lösenord?"),
         "fr": MessageLookupByLibrary.simpleMessage("Franska"),
         "go_to_summary":
             MessageLookupByLibrary.simpleMessage("Gå till sammanfattning"),
@@ -97,7 +97,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "next": MessageLookupByLibrary.simpleMessage("Nästa"),
         "no": MessageLookupByLibrary.simpleMessage("Nej"),
         "otp_message": MessageLookupByLibrary.simpleMessage(
-            "Vänligen ange koden som skickades till ditt telefonnummer."),
+            "Vänligen ange OTP som skickades till ditt telefonnummer."),
         "password": MessageLookupByLibrary.simpleMessage("Lösenord"),
         "password_field_required": MessageLookupByLibrary.simpleMessage(
             "Lösenordsfältet är obligatoriskt."),
@@ -112,17 +112,20 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Vänligen välj kategori"),
         "please_select_sub_category":
             MessageLookupByLibrary.simpleMessage("Vänligen välj underkategori"),
-        "please_wait": MessageLookupByLibrary.simpleMessage("Vänligen vänta"),
+        "please_wait":
+            MessageLookupByLibrary.simpleMessage("Vänligen vänta..."),
         "privacy_policy":
             MessageLookupByLibrary.simpleMessage("Integritetspolicy"),
-        "register":
-            MessageLookupByLibrary.simpleMessage("Registrera nytt konto"),
+        "register": MessageLookupByLibrary.simpleMessage("Registrera"),
         "request": MessageLookupByLibrary.simpleMessage("Begäran"),
         "ru": MessageLookupByLibrary.simpleMessage("Ryska"),
         "save": MessageLookupByLibrary.simpleMessage("Spara"),
         "send": MessageLookupByLibrary.simpleMessage("Skicka"),
-        "shafi": MessageLookupByLibrary.simpleMessage("Shafi"),
+        "shafi": MessageLookupByLibrary.simpleMessage("SHAFI"),
+        "ssssss": MessageLookupByLibrary.simpleMessage("ssssss"),
         "sub_category": MessageLookupByLibrary.simpleMessage("Underkategori"),
+        "treatment_plan":
+            MessageLookupByLibrary.simpleMessage("Behandlingsplan"),
         "update_profile":
             MessageLookupByLibrary.simpleMessage("Uppdatera profil"),
         "valid_email": MessageLookupByLibrary.simpleMessage(
@@ -130,7 +133,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "valid_ssn": MessageLookupByLibrary.simpleMessage(
             "Vänligen ange ett giltigt personnummer"),
         "welcome_text": MessageLookupByLibrary.simpleMessage(
-            "Välkommen till vår kompletta medicinska app."),
+            "Välkommen till vår integrerade medicinska applikation."),
         "yes": MessageLookupByLibrary.simpleMessage("Ja"),
         "your_last_apointments":
             MessageLookupByLibrary.simpleMessage("Dina senaste möten")

@@ -138,12 +138,11 @@ class __$$UserStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$UserStateImpl implements _UserState {
-  _$UserStateImpl({this.user, this.locale = "ar", this.country});
+  _$UserStateImpl({this.user, this.locale, this.country});
 
   @override
   final UserModel? user;
   @override
-  @JsonKey()
   final String? locale;
   @override
   final String? country;

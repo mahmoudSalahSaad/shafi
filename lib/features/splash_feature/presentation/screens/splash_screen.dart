@@ -21,11 +21,13 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
   void initState() {
     super.initState();
     Future.delayed(Duration(seconds: 3), () async {
+      final String locale =
+          await ref.read(userControllerProvider.notifier).getLocale();
+      ref.read(userControllerProvider.notifier).setLocale(locale);
       UserModel? userModel =
           await ref.read(userControllerProvider.notifier).getUser();
       if (userModel != null) {
         await ref.read(userControllerProvider.notifier).refreshToken();
-
       } else {
         NavigationService.pushNamedAndRemoveUntil(Routes.login);
       }

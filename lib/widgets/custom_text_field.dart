@@ -106,6 +106,7 @@ class _CustomTextFieldState extends ConsumerState<CustomTextField> {
                 height: 1.8,
                 fontSize: 12.h,
                 fontFamily: "cairo"),
+            hintTextDirection: TextDirection.rtl,
             suffixIcon: widget.isPassword!
                 ? TapEffect(
                     onClick: () {

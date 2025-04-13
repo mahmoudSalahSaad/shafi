@@ -29,7 +29,6 @@ class _UpdateProfileScreenState extends ConsumerState<UpdateProfileScreen> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     _nameController.text =
         ref.read(userControllerProvider).requireValue.user?.patient?.name ?? "";

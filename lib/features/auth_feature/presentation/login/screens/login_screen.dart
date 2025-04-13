@@ -47,21 +47,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                             NavigationService.push(Routes.register);
                           },
                         )
-                      : CustomButton(
-                          height: 44.h,
-                          loading: ref.watch(loginControllerProvider).isLoading,
-                          buttonText: "Login with BankId",
-                          textColor: kAppBarColor,
-                          backgroundColor: primaryColorDark,
-                          radius: 10.r,
-                          onTap: () async {
-                            if (formKey.currentState!.validate()) {
-                              ref
-                                  .read(loginControllerProvider.notifier)
-                                  .loginWithBankId(ssnController.text);
-                            }
-                          },
-                        )
+                      : null
                   : null,
             ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
@@ -100,17 +86,19 @@ class _LoginWithBankIdLayoutState extends ConsumerState<LoginWithBankIdLayout> {
   Widget build(BuildContext context) {
     return SizedBox(
       width: deviceWidth,
+      height: 400.h,
       child: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            SizedBox(
+              height: 40.h,
+            ),
             Image.asset(
               Assets.appLogo,
               width: 200.h,
               height: 200.h,
-            ),
-            SizedBox(
-              height: 120.h,
             ),
             Form(
               key: widget.formKey,
@@ -132,6 +120,37 @@ class _LoginWithBankIdLayoutState extends ConsumerState<LoginWithBankIdLayout> {
                 isPassword: false,
               ),
             ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16.w),
+              child: CustomButton(
+                height: 44.h,
+                loading: ref
+                        .watch(loginControllerProvider)
+                        .requireValue
+                        .isLoginWithBankIdLoading ??
+                    false,
+                buttonText: "Login with BankId",
+                textColor: kAppBarColor,
+                backgroundColor: primaryColorDark,
+                radius: 10.r,
+                onTap: (ref
+                            .watch(loginControllerProvider)
+                            .requireValue
+                            .isLoginWithBankIdLoading ??
+                        false)
+                    ? null
+                    : () async {
+                        if (widget.formKey.currentState!.validate()) {
+                          ref
+                              .read(loginControllerProvider.notifier)
+                              .loginWithBankId(widget.ssnController.text);
+                        }
+                      },
+              ),
+            ),
+            SizedBox(
+              height: 50.h,
+            )
           ],
         ),
       ),

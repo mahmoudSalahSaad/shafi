@@ -19,7 +19,7 @@ part 'user_controller.freezed.dart';
 part 'user_controller.g.dart';
 part 'user_state.dart';
 
-@Riverpod(keepAlive: true)
+@riverpod
 class UserController extends _$UserController {
   @override
 
@@ -32,6 +32,11 @@ class UserController extends _$UserController {
   Future<UserState> build() async {
     // Initialize the state with an empty user state
     state = AsyncData(UserState());
+
+    Future.delayed(Duration.zero, () async {
+      // Load the user from the local storage
+      await getLocale();
+    });
 
     // Try to load the user from the local storage
     final cachedUser = await getIt<AppPrefs>().get(PrefKeys.user);
@@ -119,15 +124,16 @@ class UserController extends _$UserController {
 
   setLocale(String locale) async {
     AppPrefs appPrefs = getIt();
-    await appPrefs.save(PrefKeys.lang, locale);
+    await appPrefs.saveSecuredData(PrefKeys.lang, locale);
     S.load(Locale(locale));
     state = AsyncData(state.requireValue.copyWith(locale: locale));
   }
 
   getLocale() async {
     AppPrefs appPrefs = getIt();
-    String? locale = await appPrefs.get(PrefKeys.lang);
-    return locale ?? 'ar';
+    String? locale = await appPrefs.getSecuredData(PrefKeys.lang);
+    print("NoLocale =========>$locale");
+    return locale ?? 'en';
   }
 
   setCountry(String country) async {

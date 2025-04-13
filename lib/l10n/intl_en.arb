@@ -75,6 +75,7 @@
     "delete_message" : "Are you sure you want to delete your account?" , 
     "ssssss" : "ssssss" , 
     "enter_ssn" : "Enter SSN" , 
-    "valid_ssn" : "Please enter a valid SSN" 
+    "valid_ssn" : "Please enter a valid SSN"  , 
+     "treatment_plan" : "Treatment Plan"
 
 }

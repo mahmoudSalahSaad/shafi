@@ -26,11 +26,10 @@ void main() async {
   // Initialize dependencies
   await injection.init();
 
-  runApp(const ProviderScope(child: MyApp()));
+  runApp(const ProviderScope(
+    
+    
+    child: MyApp()));
 }
 
-final supportedLocales = <Locale>[
-  const Locale('ar'),
-  const Locale('en'),
-  const Locale('sv'),
-];
+

@@ -127,6 +127,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "shafi": MessageLookupByLibrary.simpleMessage("SHAFI"),
         "ssssss": MessageLookupByLibrary.simpleMessage("ssssss"),
         "sub_category": MessageLookupByLibrary.simpleMessage("Sub Category"),
+        "treatment_plan":
+            MessageLookupByLibrary.simpleMessage("Treatment Plan"),
         "update_profile":
             MessageLookupByLibrary.simpleMessage("Update Profile"),
         "valid_email":
