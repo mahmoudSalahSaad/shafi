@@ -6,7 +6,7 @@ import 'package:shafi/core/resources/values_manager.dart';
 import 'package:shafi/core/routing/navigation_services.dart';
 import 'package:shafi/features/my_medicens/peresentaion/controllers/treatment_plans_controller.dart';
 import 'package:shafi/widgets/custom_text.dart';
-import 'package:skeletonizer/skeletonizer.dart';
+import 'package:shimmer/shimmer.dart';
 
 class TreatmentsPlansScreen extends ConsumerWidget {
   const TreatmentsPlansScreen({super.key});
@@ -128,8 +128,9 @@ class TreatmentsPlansScreen extends ConsumerWidget {
               );
             },
             error: (error, currentTrace) => Text("$error ,,$currentTrace"),
-            loading: () => Skeletonizer(
-              enabled: true,
+            loading: () => Shimmer.fromColors(
+              baseColor: Colors.grey[300]!,
+              highlightColor: Colors.grey[100]!,
               child: Padding(
                 padding: EdgeInsets.all(16.h),
                 child: ListView.builder(

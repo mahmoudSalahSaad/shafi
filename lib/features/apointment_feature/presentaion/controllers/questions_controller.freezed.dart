@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$QuestionsState {
   List<QuestionsModel> get questions => throw _privateConstructorUsedError;
   List<AnswerModel> get answers => throw _privateConstructorUsedError;
+  Children? get childrinQ => throw _privateConstructorUsedError;
 
   /// Create a copy of QuestionsState
   /// with the given fields replaced by the non-null parameter values.
@@ -32,7 +33,12 @@ abstract class $QuestionsStateCopyWith<$Res> {
           QuestionsState value, $Res Function(QuestionsState) then) =
       _$QuestionsStateCopyWithImpl<$Res, QuestionsState>;
   @useResult
-  $Res call({List<QuestionsModel> questions, List<AnswerModel> answers});
+  $Res call(
+      {List<QuestionsModel> questions,
+      List<AnswerModel> answers,
+      Children? childrinQ});
+
+  $ChildrenCopyWith<$Res>? get childrinQ;
 }
 
 /// @nodoc
@@ -52,6 +58,7 @@ class _$QuestionsStateCopyWithImpl<$Res, $Val extends QuestionsState>
   $Res call({
     Object? questions = null,
     Object? answers = null,
+    Object? childrinQ = freezed,
   }) {
     return _then(_value.copyWith(
       questions: null == questions
@@ -62,7 +69,25 @@ class _$QuestionsStateCopyWithImpl<$Res, $Val extends QuestionsState>
           ? _value.answers
           : answers // ignore: cast_nullable_to_non_nullable
               as List<AnswerModel>,
+      childrinQ: freezed == childrinQ
+          ? _value.childrinQ
+          : childrinQ // ignore: cast_nullable_to_non_nullable
+              as Children?,
     ) as $Val);
+  }
+
+  /// Create a copy of QuestionsState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $ChildrenCopyWith<$Res>? get childrinQ {
+    if (_value.childrinQ == null) {
+      return null;
+    }
+
+    return $ChildrenCopyWith<$Res>(_value.childrinQ!, (value) {
+      return _then(_value.copyWith(childrinQ: value) as $Val);
+    });
   }
 }
 
@@ -74,7 +99,13 @@ abstract class _$$QuestionsStateImplCopyWith<$Res>
       __$$QuestionsStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<QuestionsModel> questions, List<AnswerModel> answers});
+  $Res call(
+      {List<QuestionsModel> questions,
+      List<AnswerModel> answers,
+      Children? childrinQ});
+
+  @override
+  $ChildrenCopyWith<$Res>? get childrinQ;
 }
 
 /// @nodoc
@@ -92,6 +123,7 @@ class __$$QuestionsStateImplCopyWithImpl<$Res>
   $Res call({
     Object? questions = null,
     Object? answers = null,
+    Object? childrinQ = freezed,
   }) {
     return _then(_$QuestionsStateImpl(
       questions: null == questions
@@ -102,6 +134,10 @@ class __$$QuestionsStateImplCopyWithImpl<$Res>
           ? _value._answers
           : answers // ignore: cast_nullable_to_non_nullable
               as List<AnswerModel>,
+      childrinQ: freezed == childrinQ
+          ? _value.childrinQ
+          : childrinQ // ignore: cast_nullable_to_non_nullable
+              as Children?,
     ));
   }
 }
@@ -111,7 +147,8 @@ class __$$QuestionsStateImplCopyWithImpl<$Res>
 class _$QuestionsStateImpl implements _QuestionsState {
   _$QuestionsStateImpl(
       {final List<QuestionsModel> questions = const [],
-      final List<AnswerModel> answers = const []})
+      final List<AnswerModel> answers = const [],
+      this.childrinQ})
       : _questions = questions,
         _answers = answers;
 
@@ -134,8 +171,11 @@ class _$QuestionsStateImpl implements _QuestionsState {
   }
 
   @override
+  final Children? childrinQ;
+
+  @override
   String toString() {
-    return 'QuestionsState(questions: $questions, answers: $answers)';
+    return 'QuestionsState(questions: $questions, answers: $answers, childrinQ: $childrinQ)';
   }
 
   @override
@@ -145,14 +185,17 @@ class _$QuestionsStateImpl implements _QuestionsState {
             other is _$QuestionsStateImpl &&
             const DeepCollectionEquality()
                 .equals(other._questions, _questions) &&
-            const DeepCollectionEquality().equals(other._answers, _answers));
+            const DeepCollectionEquality().equals(other._answers, _answers) &&
+            (identical(other.childrinQ, childrinQ) ||
+                other.childrinQ == childrinQ));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(_questions),
-      const DeepCollectionEquality().hash(_answers));
+      const DeepCollectionEquality().hash(_answers),
+      childrinQ);
 
   /// Create a copy of QuestionsState
   /// with the given fields replaced by the non-null parameter values.
@@ -167,12 +210,15 @@ class _$QuestionsStateImpl implements _QuestionsState {
 abstract class _QuestionsState implements QuestionsState {
   factory _QuestionsState(
       {final List<QuestionsModel> questions,
-      final List<AnswerModel> answers}) = _$QuestionsStateImpl;
+      final List<AnswerModel> answers,
+      final Children? childrinQ}) = _$QuestionsStateImpl;
 
   @override
   List<QuestionsModel> get questions;
   @override
   List<AnswerModel> get answers;
+  @override
+  Children? get childrinQ;
 
   /// Create a copy of QuestionsState
   /// with the given fields replaced by the non-null parameter values.

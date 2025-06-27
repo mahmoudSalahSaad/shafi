@@ -241,72 +241,97 @@ class QuestionRadioWidget extends ConsumerWidget {
             height: 10.h,
           ),
           Column(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: List.generate(
-                  (questionsModel.options ?? []).length,
-                  (index2) => InkWell(
-                        onTap: () {
-                          ref
-                              .read(questionsControllerProvider.notifier)
-                              .addAnswer(
-                                  question: questionsModel,
-                                  answer: questionsModel.options![index2].name
-                                      .toString());
-                        },
-                        child: Container(
-                          padding: EdgeInsets.symmetric(
-                              vertical: 6.h, horizontal: 10.w),
-                          margin: EdgeInsets.only(bottom: 10.h),
-                          decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(16.r),
-                              boxShadow: [
-                                BoxShadow(
-                                    color: Colors.black.withOpacity(0.2),
-                                    offset: Offset(0, 0),
-                                    blurRadius: 10.r)
-                              ]),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              CustomText(
-                                "${questionsModel.options?[index2].name}",
-                                size: 14.h,
-                              ),
-                              Radio<String>(
-                                  value: questionsModel.options![index2].name!,
-                                  activeColor: primaryColorDark,
-                                  groupValue: ref
-                                          .read(questionsControllerProvider)
-                                          .requireValue
-                                          .answers
-                                          .any((e) =>
-                                              e.questionId == questionsModel.id)
-                                      ? ref
-                                              .read(questionsControllerProvider)
-                                              .requireValue
-                                              .answers
-                                              .any((e) =>
-                                                  e.answer ==
-                                                  questionsModel
-                                                      .options![index2].name)
-                                          ? questionsModel.options![index2].name
-                                          : ""
-                                      : "",
-                                  onChanged: (val) {
-                                    ref
-                                        .read(questionsControllerProvider
-                                            .notifier)
-                                        .addAnswer(
-                                            question: questionsModel,
-                                            answer: questionsModel
-                                                .options![index2].name
-                                                .toString());
-                                  }),
-                            ],
-                          ),
-                        ),
-                      )))
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: List.generate(
+              (questionsModel.options ?? []).length,
+              (index2) => InkWell(
+                onTap: () {
+                  ref.read(questionsControllerProvider.notifier).addAnswer(
+                      question: questionsModel,
+                      childrinQ: questionsModel.options![index2].children,
+                      answer: questionsModel.options![index2].name.toString());
+                },
+                child: Container(
+                  padding:
+                      EdgeInsets.symmetric(vertical: 6.h, horizontal: 10.w),
+                  margin: EdgeInsets.only(bottom: 10.h),
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(16.r),
+                      boxShadow: [
+                        BoxShadow(
+                            color: Colors.black.withOpacity(0.2),
+                            offset: Offset(0, 0),
+                            blurRadius: 10.r)
+                      ]),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      CustomText(
+                        "${questionsModel.options?[index2].name}",
+                        size: 14.h,
+                      ),
+                      Radio<String>(
+                          value: questionsModel.options![index2].name!,
+                          activeColor: primaryColorDark,
+                          groupValue: ref
+                                  .read(questionsControllerProvider)
+                                  .requireValue
+                                  .answers
+                                  .any((e) => e.questionId == questionsModel.id)
+                              ? ref
+                                      .read(questionsControllerProvider)
+                                      .requireValue
+                                      .answers
+                                      .any((e) =>
+                                          e.answer ==
+                                          questionsModel.options![index2].name)
+                                  ? questionsModel.options![index2].name
+                                  : ""
+                              : "",
+                          onChanged: (val) {
+                            ref
+                                .read(questionsControllerProvider.notifier)
+                                .addAnswer(
+                                    question: questionsModel,
+                                    childrinQ: questionsModel
+                                        .options![index2].children,
+                                    answer: questionsModel.options![index2].name
+                                        .toString());
+                          }),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ),
+          SizedBox(
+            height: 10.h,
+          ),
+          ref.watch(questionsControllerProvider).requireValue.childrinQ != null
+              ? Padding(
+                  padding: EdgeInsets.only(bottom: 16.h),
+                  child: QuestionTypeTextWidget(
+                    questionsModel: QuestionsModel(
+                      id: ref
+                          .watch(questionsControllerProvider)
+                          .requireValue
+                          .childrinQ!
+                          .id,
+                      question: ref
+                          .watch(questionsControllerProvider)
+                          .requireValue
+                          .childrinQ!
+                          .question,
+                      type: ref
+                          .watch(questionsControllerProvider)
+                          .requireValue
+                          .childrinQ!
+                          .type,
+                    ),
+                  ),
+                )
+              : Container(),
         ],
       ),
     );

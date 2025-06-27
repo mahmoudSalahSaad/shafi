@@ -35,8 +35,9 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
           : Padding(
               padding: EdgeInsets.symmetric(horizontal: 16.w),
               child: userState.country != null
-                  ? userState.country == "iq"
-                      ? CustomButton(
+                  ? userState.country == "sv"
+                      ? null
+                      : CustomButton(
                           height: 44.h,
                           buttonText: S.of(context).register,
                           textColor: kAppBarColor,
@@ -47,7 +48,6 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                             NavigationService.push(Routes.register);
                           },
                         )
-                      : null
                   : null,
             ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
@@ -56,12 +56,12 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
           duration: Duration(milliseconds: 300),
           child: userState.country == null
               ? ChooseCountryLayout()
-              : userState.country == "iq"
-                  ? LoginLayout()
-                  : LoginWithBankIdLayout(
+              : userState.country == "sv"
+                  ? LoginWithBankIdLayout(
                       ssnController: ssnController,
                       formKey: formKey,
-                    ),
+                    )
+                  : LoginLayout(),
         ),
       ),
     );
@@ -175,7 +175,7 @@ class ChooseCountryLayout extends ConsumerWidget {
             width: 200.h,
             height: 200.h,
           ),
-          SizedBox(height: 170.h),
+          SizedBox(height: 100.h),
           CustomText(
             "Choose your country",
             size: 32.sp,
@@ -201,6 +201,65 @@ class ChooseCountryLayout extends ConsumerWidget {
                 child: Image.asset(
                   Assets.swedenFlagPng,
                   height: 50.h,
+                ),
+              ),
+            ],
+          ),
+          SizedBox(
+            height: 16.h,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              InkWell(
+                onTap: () {
+                  ref.read(userControllerProvider.notifier).setCountry("dk");
+                },
+                child: Image.asset(
+                  Assets.dkFlag,
+                  height: 50.h,
+                  width: 74.w,
+                  fit: BoxFit.cover,
+                ),
+              ),
+              SizedBox(width: 40.w),
+              InkWell(
+                onTap: () {
+                  ref.read(userControllerProvider.notifier).setCountry("fi");
+                },
+                child: Image.asset(
+                  Assets.fiFlag,
+                  height: 50.h,
+                  width: 74.w,
+                ),
+              ),
+            ],
+          ),
+          SizedBox(
+            height: 16.h,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              InkWell(
+                onTap: () {
+                  ref.read(userControllerProvider.notifier).setCountry("fr");
+                },
+                child: Image.asset(
+                  Assets.frFlag,
+                  height: 50.h,
+                  width: 74.w,
+                ),
+              ),
+              SizedBox(width: 40.w),
+              InkWell(
+                onTap: () {
+                  ref.read(userControllerProvider.notifier).setCountry("no");
+                },
+                child: Image.asset(
+                  Assets.noFlag,
+                  height: 50.h,
+                  width: 74.w,
                 ),
               ),
             ],

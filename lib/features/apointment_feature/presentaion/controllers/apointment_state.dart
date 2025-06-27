@@ -9,6 +9,8 @@ abstract class ApointmentState with _$ApointmentState {
     final DoctorModel? selectedDoctor,
     @Default([]) final List<ApointmentModel> myApointments ,
     final String? type , 
+    final String? perName , 
+    final String? perSsn ,
 
   }) = _ApointmentState;
 }

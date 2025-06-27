@@ -11,7 +11,7 @@ import 'package:shafi/generated/l10n.dart';
 import 'package:shafi/widgets/custom_button.dart';
 import 'package:shafi/widgets/custom_text.dart';
 import 'package:shafi/widgets/custom_text_field.dart';
-import 'package:skeletonizer/skeletonizer.dart';
+import 'package:shimmer/shimmer.dart';
 
 class MedicalHistoryScreen extends ConsumerWidget {
   const MedicalHistoryScreen({super.key});
@@ -170,8 +170,9 @@ class MedicalHistoryScreen extends ConsumerWidget {
               );
             },
             error: (error, currentTrace) => Text("$error ,,$currentTrace"),
-            loading: () => Skeletonizer(
-              enabled: true,
+            loading: () => Shimmer.fromColors(
+              baseColor: Colors.grey[300]!,
+              highlightColor: Colors.grey[100]!,
               child: Padding(
                 padding: EdgeInsets.all(16.h),
                 child: ListView.builder(

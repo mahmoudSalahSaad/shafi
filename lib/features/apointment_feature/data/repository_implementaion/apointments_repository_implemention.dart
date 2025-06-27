@@ -42,6 +42,10 @@ class ApointmentsRepositoryImplemention extends ApointmentRepository {
     formData.fields.add(MapEntry("category_id", parameters.categoryId));
     formData.fields.add(MapEntry("subcategory_id", parameters.subCategoryId));
     formData.fields.add(MapEntry("type", parameters.type.toString()));
+    formData.fields
+        .add(MapEntry("another_pers_id", parameters.perSSN.toString()));
+    formData.fields
+        .add(MapEntry("another_pers_name", parameters.perName.toString()));
 
     /// Add the answers to the form data
     for (int i = 0; i < parameters.answers.length; i++) {

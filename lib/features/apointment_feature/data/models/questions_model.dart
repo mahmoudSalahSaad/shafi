@@ -14,9 +14,26 @@ abstract class QuestionsModel with _$QuestionsModel {
 
 @freezed
 abstract class Options with _$Options {
-  factory Options({final int? id, final String? name} ) = _Options;
+  factory Options({final int? id, final String? name , Children? children} ) = _Options;
 
   factory Options.fromJson(Map<String, dynamic> json) =>
       _$OptionsFromJson(json);
 }
 
+
+
+
+
+@freezed
+class Children with _$Children {
+
+  factory Children(
+    {
+      final int? id,
+      final String? question , 
+      final String? type ,
+    }
+  ) = _Children;
+
+  factory Children.fromJson(Map<String, dynamic> json) => _$ChildrenFromJson(json);
+}

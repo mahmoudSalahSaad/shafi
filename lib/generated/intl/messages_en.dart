@@ -77,7 +77,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "doctor_name": MessageLookupByLibrary.simpleMessage("Doctor Name"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
         "en": MessageLookupByLibrary.simpleMessage("English"),
-        "enter_ssn": MessageLookupByLibrary.simpleMessage("Enter SSN"),
+        "enter_ssn": MessageLookupByLibrary.simpleMessage(
+            "Enter social security number"),
         "es": MessageLookupByLibrary.simpleMessage("Spanish"),
         "field_required":
             MessageLookupByLibrary.simpleMessage("The field is required."),

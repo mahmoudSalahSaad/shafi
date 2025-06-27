@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shafi/core/extensions/num_extensions.dart';
 import 'package:shafi/core/resources/resources.dart';
 import 'package:shafi/core/routing/navigation_services.dart';
+import 'package:shafi/features/apointment_feature/data/models/doctor_model.dart';
 import 'package:shafi/features/apointment_feature/presentaion/controllers/apointment_controller.dart';
 import 'package:shafi/features/apointment_feature/presentaion/controllers/questions_controller.dart';
 import 'package:shafi/features/auth_feature/presentation/controllers/user_controller.dart';
@@ -180,10 +181,11 @@ class ApointmentSummaryScreen extends ConsumerWidget {
                           ),
                           Spacer(),
                           CustomText(
-                            ref
-                                    .read(apointmentControllerProvider)
-                                    .requireValue
-                                    .selectedDoctor!
+                            (ref
+                                            .read(apointmentControllerProvider)
+                                            .requireValue
+                                            .selectedDoctor ??
+                                        DoctorModel())
                                     .name ??
                                 '',
                             size: 12.h,
@@ -200,7 +202,7 @@ class ApointmentSummaryScreen extends ConsumerWidget {
                 textColor: Colors.white,
                 backgroundColor: primaryColorDark,
                 radius: 10.r,
-                loading: ref.read(apointmentControllerProvider).isLoading,
+                loading: ref.watch(apointmentControllerProvider).isLoading,
                 onTap: () async {
                   await ref
                       .read(apointmentControllerProvider.notifier)

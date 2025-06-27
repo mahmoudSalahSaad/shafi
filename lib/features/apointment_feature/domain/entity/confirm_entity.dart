@@ -9,9 +9,13 @@ class ConfirmEntity extends Equatable {
   final String subCategoryId;
   final String date;
   final String? type;
+  final String? perSSN;
+  final String? perName;
 
   const ConfirmEntity(
       {required this.doctorId,
+      this.perSSN,
+      this.perName,
       required this.answers,
       required this.categoryId,
       required this.date,

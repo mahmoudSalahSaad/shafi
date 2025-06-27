@@ -11,7 +11,7 @@ import 'package:shafi/features/apointment_feature/presentaion/controllers/apoint
 import 'package:shafi/features/home_feature/data/models/apointment_model.dart';
 import 'package:shafi/features/home_feature/presentation/widgets/home_screen.dart';
 import 'package:shafi/widgets/custom_text.dart';
-import 'package:skeletonizer/skeletonizer.dart';
+import 'package:shimmer/shimmer.dart';
 
 class MyApointmentScreen extends ConsumerStatefulWidget {
   const MyApointmentScreen({super.key});
@@ -75,34 +75,35 @@ class _MyApointmentScreenState extends ConsumerState<MyApointmentScreen> {
               loading: () {
                 return Padding(
                   padding: EdgeInsets.all(16.h),
-                  child: Skeletonizer(
-                      enableSwitchAnimation: true,
-                      ignorePointers: true,
-                      child: ListView.builder(
-                        padding: EdgeInsets.symmetric(vertical: 16.h),
-                        itemCount: 10,
-                        itemBuilder: (_, index) {
-                          return ApointmentCardWidget(
-                            apointment: ApointmentModel(
-                                id: 1,
-                                sub_category: CategoryModel(
-                                  id: 0,
-                                  name: "loading",
-                                ),
-                                category: CategoryModel(
-                                  id: 0,
-                                  name: "loading",
-                                ),
-                                doctor: DoctorModel(
-                                  id: 0,
-                                  name: "loading",
-                                ),
-                                date: "2024-12-02",
-                                start_time: "06:20",
-                                end_time: "06:20"),
-                          );
-                        },
-                      )),
+                  child: Shimmer.fromColors(
+                    baseColor: Colors.grey[300]!,
+                    highlightColor: Colors.grey[100]!,
+                    child: ListView.builder(
+                      padding: EdgeInsets.symmetric(vertical: 16.h),
+                      itemCount: 10,
+                      itemBuilder: (_, index) {
+                        return ApointmentCardWidget(
+                          apointment: ApointmentModel(
+                              id: 1,
+                              sub_category: CategoryModel(
+                                id: 0,
+                                name: "loading",
+                              ),
+                              category: CategoryModel(
+                                id: 0,
+                                name: "loading",
+                              ),
+                              doctor: DoctorModel(
+                                id: 0,
+                                name: "loading",
+                              ),
+                              date: "2024-12-02",
+                              start_time: "06:20",
+                              end_time: "06:20"),
+                        );
+                      },
+                    ),
+                  ),
                 );
               },
             ),

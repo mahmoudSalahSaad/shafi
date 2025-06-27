@@ -133,6 +133,8 @@ class ApointmentController extends _$ApointmentController {
       startTime: state.requireValue.selectedApointment!,
       subCategoryId: "",
       type: state.requireValue.type,
+      perName: state.requireValue.perName,
+      perSSN: state.requireValue.perSsn,
     ));
 
     result.fold((l) {
@@ -175,5 +177,14 @@ class ApointmentController extends _$ApointmentController {
 
   setApointtmentType({required String type}) {
     state = AsyncData(state.requireValue.copyWith(type: type));
+  }
+
+  setAppointmentNameAndSsn({required String name, required String ssn}) {
+    state = AsyncData(
+      state.requireValue.copyWith(
+        perName: name,
+        perSsn: ssn,
+      ),
+    );
   }
 }

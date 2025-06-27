@@ -5,5 +5,6 @@ abstract class QuestionsState with _$QuestionsState {
   factory QuestionsState({
     @Default([])  final List<QuestionsModel> questions,
     @Default([]) final List<AnswerModel> answers , 
+    Children? childrinQ,
   }) = _QuestionsState;
 }

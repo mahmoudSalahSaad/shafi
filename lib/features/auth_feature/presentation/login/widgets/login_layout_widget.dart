@@ -4,11 +4,11 @@ import 'package:shafi/core/extensions/num_extensions.dart';
 import 'package:shafi/core/resources/resources.dart';
 import 'package:shafi/core/routing/navigation_services.dart';
 import 'package:shafi/core/routing/routes.dart';
-import 'package:shafi/core/utils/validators.dart';
 import 'package:shafi/features/auth_feature/domain/entities/user_entity.dart';
 import 'package:shafi/features/auth_feature/presentation/login/controllers/login_controller.dart';
 import 'package:shafi/generated/l10n.dart';
 import 'package:shafi/widgets/custom_button.dart';
+import 'package:shafi/widgets/custom_phone_text_field.dart';
 import 'package:shafi/widgets/custom_text.dart';
 import 'package:shafi/widgets/custom_text_field.dart';
 
@@ -103,28 +103,35 @@ class _LoginLayoutState extends ConsumerState<LoginLayout> {
               padding: EdgeInsets.symmetric(horizontal: 16.w),
               child: Column(
                 children: [
-                  /// Phone number input field
-                  CustomTextField(
-                    isPassword: false,
+                  CustomPhoneTextField(
                     controller: phoneEc,
-                    prefixIcon: Icon(Icons.phone_android_rounded),
-                    hint: "96411222333444+",
-                    
-                    phoneWidget: SizedBox(),
-                    inputFormats: [],
-                    onValidate: (value) {
-                      if (value != null) {
-                        if (Validators.phoneNumber(value)) {
-                          return null;
-                        } else {
-                          return S.of(context).phone_limit_message;
-                        }
-                      } else {
-                        return S.of(context).phone_field_required;
-                      }
+                    initialCountryCode: "IQ",
+                    onChanged: (p0) {
+                      phoneEc.text = p0.completeNumber;
                     },
-                    textInputType: TextInputType.phone,
                   ),
+
+                  /// Phone number input field
+                  // CustomTextField(
+                  //   isPassword: false,
+                  //   controller: phoneEc,
+                  //   prefixIcon: Icon(Icons.phone_android_rounded),
+                  //   hint: "96411222333444+",
+                  //   phoneWidget: SizedBox(),
+                  //   inputFormats: [],
+                  //   onValidate: (value) {
+                  //     if (value != null) {
+                  //       if (Validators.phoneNumber(value)) {
+                  //         return null;
+                  //       } else {
+                  //         return S.of(context).phone_limit_message;
+                  //       }
+                  //     } else {
+                  //       return S.of(context).phone_field_required;
+                  //     }
+                  //   },
+                  //   textInputType: TextInputType.phone,
+                  // ),
                   SizedBox(
                     height: 16.h,
                   ),

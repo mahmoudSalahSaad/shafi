@@ -800,10 +800,10 @@ class S {
     );
   }
 
-  /// `Enter SSN`
+  /// `Enter social security number`
   String get enter_ssn {
     return Intl.message(
-      'Enter SSN',
+      'Enter social security number',
       name: 'enter_ssn',
       desc: '',
       args: [],

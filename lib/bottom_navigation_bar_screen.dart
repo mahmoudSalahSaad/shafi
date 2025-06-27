@@ -289,6 +289,39 @@ class PersonalScreen extends ConsumerWidget {
                           ],
                         ),
                       ),
+                      InkWell(
+                        onTap: () async {
+                          ref
+                              .read(userControllerProvider.notifier)
+                              .setLocale("sv");
+                          // NavigationService.push(Routes.init);
+                          NavigationService.goBack();
+                        },
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            CustomText(
+                              "sweden",
+                              size: 16.h,
+                            ),
+                            Radio(
+                                value: 1,
+                                groupValue: ref
+                                            .watch(userControllerProvider)
+                                            .requireValue
+                                            .locale ==
+                                        "sv"
+                                    ? 1
+                                    : 0,
+                                onChanged: (val) async {
+                                  ref
+                                      .read(userControllerProvider.notifier)
+                                      .setLocale("sv");
+                                  NavigationService.goBack();
+                                })
+                          ],
+                        ),
+                      )
                     ]),
               ),
             );

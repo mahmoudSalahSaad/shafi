@@ -59,7 +59,10 @@ class QuestionsController extends _$QuestionsController {
     });
   }
 
-  addAnswer({required QuestionsModel question, required String answer}) {
+  addAnswer(
+      {required QuestionsModel question,
+      required String answer,
+      Children? childrinQ}) {
     int index = state.requireValue.answers
         .indexWhere((e) => e.questionId == question.id);
     if (index != -1) {
@@ -80,6 +83,10 @@ class QuestionsController extends _$QuestionsController {
           answers: [...state.requireValue.answers, newAnswer],
         ),
       );
+    }
+
+    if (childrinQ != null) {
+      state = AsyncData(state.requireValue.copyWith(childrinQ: childrinQ));
     }
 
     print(state.requireValue.answers.toList());

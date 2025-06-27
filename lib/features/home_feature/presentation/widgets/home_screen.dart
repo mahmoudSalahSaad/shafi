@@ -9,14 +9,15 @@ import 'package:shafi/core/routing/routes.dart';
 import 'package:shafi/features/apointment_feature/data/models/category_model.dart';
 import 'package:shafi/features/apointment_feature/data/models/doctor_model.dart';
 import 'package:shafi/features/apointment_feature/presentaion/controllers/apointment_controller.dart';
-import 'package:shafi/features/apointment_feature/presentaion/screens/doctors_list_screen.dart';
 import 'package:shafi/features/auth_feature/presentation/controllers/user_controller.dart';
 import 'package:shafi/features/auth_feature/presentation/forget_password/controllers/otp_controller.dart';
 import 'package:shafi/features/home_feature/data/models/apointment_model.dart';
 import 'package:shafi/features/home_feature/presentation/controllers/get_apointment_dates_controllers.dart';
+import 'package:shafi/features/home_feature/presentation/widgets/book_pre_question_buttom_sheet.dart';
 import 'package:shafi/generated/l10n.dart';
+import 'package:shafi/widgets/custom_button.dart';
 import 'package:shafi/widgets/custom_text.dart';
-import 'package:skeletonizer/skeletonizer.dart';
+import 'package:shimmer/shimmer.dart';
 
 class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({super.key});
@@ -86,8 +87,10 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                                       showModalBottomSheet(
                                           context: context,
                                           builder: (_) {
-                                            return DoctorsListScreen();
+                                            return BookPreQuestionButtomSheet();
                                           });
+
+                                      /* DoctorsListScreen() */
                                     } else {
                                       // Resend verification code if not verified
                                       ref
@@ -110,7 +113,9 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                       );
                     },
                     error: (error, _) => CustomText("$error "),
-                    loading: () => Skeletonizer(
+                    loading: () => Shimmer.fromColors(
+                      baseColor: Colors.grey[300]!,
+                      highlightColor: Colors.grey[100]!,
                       child: SizedBox(
                         width: deviceWidth,
                         child: GridView.builder(
@@ -196,51 +201,43 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                             return Column(
                               children: List.generate(data.myApointments.length,
                                   (index) {
-                                return InkWell(
-                                  onTap: () async {
-                                    NavigationService.push(
-                                        Routes.videoCallScreen,
-                                        arguments: {
-                                          "apointmentModel":
-                                              data.myApointments[index]
-                                        });
-                                  },
-                                  child: ApointmentCardWidget(
-                                    apointment: data.myApointments[index],
-                                  ),
+                                return ApointmentCardWidget(
+                                  apointment: data.myApointments[index],
                                 );
                               }),
                             );
                           },
                           error: (error, _) => CustomText("$error "),
-                          loading: () => Skeletonizer(
-                              enabled: true,
-                              child: ListView.builder(
-                                shrinkWrap: true,
-                                padding: EdgeInsets.symmetric(vertical: 16.h),
-                                itemCount: 10,
-                                itemBuilder: (_, index) {
-                                  return ApointmentCardWidget(
-                                    apointment: ApointmentModel(
-                                        id: 1,
-                                        sub_category: CategoryModel(
-                                          id: 0,
-                                          name: "loading",
-                                        ),
-                                        category: CategoryModel(
-                                          id: 0,
-                                          name: "loading",
-                                        ),
-                                        doctor: DoctorModel(
-                                          id: 0,
-                                          name: "loading",
-                                        ),
-                                        date: "2024-12-02",
-                                        start_time: "06:20",
-                                        end_time: "06:20"),
-                                  );
-                                },
-                              )),
+                          loading: () => Shimmer.fromColors(
+                            baseColor: Colors.grey[300]!,
+                            highlightColor: Colors.grey[100]!,
+                            child: ListView.builder(
+                              shrinkWrap: true,
+                              padding: EdgeInsets.symmetric(vertical: 16.h),
+                              itemCount: 10,
+                              itemBuilder: (_, index) {
+                                return ApointmentCardWidget(
+                                  apointment: ApointmentModel(
+                                      id: 1,
+                                      sub_category: CategoryModel(
+                                        id: 0,
+                                        name: "loading",
+                                      ),
+                                      category: CategoryModel(
+                                        id: 0,
+                                        name: "loading",
+                                      ),
+                                      doctor: DoctorModel(
+                                        id: 0,
+                                        name: "loading",
+                                      ),
+                                      date: "2024-12-02",
+                                      start_time: "06:20",
+                                      end_time: "06:20"),
+                                );
+                              },
+                            ),
+                          ),
                         ),
                   ],
                 ),
@@ -503,7 +500,15 @@ class _ApointmentCardWidgetState extends State<ApointmentCardWidget> {
               )
             ],
           ),
-          Icon(Icons.arrow_forward_ios)
+          if (widget.apointment.agora_channel != null)
+            CustomButton(
+              onTap: () {
+                NavigationService.push(Routes.videoCallScreen,
+                    arguments: {"apointmentModel": widget.apointment});
+              },
+              buttonText: "Call",
+              textColor: Colors.white,
+            )
         ],
       ),
     );
